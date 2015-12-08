@@ -24,4 +24,7 @@
 1. [Числа с плавающей точкой](/tests/numbers/dot.md)
 
 #### Массивы
-2. [Пустые ячейки в массиве](/tests/arrays/empty.md)
+1. [Пустые ячейки в массиве](/tests/arrays/empty.md)
+
+#### Вёрстка
+1. [Объект settings для глобальных настроек вёрстки сайта](/articles/basic_settings.md)
