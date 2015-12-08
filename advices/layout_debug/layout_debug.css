@@ -1,0 +1,8 @@
+body * {
+	background-color: rgba(0,0,0, .05);
+}
+
+/* или */
+body * {
+	border: 1px solid;
+}
