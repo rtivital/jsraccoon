@@ -16,6 +16,7 @@
 * JavaScript
 	* [Клонирование объекта](/advices/clone/clone.md)
 	* [Удаление всех ложных свойств из массива](/advices/filter_boolean/filter_boolean.md)
+	* [Поиск всех соседних элементов (siblings)](/advices/siblings/siblings.md)
 
 
 ### Заметки
