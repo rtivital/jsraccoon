@@ -2,6 +2,7 @@
 Репозиторий группы [Frontend Raccoon](http://vk.com/jsraccoon). В репозиторий регулярно добавляются советы по верстке и написанию JavaScript кода, а также небольшие заметки о тонкостях JavaScript.
 
 ## Содержание
+<<<<<<< HEAD
 ### Советы
 * HTML
 	* [Использование srcset для SVG изображений](/advices/srcset/srcset.md)
@@ -24,3 +25,8 @@
 
 #### Массивы
 2. [Пустые ячейки в массиве](/tests/arrays/empty.md)
+=======
+* Советы
+	* CSS
+		* [Наследование свойства box-sizing](/advices/box_sizing/box_sizing.md)
+>>>>>>> 0948903dd36644bbec138712092066798a201dff
