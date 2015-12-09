@@ -22,7 +22,8 @@
 ### Заметки
 #### Числа
 1. [Числа с плавающей точкой](/tests/numbers/dot.md)
-2. [Унарный оператор `+`](/tests/numbers/plus_operator.md)
+2. [Унарный оператор +](/tests/numbers/plus_operator.md)
+3. [Проверка на число](/tests/numbers/isNumber.md)
 
 #### Массивы
 1. [Пустые ячейки в массиве](/tests/arrays/empty.md)
