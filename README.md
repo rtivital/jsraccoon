@@ -26,6 +26,7 @@
 
 #### Массивы
 1. [Пустые ячейки в массиве](/tests/arrays/empty.md)
+2. [Метод reduce](/tests/arrays/reduce.md)
 
 #### Вёрстка
 1. [Объект settings для глобальных настроек вёрстки сайта](/articles/basic_settings.md)
