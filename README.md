@@ -18,6 +18,8 @@
 	* [Удаление всех ложных свойств из массива](/advices/filter_boolean/filter_boolean.md)
 	* [Поиск всех соседних элементов (siblings)](/advices/siblings/siblings.md)
 
+### Задачи
+1. [Удаление всех гласных букв из строки](/exercises/remove_letters/remove_letters.md)
 
 ### Заметки
 #### Числа
