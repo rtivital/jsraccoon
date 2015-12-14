@@ -24,6 +24,7 @@
 2. [Тире между двумя четными числами](/exercises/dashes/dashes.md)
 3. [Землетрясение](/exercises/earthquake/earthquake.md)
 4. [Аккумуляция символов ](/exercises/accumulate/accumulate.md)
+5. [Вычисление остатка при делении](/exercises/remainder/remainder.md)
 
 ### Заметки
 #### Числа
