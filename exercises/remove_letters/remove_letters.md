@@ -47,6 +47,7 @@ removeLetters('This is string', 'is'); // вернет "Th  trng"
 ```
 
 ## Решение 2 (ES6)
+Автор решения - [Даниил Колесниченко](https://github.com/KolesnichenkoDS)
 ```javascript
 function removeLetters(str, rm) {
   rm = rm.toLowerCase() || "aeiouy";
@@ -58,6 +59,7 @@ removeLetters = (str, rm) => [].filter.call(str, (c) => !(rm.toLowerCase() || "a
 ```
 
 ## Решение 3 (регулярные выражения)
+Автор решения - [Даниил Колесниченко](https://github.com/KolesnichenkoDS)
 ```javascript
 var escapeRegExp function(str) {
   return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
