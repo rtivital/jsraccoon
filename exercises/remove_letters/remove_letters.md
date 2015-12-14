@@ -11,7 +11,7 @@ removeLetters('This is string'); // вернет "Ths s strng"
 removeLetters('This is string', 'is'); // вернет "Th  trng"
 ```
 
-## Решение
+## Решение 1 (ES5)
 ```javascript
 (function() {
 	'use strict';
@@ -44,4 +44,26 @@ removeLetters('This is string', 'is'); // вернет "Th  trng"
 		}).join('');
 	};
 })();
+```
+
+## Решение 2 (ES6)
+```javascript
+function removeLetters(str, rm) {
+  rm = rm.toLowerCase() || "aeiouy";
+  return [].filter.call(str, (c) => !rm.includes(c.toLowerCase())).join('');
+}
+
+// Краткий вариант функции
+removeLetters = (str, rm) => [].filter.call(str, (c) => !(rm.toLowerCase() || "aeiouy").includes(c.toLowerCase())).join('');
+```
+
+## Решение 3 (регулярные выражения)
+```javascript
+var escapeRegExp function(str) {
+  return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+var removeLetters function(str, letters) {
+  return str.replace(new RegExp(escapeRegExp(letters), 'g'), '');
+}
 ```
