@@ -23,6 +23,7 @@
 1. [Удаление всех гласных букв из строки](/exercises/remove_letters/remove_letters.md)
 2. [Тире между двумя четными числами](/exercises/dashes/dashes.md)
 3. [Землетрясение](/exercises/earthquake/earthquake.md)
+4. [Аккумуляция символов ](/exercises/accumulate/accumulate.md)
 
 ### Заметки
 #### Числа
