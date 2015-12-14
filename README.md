@@ -12,6 +12,7 @@
 	* [Ненужное свойство display: block](/advices/floats/floats.md)
 	* [Отладка лэйаутов с помощью универсального селектора](/advices/layout_debug/layout_debug.md)
 	* [Применение стилей ко всем элементам, кроме последнего](/advices/not_last/not_last.md)
+	* [Псевдоклассы :required и :optional](/advices/required_and_optional/required_and_optional.md)
 
 * JavaScript
 	* [Клонирование объекта](/advices/clone/clone.md)
