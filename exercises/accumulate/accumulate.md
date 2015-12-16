@@ -11,5 +11,23 @@ accumulate('aNktRb'); // A-Nn-Kkk-Tttt-Rrrrr-Bbbbbb
 accumulate('RywWpx'); // R-Yy-Www-Wwww-Ppppp-Xxxxxx
 accumulate('Cmrera'); // C-Mm-Rrr-Eeee-Rrrrr-Aaaaaa
 ```
-## Решение
-Скоро будет доступно.
+## Решение 
+### ES5 вариант
+```javascript
+var accumulate = function(str) {
+	// Разбить строку на отдельные символы
+	// и с помощью метода массивов map преобразовать каждое значение
+	return str.split('').map(function(item, index) {
+		// Создать пустой массив длинной index + 1
+		// и соеденить его в строку с разделителем 
+		return item.toUpperCase() + Array(index + 1).join(item.toLowerCase());
+	}).join('-');
+};
+```
+
+### ES6 вариант
+```javascript
+function accumulate(str) {
+  return str.split('').map((item,index) => item.toUpperCase()+Array(index+1).join(item.toLowerCase())).join('-');
+}
+```
