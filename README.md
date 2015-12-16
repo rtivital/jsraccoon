@@ -13,6 +13,7 @@
 	* [Отладка лэйаутов с помощью универсального селектора](/advices/layout_debug/layout_debug.md)
 	* [Применение стилей ко всем элементам, кроме последнего](/advices/not_last/not_last.md)
 	* [Псевдоклассы :required и :optional](/advices/required_and_optional/required_and_optional.md)
+	* [Стилизация выделенного текста](/advices/selection/selection.md)
 
 * JavaScript
 	* [Клонирование объекта](/advices/clone/clone.md)
@@ -25,6 +26,7 @@
 3. [Землетрясение](/exercises/earthquake/earthquake.md)
 4. [Аккумуляция символов ](/exercises/accumulate/accumulate.md)
 5. [Вычисление остатка при делении](/exercises/remainder/remainder.md)
+6. [Пемарешей бкувы](/exercises/remix/remix.md)
 
 ### Заметки
 #### Числа
