@@ -27,6 +27,7 @@
 4. [Аккумуляция символов ](/exercises/accumulate/accumulate.md)
 5. [Вычисление остатка при делении](/exercises/remainder/remainder.md)
 6. [Пемарешей бкувы](/exercises/remix/remix.md)
+7. [Простые числа](/exercises/is_prime/is_prime.md)
 
 ### Заметки
 #### Числа
