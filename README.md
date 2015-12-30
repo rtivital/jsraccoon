@@ -30,18 +30,12 @@
 7. [Простые числа](/exercises/is_prime/is_prime.md)
 
 ### Заметки
-#### Числа
 1. [Числа с плавающей точкой](/tests/numbers/dot.md)
 2. [Унарный оператор +](/tests/numbers/plus_operator.md)
 3. [Проверка на число](/tests/numbers/isNumber.md)
 4. [NaN (not a number)](/tests/numbers/nan.md)
-
-#### Массивы
-1. [Пустые ячейки в массиве](/tests/arrays/empty.md)
-2. [Метод reduce](/tests/arrays/reduce.md)
-
-#### Вёрстка
-1. [Объект settings для глобальных настроек вёрстки сайта](/articles/basic_settings.md)
+5. [Пустые ячейки в массиве](/tests/arrays/empty.md)
+6. [Метод reduce](/tests/arrays/reduce.md)
 
 ### ES6
 1. [Перед тем, как вы начнете](./es6/0_before.md)
