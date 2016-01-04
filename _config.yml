@@ -2,7 +2,8 @@
 title: Frontend Raccoon
 email: rtivital@gmail.com
 description: Фронтенд и веб-разработка
-url: "http://jsraccoon.ru"
+baseurl: "/jsraccoon"
+url: "/jsraccoon"
 twitter_username: rtivital
 github_username:  rtivital
 
