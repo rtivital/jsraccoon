@@ -1,0 +1,34 @@
+pre,
+code {
+  font-size: 1.2rem;
+  font-family: 'Roboto Mono', monospace;
+  border: 1px solid darken(#f8f8f5, 10%);
+  border-radius: .4rem;
+  background-color: #f8f8f5;
+
+  @include breakpoint(768px) {
+    font-size: 1.4rem;
+  }
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  padding: 0 .5rem;
+}
+
+pre {
+  padding: 1.5rem 1.2rem;
+  overflow-x: auto;
+
+  @extend %vertical-rhythm;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

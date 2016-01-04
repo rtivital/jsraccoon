@@ -1,0 +1,11 @@
+# Site settings
+title: Frontend Raccoon
+email: rtivital@gmail.com
+description: Фронтенд и веб-разработка
+url: "http://jsraccoon.ru"
+twitter_username: rtivital
+github_username:  rtivital
+
+# Build settings
+markdown: kramdown
+permalink: /:title

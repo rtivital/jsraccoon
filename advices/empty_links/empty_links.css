@@ -1,3 +1,0 @@
-a[href^="http"]:empty::before {
-  content: attr(href);
-}

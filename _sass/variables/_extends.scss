@@ -1,0 +1,16 @@
+%vertical-rhythm {
+    margin-bottom: $spacing / 2;
+}
+
+%reset {
+	margin: 0;
+	padding: 0;
+}
+
+%clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}

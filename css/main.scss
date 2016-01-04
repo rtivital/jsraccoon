@@ -1,0 +1,29 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset 'utf-8';
+
+// Import partials from '_sass' directory
+// Third-party plugins and modules
+@import 'modules/breakpoint/breakpoint';
+@import 'modules/normalize/normalize';
+
+// Variables, mixins and extends
+@import 'variables/variables';
+@import 'variables/extends';
+@import 'variables/mixins';
+
+// Base elements that are used on every page
+@import 'base/typography';
+@import 'base/links';
+@import 'base/images';
+@import 'base/lists';
+@import 'base/quotes';
+@import 'base/code';
+@import 'base/syntax-highlighting';
+@import 'base/containers';
+
+// Styles for different pages
+@import 'site/logo';
+@import 'site/main'; 
+@import 'site/post';

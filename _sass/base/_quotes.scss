@@ -1,0 +1,15 @@
+blockquote {
+  color: $gray;
+  border-left: .4rem solid $light-gray;
+  padding-left: $spacing / 2;
+  font-size: 1.8rem;
+  letter-spacing: -.1rem;
+  font-style: italic;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  @extend %vertical-rhythm;
+  @extend %reset;
+}

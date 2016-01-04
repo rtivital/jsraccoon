@@ -1,0 +1,35 @@
+.post-header {
+	padding-bottom: 1rem;
+	border-bottom: .3rem solid $white-gray;
+}
+
+.meta-container {
+	margin-top: 1rem;
+	user-select: none;
+	color: $gray;
+	
+
+	&.center {
+		text-align: center;
+	}
+
+	
+}
+
+.meta {
+	display: block;
+	margin-top: 1rem;
+	
+
+	@include breakpoint(500px) {
+		display: inline-block;
+		&:not(:first-of-type) {
+			margin-left: 2rem;
+		}
+	}
+	
+}
+
+.meta-icon {
+	margin-right: .5rem;
+}

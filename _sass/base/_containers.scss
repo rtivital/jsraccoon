@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: -webkit-calc(#{$site-width} - (#{$spacing} * 2));
+  max-width:     calc(#{$site-width} - (#{$spacing} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing;
+  padding-left: $spacing;
+  @extend %clearfix;
+
+  @include breakpoint(768px) {
+    max-width: -webkit-calc(#{$site-width} - (#{$spacing}));
+    max-width:     calc(#{$site-width} - (#{$spacing}));
+    padding-right: $spacing / 2;
+    padding-left: $spacing / 2;
+  }
+}

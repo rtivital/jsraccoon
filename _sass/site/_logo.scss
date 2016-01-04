@@ -1,0 +1,18 @@
+.logo {
+	display: block;
+	max-width: 35rem;
+	transition: transform 200ms;
+
+	&.small {
+		max-width: 20rem;
+	}
+
+	&.center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&:hover {
+		transform: scale(1.05);
+	}
+}

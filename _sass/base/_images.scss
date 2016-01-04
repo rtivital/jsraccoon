@@ -1,0 +1,21 @@
+img {
+  // Prevent images from resising
+  box-sizing: content-box;
+
+  // Make images responsive
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+figure {
+  // Set margin-bottom
+  @extend %vertical-rhythm;
+}
+
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: $body-font-size-sm;
+}

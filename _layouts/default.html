@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+  
+    {% include header.html %}
+
+    <div class="page-content">
+
+      <div class="wrapper">
+        <div class="posts-list">
+          {% for post in site.posts %}
+            <article class="article">
+
+              <header class="article-header">
+
+                <h2 class="article-title">
+                  <a href="{{ post.url }}">{{ post.title }}</a>
+                </h2>
+
+                <div class="meta-container">{% include meta.html %}</div>
+
+              </header>
+
+              <p>{{post.description}}</p>
+
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>
