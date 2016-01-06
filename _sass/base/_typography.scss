@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	// Open Sans Extra-bold
-	font-weight: 800;
+	font-weight: 900;
 }
 
 h2, h3, h4, h5, h6 {
@@ -80,19 +80,5 @@ p {
 
 	@include breakpoint(768px) {
 		font-size: 5.2rem;
-	}
-}
-
-.post-meta {
-	// Lines around time
-	margin-top: 4rem;
-	text-align: center;
-	border-bottom: 1px solid $white-gray; 
-	line-height: 0.1rem;
-	color: $light-gray;
-
-	time {
-		background: $white; 
-		padding: 0 1.5rem;
 	}
 }
