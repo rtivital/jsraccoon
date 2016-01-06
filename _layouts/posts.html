@@ -8,12 +8,30 @@
     {% include header.html %}
 
     <div class="page-content">
-
       <div class="wrapper">
         {{ content }}
       </div>
 
     </div>
+
+    {% if page.comments %}
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "{{ page.url }}";
+          this.page.identifier = '{{ page.identifier }}';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    {% endif %}
 
     {% include footer.html %}
 

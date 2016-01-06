@@ -1,5 +1,7 @@
 ---
 layout: post
+comments: true
+identifier: es6-introduction
 title:  "ES6: Вместо введения"
 date:   2015-12-28 22:50:58 +0300
 categories: JavaScript

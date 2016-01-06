@@ -1,5 +1,7 @@
 ---
 layout: post
+comments: true
+identifier: es6-before-you-start
 title:  "ES6: Перед тем, как вы начнёте"
 date:   2015-12-28 22:50:58 +0300
 categories: JavaScript
