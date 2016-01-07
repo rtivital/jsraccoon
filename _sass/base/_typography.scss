@@ -82,3 +82,8 @@ p {
 		font-size: 5.2rem;
 	}
 }
+
+::selection {
+	background-color: $primary;
+	color: $white;
+}

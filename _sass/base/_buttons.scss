@@ -1,0 +1,59 @@
+%btn-base {
+	display: block;
+	padding: 1rem 2rem;
+	margin-top: 1rem;
+	border-radius: .4rem;
+	border-width: .1rem;
+	border-style: solid;
+	transition: all 200ms;
+	user-select: none;
+
+	@include breakpoint(950px) {
+		display: inline-block;
+		margin-top: 0;
+	}
+
+	@include breakpoint(768px) {
+		font-size: 1.45rem;
+	}
+}
+
+.btn-default {
+	@extend %btn-base;
+
+	background-color: $white-gray;
+	color: $black;
+	border-color: darken($white-gray, 5%);
+
+	&:hover {
+		color: $black;
+		background-color: darken($white-gray, 5%);
+	}
+}
+
+.btn-primary {
+	@extend %btn-base;
+
+	background-color: $primary;
+	color: $white;
+	border-color: darken($primary, 5%);
+
+	&:hover {
+		color: darken($white, 5%);
+		background-color: darken($primary, 5%);
+	}
+}
+
+.btn-icon {
+	&-right {
+		.fa {
+			margin-left: 1.5rem;
+		}
+	}
+
+	&-left {
+		.fa {
+			margin-right: 1.5rem;
+		}
+	}
+}
