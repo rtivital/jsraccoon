@@ -6,13 +6,22 @@
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800|Roboto+Mono:400,700,400italic,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-
+  <!-- Link favicon -->
   <link rel="shortcut icon" href="{{ site.url }}/favicon.ico" type="image/x-icon">
   <link rel="icon" href="{{ site.url }}/favicon.ico" type="image/x-icon">
 
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 </head>

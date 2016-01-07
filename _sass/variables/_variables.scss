@@ -19,9 +19,10 @@ $site-width: 950px;
 // Global spacing
 $spacing: 3rem;
 
-// Our variables
-$font-family-base: 'Tahoma', serif;
+// Global font-families
+$font-family-base: 'Arimo', 'Tahoma', 'Helvetica', sans-serif;
 $font-family-headings: 'Open Sans', sans-serif;
+$font-family-code: 'Roboto Mono', monospace;
 
 // Enable rem units (10px === 1rem)
 $base-font-size: 10px; 
