@@ -12,6 +12,9 @@ identifier: es6-spread-reset
 prevTitle: "ES6: Блочные области видимости"
 prevLink: "http://jsraccoon.ru/es6-block-scoped-declarations/"
 
+nextTitle: "ES6: Параметры по умолчанию"
+nextLink: "http://jsraccoon.ru/es6-defaults/"
+
 description: "Новый оператор <code>...</code> существенно упростит работу с многими типами данных: массивами, коллекциями DOM элементов, датами и функциями."
 ---
 
@@ -111,13 +114,13 @@ var birthday = new Date(...day);
 
 {% highlight javascript %}
 var log = function(a, b, ...rest) {
-  console.log(a, b, c);
+  console.log(a, b, rest);
 };
 
 log('Basic', 'rest', 'operator', 'usage'); // Basic rest ['operator', usage]
 {% endhighlight %}
 
-Используя параметр `...rest` в функции `log` вы говорите интерпретатору: "собери все *оставшиеся* элементы в массив с именем `c`". Разумеется, если вы не передадите в функцию других именновах параметров, то `...` соберёт все аргументы:
+Используя параметр `...rest` в функции `log` вы говорите интерпретатору: "собери все *оставшиеся* элементы в массив с именем `rest`". Разумеется, если вы не передадите в функцию других именновах параметров, то `...` соберёт все аргументы:
 {% highlight javascript %}
 var log = function(...args) {
   conole.log(args);
