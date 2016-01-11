@@ -9,10 +9,10 @@ date:   2015-12-30 22:50:58 +0300
 comments: true
 identifier: es6-introduction
 
-nextTitle: "ES6: Блочные области видимости"
+nextTitle: "Блочные области видимости"
 nextLink: "http://jsraccoon.ru/es6-block-scoped-declarations/"
 
-prevTitle: "ES6: Перед тем, как вы начнете"
+prevTitle: "Перед тем, как вы начнете"
 prevLink: "http://jsraccoon.ru/es6-before-you-start/"
 
 description: "Стандарт ECMAScript проделал огромный путь. Нет, конечно, это неправда. Вся история ES может уложиться в несколько предложений. Именно так было до релиза ES6, который кардинально изменил разработку языка JavaScript и принёс с собой огромное количество нововведений."
