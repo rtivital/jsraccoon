@@ -4,6 +4,7 @@
 }
 
 .meta-container {
+	font-size: 1.4rem;
 	margin-top: 1rem;
 	user-select: none;
 	color: $gray;
@@ -40,3 +41,20 @@
 .comments {
 	margin-top: 5.5rem;
 }
+
+.post-wrapper {
+	max-width: 1200px;
+	background-color: $white;
+	padding-top: 1rem;
+	padding-bottom: 3rem;
+	box-shadow: 1px 2px 8px rgba(0,0,0, .15);
+
+	@include breakpoint(950px) {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
+}
+
+// .post-description {
+// 	margin-bottom: 0;
+// }

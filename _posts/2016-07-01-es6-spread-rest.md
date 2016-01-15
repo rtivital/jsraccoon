@@ -5,6 +5,7 @@ title:  "ES6: Операторы Spread и Reset"
 categories: JavaScript
 author: "Виталий Ртищев"
 date:   2016-01-07 20:50:58 +0300
+type: article
 
 comments: true
 identifier: es6-spread-reset

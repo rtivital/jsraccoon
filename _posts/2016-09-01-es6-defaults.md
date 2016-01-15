@@ -5,6 +5,7 @@ title:  "ES6: Параметры по умолчанию"
 categories: JavaScript
 author: "Виталий Ртищев"
 date:   2016-01-09 20:50:58 +0300
+type: article
 
 comments: true
 identifier: es6-defaults

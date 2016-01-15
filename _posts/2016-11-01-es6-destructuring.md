@@ -5,6 +5,7 @@ title:  "ES6: Реструктуризующее присваивание"
 categories: JavaScript
 author: "Виталий Ртищев"
 date:   2016-01-11 16:50:58 +0300
+type: article
 
 comments: true
 identifier: es6-destructuring

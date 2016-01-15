@@ -5,6 +5,7 @@ title:  "ES6: Перед тем, как вы начнёте"
 categories: JavaScript
 author: "Виталий Ртищев"
 date:   2015-12-28 22:50:58 +0300
+type: article
 
 comments: true
 identifier: es6-before-you-start

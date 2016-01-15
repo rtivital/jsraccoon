@@ -7,6 +7,7 @@
 // Third-party plugins and modules
 @import 'modules/breakpoint/breakpoint';
 @import 'modules/normalize/normalize';
+// @import 'modules/gridlex/gridlex';
 
 // Variables, mixins and extends
 @import 'variables/variables';
@@ -25,6 +26,7 @@
 @import 'base/buttons';
 
 // Styles for different pages
-@import 'site/logo';
+@import 'site/header';
+@import 'site/socials';
 @import 'site/main'; 
 @import 'site/post';

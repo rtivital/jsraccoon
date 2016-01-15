@@ -6,29 +6,28 @@
   <body>
   
     {% include header.html %}
-    
+
     <div class="page-content">
-
       <div class="wrapper">
-        <div class="posts-list">
           {% for post in site.posts %}
-            <article class="article">
+              <article class="article type-{{ post.type }}">
 
-              <header class="article-header">
+                <header class="article-header">
 
-                <h2 class="article-title">
-                  <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-                </h2>
+                  <h2 class="article-title">
+                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                  </h2>
 
-                <div class="meta-container">{% include meta.html %}</div>
+                  <div class="meta-container">{% include meta.html %}</div>
 
-              </header>
+                </header>
 
-              <p>{{post.description}}</p>
+                <p class="post-description">
+                  {{post.description}}
+                </p>
+              </article>
 
-            </article>
           {% endfor %}
-        </div>
       </div>
 
     </div>

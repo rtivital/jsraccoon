@@ -20,6 +20,8 @@
     "normalize-css": "normalize.css#~3.0.3",
     "compass-breakpoint": "~2.6.1",
     "animsition": "~4.0.1",
-    "jquery": "~2.2.0"
+    "jquery": "~2.2.0",
+    "gridlex": "~2.0.8",
+    "mixitup": "mixitup2#~2.1.11"
   }
 }

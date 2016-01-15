@@ -22,6 +22,7 @@ body {
   font-kerning: normal;
 
   color: $black;
+  background-color: $white-gray;
 
 	@include breakpoint(768px) {
 		// Set font-size for tablets and desktops

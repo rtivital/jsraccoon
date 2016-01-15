@@ -22,7 +22,7 @@ $skype: #00ACF4;
 $vk: #416894;
 
 // Container max-width
-$site-width: 950px;
+$site-width: 1200px;
 
 // Global spacing
 $spacing: 3rem;
@@ -41,3 +41,11 @@ $body-font-size-sm: 1.4em;
 
 // Font-size for larger devices (min-width: 768px) media query
 $body-font-size-lg: 1.6em;
+
+
+// Site variables
+$article-type-article: (
+  type: article,
+  default: $primary,
+  dark: $black-primary
+);

@@ -3,3 +3,17 @@
         @content;
     }
 }
+
+// Creates custom color schemes for different article types
+@mixin article-type($map) {
+  &.type-#{map-get($map, type)} {
+    border-top-color: map-get($map, default);
+
+    a {
+      color: map-get($map, default);
+      &:hover {
+        color: map-get($map, dark);
+      }
+    }
+  }
+}

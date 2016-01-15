@@ -1,3 +1,12 @@
+<span class="meta type">
+  {% assign t = page.type %}
+  {% case t %}
+    {% when 'article' %} <i class="meta-icon fa fa-file-text-o"></i> Статья
+    {% when 'advice' %} <i class="meta-icon fa fa-cogs"></i> Совет
+    {% when 'question' %} <i class="meta-icon fa fa-question"></i> Вопрос
+    {% when 'exercise' %} <i class="meta-icon fa fa-code"></i> Задача
+  {% endcase %}
+</span>
 <span class="meta date">
   <i class="meta-icon fa fa-clock-o"></i>
   {{ page.date | date: "%-d" }}
