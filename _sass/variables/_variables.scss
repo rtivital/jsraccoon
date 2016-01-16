@@ -8,11 +8,19 @@ $black-gray: #444444;
 $black: #222222;
 
 // Primary Colors
+// Primary red
 $primary: #E74C3C;
 $white-primary: lighten($primary, 15%);
 $light-primary: lighten($primary, 5%);
 $dark-primary: darken($primary, 5%);
 $black-primary: darken($primary, 15%);
+
+// Primary purple
+$purple: #8e44ad;
+$white-purple: lighten($purple, 15%);
+$light-purple: lighten($purple, 5%);
+$dark-purple: darken($purple, 5%);
+$black-purple: darken($purple, 15%);
 
 // Social Colors
 $twitter: #36BBD9;
@@ -48,4 +56,10 @@ $article-type-article: (
   type: article,
   default: $primary,
   dark: $black-primary
+);
+
+$article-type-digest: (
+	type: digest,
+	default: $purple,
+	dark: $black-purple
 );

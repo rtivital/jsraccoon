@@ -5,6 +5,7 @@
     {% when 'advice' %} <i class="meta-icon fa fa-cogs"></i> Совет
     {% when 'question' %} <i class="meta-icon fa fa-question"></i> Вопрос
     {% when 'exercise' %} <i class="meta-icon fa fa-code"></i> Задача
+    {% when 'digest' %} <i class="meta-icon fa fa-list"></i> Дайджест
   {% endcase %}
 </span>
 <span class="meta date">
@@ -28,14 +29,16 @@
   {{ post.date | date: "%Y" }}
 </span>
 
-{%if post.author %}
+{% if post.author %}
   <span class=" meta author">
     <i class="meta-icon fa fa-pencil"></i>
     {{ post.author }}
   </span>
 {% endif %}
 
-<span class="meta category">
-  <i class="meta-icon fa fa-navicon"></i>
-  {{ post.categories }}
-</span>
+{%if post.hideCat != true %}
+  <span class="meta category">
+    <i class="meta-icon fa fa-navicon"></i>
+    {{ post.categories }}
+  </span>
+{% endif %}

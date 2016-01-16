@@ -5,6 +5,7 @@
     {% when 'advice' %} <i class="meta-icon fa fa-cogs"></i> Совет
     {% when 'question' %} <i class="meta-icon fa fa-question"></i> Вопрос
     {% when 'exercise' %} <i class="meta-icon fa fa-code"></i> Задача
+    {% when 'digest' %} <i class="meta-icon fa fa-list"></i> Дайджест
   {% endcase %}
 </span>
 <span class="meta date">
@@ -35,7 +36,9 @@
   </span>
 {% endif %}
 
-<span class="meta category">
-  <i class="meta-icon fa fa-navicon"></i>
-  {{ page.categories }}
-</span>
+{%if page.hideCat != true %}
+  <span class="meta category">
+    <i class="meta-icon fa fa-navicon"></i>
+    {{ page.categories }}
+  </span>
+{% endif %}
