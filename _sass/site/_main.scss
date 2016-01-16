@@ -15,6 +15,7 @@
 
   @include article-type($article-type-article);
   @include article-type($article-type-digest);
+  @include article-type($article-type-advice);
 }
 
 .article-title {

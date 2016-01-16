@@ -22,6 +22,13 @@ $light-purple: lighten($purple, 5%);
 $dark-purple: darken($purple, 5%);
 $black-purple: darken($purple, 15%);
 
+// Primary blue
+$blue: #3498db;
+$white-blue: lighten($blue, 15%);
+$light-blue: lighten($blue, 5%);
+$dark-blue: darken($blue, 5%);
+$black-blue: darken($blue, 15%);
+
 // Social Colors
 $twitter: #36BBD9;
 $youtube: #E52D27;
@@ -62,4 +69,10 @@ $article-type-digest: (
 	type: digest,
 	default: $purple,
 	dark: $black-purple
+);
+
+$article-type-advice: (
+	type: advice,
+	default: $blue,
+	dark: $black-blue
 );
