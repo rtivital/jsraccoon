@@ -1,14 +1,8 @@
 ---
-layout: post
-
 title:  "ES6: Интерполяция"
-categories: JavaScript
-author: "Виталий Ртищев"
-date:   2016-01-16 16:50:58 +0300
-type: article
-
-comments: true
+date:   2016-01-18 16:50:58 +0300
 identifier: es6-interpolation
+categories: JavaScript
 
 prevTitle: "Реструктуризующее присваивание"
 prevLink: "http://jsraccoon.ru/es6-destructuring/"

@@ -9,3 +9,15 @@ github_username:  rtivital
 # Build settings
 markdown: kramdown
 permalink: /:title
+
+# Default settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values: 
+      author: "Виталий Ртищев"
+      layout: "post"
+      type: article
+      comments: true
