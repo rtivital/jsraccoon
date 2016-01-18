@@ -13,6 +13,9 @@ identifier: es6-destructuring
 prevTitle: "Параметры по умолчанию"
 prevLink: "http://jsraccoon.ru/es6-defaults/"
 
+nextTitle: "Интерполяция"
+nextLink: "http://jsraccoon.ru/es6-interpolation/"
+
 description: "<i>Destructuring</i> или <i>реструктуризующее присваивание</i> призвано существенно уменьшить количество кода, необходимого для извлечения данных из массивов и объектов. С помощью одной строчки кода теперь можно создать несколько переменных."
 ---
 
