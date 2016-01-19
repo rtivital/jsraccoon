@@ -27,7 +27,7 @@ var sum = function(a, b) {
     console.log(a + b);
   };
 };
-// аргументы передать нельзя
+// теперь можно передавать аргументы
 document.querySelector('a').addEventListener('click', sum(1, 5), false);
 {% endhighlight %}
 
