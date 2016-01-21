@@ -14,7 +14,7 @@ var arr = ['.js', '.css', '.html'];
 if (arr.indexOf('.jsx') === -1) { 
   // будет выполнено, когда значения нет 
 }
-if (arr.indexOf('.css') >= -1) {
+if (arr.indexOf('.css') >= 0) {
   // будет выполнено, когда значение есть 
 }
 {% endhighlight %}
@@ -22,7 +22,7 @@ if (arr.indexOf('.css') >= -1) {
 Нативного метода для подобных задач пока что нет. Он появится в спецификации ES2016 и будет называться [includes](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). До того, как данный метод будет реализован, можно для данных целей можно использовать побитовый оператор `~`:
 {% highlight javascript %}
 var arr = ['.js', '.css', '.html'];
-if (~arr.indexOf('.jsx')) { 
+if (!~arr.indexOf('.jsx')) { 
   // будет выполнено, когда значения нет 
 }
 if (~arr.indexOf('.css')) {
