@@ -1,5 +1,5 @@
 ---
-title:  "ES6: Стрелочные функции"
+title: "ES6: Стрелочные функции"
 date: 2016-01-22 10:50:58 +0300
 identifier: es6-arrow-functions
 categories: JavaScript
