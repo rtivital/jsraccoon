@@ -70,7 +70,7 @@ function mixColors(color1, color2){
 
 Теперь это дело нам нужно перевести из шестнадцатеричной строки в десятичное число. Напишем небольшую вспомогательную функцию.
 
-% highlight javascript %}
+{% highlight javascript %}
 function hexToInt(h){
 	return parseInt(h, 16);
 }
