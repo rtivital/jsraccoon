@@ -50,7 +50,7 @@ function mixColors(color1, color2){
 }
 {% endhighlight %}
 
-Для выделения подстроки из строки существует функция [slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
+Для выделения подстроки из строки существует функция [slice](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/slice).
 
 {% highlight javascript %}
 function mixColors(color1, color2){
