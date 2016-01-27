@@ -5,6 +5,7 @@
 ### Советы
 * HTML
 	* [Использование srcset для SVG изображений](./advices/srcset/srcset.md)
+	* [Темы для мобильного Chrome](./advices/chrome_themes/chrome_themes.md)
 * CSS
 	* [Наследование свойства box-sizing](./advices/box_sizing/box_sizing.md)
 	* [Список, разделенный запятыми](./advices/css_lists/css_lists.md)
