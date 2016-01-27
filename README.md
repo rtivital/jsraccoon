@@ -45,3 +45,4 @@
 4. [Операторы spread и rest](./es6/3_spread_rest.md)
 5. [Параметры по умолчанию](./es6/4_defaults.md)
 6. [Реструктуризующее присваивание (destructuring)](./es6/5_destructuring.md)
+7. [Интерполяция и умные строки](./es6/6_interpolation.md)
