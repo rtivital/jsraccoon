@@ -1,7 +1,6 @@
 # Frontend Raccoon
 Репозиторий группы [Frontend Raccoon](http://vk.com/jsraccoon). В репозиторий регулярно добавляются советы по верстке и написанию JavaScript кода, а также небольшие заметки о тонкостях JavaScript.
 
-<img src="./images/logo.png" alt="Frontend Raccoon Logo" align="left" style="width: 200px;">
 ## Содержание
 ### Советы
 * HTML
