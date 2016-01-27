@@ -1,6 +1,6 @@
 # Frontend Raccoon
 Репозиторий группы [Frontend Raccoon](http://vk.com/jsraccoon). В репозиторий регулярно добавляются советы по верстке и написанию JavaScript кода, а также небольшие заметки о тонкостях JavaScript.
-
+![Some Title](./images/logo.svg){:style="float: right; margin-right: 7px; margin-top: 7px;"}
 ## Содержание
 ### Советы
 * HTML
