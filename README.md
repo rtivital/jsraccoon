@@ -30,6 +30,7 @@
 5. [Вычисление остатка при делении](./exercises/remainder/remainder.md)
 6. [Пемарешей бкувы](./exercises/remix/remix.md)
 7. [Простые числа](./exercises/is_prime/is_prime.md)
+8. [Найди анаграммы](./exercises/is_anagram/is_anagram.md)
 
 ### Заметки
 1. [Числа с плавающей точкой](./tests/numbers/dot.md)
