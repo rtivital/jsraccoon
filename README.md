@@ -42,3 +42,5 @@
 1. [Перед тем, как вы начнете](./es6/0_before.md)
 2. [Вместо введения](./es6/1_intro.md)
 3. [Блочные области видимости, let, const, временная мертвая зона](./es6/2_block_scoped_declarations.md)
+4. [Операторы spread и rest](./es6/3_spread_rest.md)
+5. [Параметры по умолчанию](./es6/4_defaults.md)
