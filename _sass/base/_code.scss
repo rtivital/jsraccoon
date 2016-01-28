@@ -8,10 +8,10 @@ code {
 }
 
 // Inline code styles
-code.highlighter-rouge {
+code, .highlighter-rouge {
   border-radius: .4rem;
   background-color: #f8f8f5;
-  border: 1px solid darken(#f8f8f5, 10%);
+  border: 1px solid darken(#f8f8f5, 7%);
 }
 
 // Block code styles
