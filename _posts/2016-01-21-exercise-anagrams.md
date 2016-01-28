@@ -34,7 +34,7 @@ isAnagram('Older and Wiser', 'I learned words');      // true
 1. Пробелы не учитываются, то есть `Statue of Liberty` и `Built to stay free` **будут** считаться анаграммами.
 2. Одинаковые слова не являются анаграммами, то есть `апельсин` и `апельсин` **не являются** анаграммами.
 
-Функция `isAnagram` принимает две строки назавём их условно `original` и `test`, хотя на самом деле особой разницы между ними нет. В соответствие со вторым правилом, первое, что необходимо сделать — проверить не были ли переданы в функцию одинаковые строки:
+Функция `isAnagram` принимает две строки назовём их условно `original` и `test`, хотя на самом деле особой разницы между ними нет. В соответствии со вторым правилом, первое, что необходимо сделать — проверить не были ли переданы в функцию одинаковые строки:
 
 {% highlight javascript %}
 var isAnagram = function(original, test) {
@@ -51,7 +51,7 @@ var isAnagram = function(original, test) {
 Если переданные в функцию строки не одинаковые, то можно начинать проверку на анаграммы. Первое, что нужно сделать — удалить все пробельные символы из строки. 
 
 ##### Удаление пробельных символов с помощью регулярных выражений
-Регулярное выражение `\s+` находит все whitespace символы в строке. Их отстается только заменить на пустую строку с помощью метода `String.prototype.replace()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/Replace)).
+Регулярное выражение `\s+` находит все whitespace символы в строке. Их остаётся только заменить на пустую строку с помощью метода `String.prototype.replace()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/Replace)).
 
 {% highlight javascript %}
 original = original.replace(/\s+/g, '');
@@ -60,7 +60,7 @@ original = original.replace(/\s+/g, '');
 ##### Удаление пробельных символов с помощью map и trim
 Данный способ гораздо менее элегантный, чем предыдущий. Тем не менее, он работает, и вы скорее всего захотите его использовать, если всё ещё не научились исползовать регулярные выражения на должном уровне. 
 
-Суть способо заключается в следующем: строка разбивается на отдельные символы с помощью метода `String.prototype.split()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/split)), после чего каждый символ перебирается с помощью метода массивов `Array.prototype.map()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map)). На каждый символ в строке применяется метод `String.prototype.trim()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)), который удаляет все пробельные символы из строки. После завершения данной операции строку необходимо собрать обратно с помощью метода `Array.prototype.join()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join)).
+Суть способа заключается в следующем: строка разбивается на отдельные символы с помощью метода `String.prototype.split()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/split)), после чего каждый символ перебирается с помощью метода массивов `Array.prototype.map()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map)). На каждый символ в строке применяется метод `String.prototype.trim()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)), который удаляет все пробельные символы из строки. После завершения данной операции строку необходимо собрать обратно с помощью метода `Array.prototype.join()` ([MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/join)).
 
 {% highlight javascript %}
 original = original.split('').map(function(letter) {
@@ -84,14 +84,14 @@ original = original.replace(/\s+/g, '').split('').sort().join('');
 
 {% highlight javascript %}
 var sort = function(str) {
-  return str.replace(/\s+/g, '').split('').sort().join('')
+  return str.replace(/\s+/g, '').split('').sort().join('').toLowerCase();
 }
 {% endhighlight %}
 
 ### Решение целиком
 {% highlight javascript %}
 var sort = function(str) {
-  return str.replace(/\s+/g, '').split('').sort().join('')
+  return str.replace(/\s+/g, '').split('').sort().join('').toLowerCase();
 }
 
 var isAnagram = function(original, test) {

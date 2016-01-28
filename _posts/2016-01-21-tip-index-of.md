@@ -19,7 +19,7 @@ if (arr.indexOf('.css') >= 0) {
 }
 {% endhighlight %}
 
-Нативного метода для подобных задач пока что нет. Он появится в спецификации ES2016 и будет называться [includes](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). До того, как данный метод будет реализован, можно для данных целей можно использовать побитовый оператор `~`:
+Нативного метода для подобных задач пока что нет. Он появится в спецификации ES2016 и будет называться [includes](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). До того, как данный метод будет реализован, для данных целей можно использовать побитовый оператор `~`:
 {% highlight javascript %}
 var arr = ['.js', '.css', '.html'];
 if (!~arr.indexOf('.jsx')) { 
