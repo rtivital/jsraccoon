@@ -50,8 +50,8 @@
 	box-shadow: 1px 2px 8px rgba(0,0,0, .15);
 
 	@include breakpoint(950px) {
-		padding-left: 5rem;
-		padding-right: 5rem;
+		padding-left: $spacing * 1.75;
+		padding-right: $spacing * 1.75;
 	}
 }
 

@@ -2,18 +2,46 @@ pre,
 code {
   font-size: 1.2rem;
   font-family: $font-family-code;
-  border: 1px solid darken(#f8f8f5, 10%);
-  border-radius: .4rem;
-  background-color: #f8f8f5;
-
   @include breakpoint(768px) {
     font-size: 1.4rem;
   }
 }
 
+// Inline code styles
+code.highlighter-rouge {
+  border-radius: .4rem;
+  background-color: #f8f8f5;
+  border: 1px solid darken(#f8f8f5, 10%);
+}
+
+// Block code styles
 figure {
   margin: 0;
   padding: 0;
+
+  &.highlight {
+    margin-left: $spacing * -1;
+    margin-right: $spacing * -1;
+    @include breakpoint(950px) {
+      margin-left: $spacing * -1.75;
+      margin-right: $spacing * -1.75;
+    }
+
+    & > pre, code {
+      background-color: #f8f8f5;
+    }
+
+    & > pre {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      padding-left: $spacing;
+      padding-right: $spacing;
+      @include breakpoint(950px) {
+        padding-left: $spacing * 1.75;
+        padding-right: $spacing * 1.75;
+      }
+    }
+  }
 }
 
 code {
