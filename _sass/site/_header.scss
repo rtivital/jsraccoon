@@ -1,5 +1,5 @@
 .site-header {
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
@@ -7,15 +7,40 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 20rem;
+	text-align: center;
+	max-width: 50rem;
+
+	& > img {
+		max-width: 10rem;
+	}
+	
 
 	transition: transform 200ms;
 
 	&:hover {
-		transform: scale(1.05);
+		.logo-text {
+			color: $dark-primary;
+		}
 	}
 
 	@include breakpoint(768px) {
-		max-width: 35rem;
+		& > img {
+			max-width: 15rem;
+		}
+	}
+}
+
+.logo-text {
+	color: $black;
+	transition: color 200ms;
+	display: block;
+	font-size: 2.5rem;
+	font-family: $font-family-headings;
+	font-weight: 900;
+	letter-spacing: -0.3rem;
+
+	@include breakpoint(768px) {
+		font-size: 4rem;
+		letter-spacing: -0.1rem;
 	}
 }
