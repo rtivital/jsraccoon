@@ -18,28 +18,28 @@ code.highlighter-rouge {
 figure {
   margin: 0;
   padding: 0;
+}
 
-  &.highlight {
-    margin-left: $spacing * -1;
-    margin-right: $spacing * -1;
+.highlight {
+  margin-left: $spacing * -1;
+  margin-right: $spacing * -1;
+  @include breakpoint(950px) {
+    margin-left: $spacing * -1.75;
+    margin-right: $spacing * -1.75;
+  }
+
+  & > pre, code {
+    background-color: #f8f8f5;
+  }
+
+  & > pre {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: $spacing;
+    padding-right: $spacing;
     @include breakpoint(950px) {
-      margin-left: $spacing * -1.75;
-      margin-right: $spacing * -1.75;
-    }
-
-    & > pre, code {
-      background-color: #f8f8f5;
-    }
-
-    & > pre {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      padding-left: $spacing;
-      padding-right: $spacing;
-      @include breakpoint(950px) {
-        padding-left: $spacing * 1.75;
-        padding-right: $spacing * 1.75;
-      }
+      padding-left: $spacing * 1.75;
+      padding-right: $spacing * 1.75;
     }
   }
 }
