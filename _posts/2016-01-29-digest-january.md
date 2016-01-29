@@ -2,16 +2,15 @@
 layout: post
 
 title:  "Дайджест лучших материалов за январь"
-categories: Дайджест
+categories: "Дайджест"
 hideCat: true
-author: "Виталий Ртищев"
-date:   2016-01-30 00:50:58 +0300
+date: 2016-01-30 00:50:58 +0300
 type: digest
 
 comments: true
 identifier: digest-january
 
-description: "Дайджест лучших материалов из <a href="http://vk.com/jsraccoon">группы</a> за первый месяц 2016 года."
+description: "Дайджест лучших материалов из группы за первый месяц 2016 года."
 ---
 Дайджест лучших материалов из [группы](http://vk.com/jsraccoon) за первый месяц 2016 года. 
 
