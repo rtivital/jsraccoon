@@ -1,7 +1,7 @@
 ---
 title: "Удаление элементов из массива по индексу"
-author: "Elnee"
-сategories: JavaScript
+author: Elnee
+categories: JavaScript
 date: 2016-01-29 20:11:23 +0200
 type: exercise
 identifier: exercise-remove-from-array
