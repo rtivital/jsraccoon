@@ -27,15 +27,76 @@ remove(random, 1, 3); // [undefined, null, {data: [...]}]
 Вот код готовой функции: 
 {% highlight javascript %}
 function remove (arr, indexes) {
-    var arrayOfIndexes = [].slice.call(arguments, 1);    //(1)
-    
-	return arr.filter(function (item, index) {           //(2)
-        return arrayOfIndexes.indexOf(index) == -1;      //(3)
-    });
+  var arrayOfIndexes = [].slice.call(arguments, 1);  // (1)
+  return arr.filter(function (item, index) {         // (2)
+    return arrayOfIndexes.indexOf(index) == -1;      // (3)
+  });
 }
 {% endhighlight %}
 
-#### Пояснения
-1. `arguments` — это объект, в котором хранятся все аргументы, переданные в функцию. Чтобы дальше не искать вхождение индекса перебором значений `arguments` в цикле, а использовать удобный метод `.indexOf()`, нужно перевести `arguments` в массив. Это осуществляется с помощью применения метода `.slice()` к пустому массиву и заменой значения параметра `this` на `arguments` с помощью функции `.call()`. Подробнее о работе `.call()` [здесь](https://learn.javascript.ru/call-apply#метод-call).
+#### Объяснение
+1. `arguments` — это псевдо массив, в котором хранятся все аргументы, переданные в функцию. Чтобы дальше не искать вхождение индекса перебором значений `arguments` в цикле, а использовать удобный метод `.indexOf()`, нужно перевести `arguments` в массив. Это осуществляется с помощью применения метода `.slice()` к пустому массиву и заменой значения параметра `this` на `arguments` с помощью функции `.call()`. Подробнее о работе `.call()` [здесь](https://learn.javascript.ru/call-apply#метод-call).
 2. Теперь, используя метод `.filter()`, составим массив в который не будут входить элементы, подлежащие к удалению. Подробнее о `.filter()` [здесь](https://learn.javascript.ru/array-iteration#filter).
-3. Ну а дальше всё очень просто. Если индекс текущего элемента входит в массив индексов элементов, которые подлежат удалению, то метод `.indexOf()` вернёт значение равное или больше нуля. Callback-функция вернёт false и текущий элемент не войдёт в новый массив.
+3. Если индекс текущего элемента входит в массив индексов элементов, которые подлежат удалению, то метод `.indexOf()` вернёт значение равное или больше нуля. Callback-функция вернёт false и текущий элемент не войдёт в новый массив.
+
+## Решение #2
+{% highlight javascript %}
+const remove = (arr, ...args) => {
+  return arr.filter((item) => {
+    return !args.some((arg, index) => {
+      return arr.indexOf(item) === arg;
+    });
+  });
+};
+{% endhighlight %}
+
+## Решение #3
+Автор решения [Сергій Гулько](https://github.com/Felytic). Решение показывает возможности использования сетов в ES6.
+{% highlight javascript %}
+function remove(arr, ...args){
+  var set = new Set(args); 
+  return arr.filter((v, k) => !set.has(k));
+}
+{% endhighlight %}
+
+## Решение #4
+Автор решений [Евгений Бовыкин](https://github.com/missingdays). Решения ориентированы на высокую производительность.
+{% highlight javascript %}
+/*
+ * Works O(m+nlog(n)) where n is the amount of indexes
+ */
+function remove(arr){
+  let ret = [];
+  let indexes = [].slice.call(arguments, 1);
+
+  indexes.sort();
+  let j = 0;
+
+  for(let i = 0; i < arr.length; i++){
+    if(i !== indexes[j]){
+      ret.push(arr[i]);
+    } else {
+      j += 1;
+    }
+  }
+
+  return ret;
+}
+
+/*
+ * Works O(m*n) where n is the amount of indexes
+ */
+function _remove(arr){
+  let ret = [];
+
+  let indexes = [].slice.call(arguments, 1);
+
+  for(let i = 0; i < arr.length; i++){
+    if(indexes.indexOf(i) === -1){
+      ret.push(arr[i])
+    } 
+  }
+
+  return ret;
+}
+{% endhighlight %}
