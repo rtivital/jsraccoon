@@ -23,3 +23,7 @@ description: "Дайджест лучших материалов из групп
 * <i class="fa fa-youtube"></i> [Какими плагинами и настройками для Sublime пользуются разработчики из Google](https://www.youtube.com/watch?v=2eu23_if6Lw)
 * [DevDocs.io](http://devdocs.io/) — сайт на котором собрано огромное количество документаций к разным frontend и backend технологиям и фреймворкам.
 
+##### Немного дизайна из группы [Freebies Truck](http://vk.com/freebiestruck)
+
+* [11 лучших UX книг, которые стоит прочитать в 2016 году](http://www.sitepoint.com/11-free-ux-e-books-worth-reading-2016/)
+* [5 неожиданных мест на вашем сайте, где можно проявить свою оригинальность](http://www.sitepoint.com/5-unexpected-places-to-inject-personality-into-your-site/)
