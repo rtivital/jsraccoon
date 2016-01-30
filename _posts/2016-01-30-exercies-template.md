@@ -16,7 +16,7 @@ var templates = [
   'Hello, {user}!',
   'How was your {dayOfTheWeek}?',
   'Would you like a cup of {drink1}, or maybe some {drink2}?',
-  'I just learned how to play the {instrument}, so I\'m stil a bad {instrument}ist.'
+  'I\'ve just learned how to play the {instrument}, so I\'m stil a bad {instrument}ist.'
 ];
 // Hello, missingdays!
 console.log(template(templates[0], { user: 'missingdays' })); 
@@ -27,7 +27,7 @@ console.log(template(templates[1], { dayOfTheWeek: 'Monday' }));
 // Would you like a cup of tea, or maybe some coffee?
 console.log(template(templates[2], { drink1: 'tea', drink2: 'coffee' })); 
 
-// I just learned how to play the guitar, so I'm still a bad guitarist.
+// I've just learned how to play the guitar, so I'm still a bad guitarist.
 console.log(template(templates[3], { instrument: 'guitar' })); 
 {% endhighlight %}
 
