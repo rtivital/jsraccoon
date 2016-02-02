@@ -22,7 +22,7 @@ figure {
 
 .highlight {
   margin-left: $spacing / -4;
-  margin-right: $spacing / -4;;
+  margin-right: $spacing / -4;
   @include breakpoint(950px) {
     margin-left: $spacing * -1.75;
     margin-right: $spacing * -1.75;
@@ -35,8 +35,8 @@ figure {
   & > pre {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    padding-left: $spacing;
-    padding-right: $spacing;
+    padding-left: $spacing / 4;
+    padding-right: $spacing / 4;
     @include breakpoint(950px) {
       padding-left: $spacing * 1.75;
       padding-right: $spacing * 1.75;

@@ -9,24 +9,26 @@
 	user-select: none;
 	color: $gray;
 	
-
 	&.center {
-		text-align: center;
+		> .meta {
+			text-align: center;
+		}
+	}
+
+	@include breakpoint(525px) {
+		display: flex;
+		&.center {
+			align-items: center;
+  		justify-content: center;
+		}
 	}
 }
 
 .meta {
 	display: block;
 	margin-top: 1rem;
-	
-
-	@include breakpoint(500px) {
-		display: inline-block;
-		&:not(:first-of-type) {
-			margin-left: 2rem;
-		}
-	}
-	
+	padding-left: 1rem;
+	padding-right: 1rem;	
 }
 
 .meta-icon {
@@ -54,7 +56,3 @@
 		padding-right: $spacing * 1.75;
 	}
 }
-
-// .post-description {
-// 	margin-bottom: 0;
-// }
