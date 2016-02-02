@@ -21,8 +21,8 @@ figure {
 }
 
 .highlight {
-  margin-left: $spacing * -1;
-  margin-right: $spacing * -1;
+  margin-left: $spacing / -4;
+  margin-right: $spacing / -4;;
   @include breakpoint(950px) {
     margin-left: $spacing * -1.75;
     margin-right: $spacing * -1.75;
