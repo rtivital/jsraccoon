@@ -124,7 +124,7 @@ console.log(A, B); // 10 20
 Если переданного вами свойства нет в объекте, то вы получите переменную, содержащую `undefined`:
 {% highlight javascript %}
 var obj = { a: 1 };
-// у объекта нет свойства y
+// у объекта нет свойства b
 var { x: a, y: b } = obj;
 // переменной y будет присвоено undefined
 console.log(x, y); // 1 undefined
