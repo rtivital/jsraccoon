@@ -84,14 +84,14 @@ original = original.replace(/\s+/g, '').split('').sort().join('');
 
 {% highlight javascript %}
 var sort = function(str) {
-  return str.replace(/\s+/g, '').split('').sort().join('').toLowerCase();
+  return str.replace(/\s+/g, '').toLowerCase().split('').sort().join('');
 }
 {% endhighlight %}
 
 ### Решение целиком
 {% highlight javascript %}
 var sort = function(str) {
-  return str.replace(/\s+/g, '').split('').sort().join('').toLowerCase();
+  return str.replace(/\s+/g, '').toLowerCase().split('').sort().join('');
 }
 
 var isAnagram = function(original, test) {
@@ -101,6 +101,6 @@ var isAnagram = function(original, test) {
 
 ### ES6 решение
 {% highlight javascript %}
-const sort = (str) => str.replace(/\s+/g, '').split('').sort().join('');
+const sort = (str) => str.replace(/\s+/g, '').toLowerCase().split('').sort().join('');
 const isAnagram = (original, test) => original.trim() === test.trim() ? false : sort(original) === sort(test);
 {% endhighlight %}
