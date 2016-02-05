@@ -42,6 +42,7 @@
 10. [Строковая шаблонизация](./exercises/template/template.md)
 11. [Пара двойников](./exercises/doubles/doubles.md)
 11. [Что за треугольник?](./exercises/triangles/triangles.md)
+12. [Удаление элементов из массива по индексу](./exercises/remove_from_array/remove_from_array.md)
 
 ### Заметки
 1. [Числа с плавающей точкой](./tests/numbers/dot.md)
