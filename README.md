@@ -62,3 +62,4 @@
 7. [Интерполяция и умные строки](./es6/6_interpolation.md)
 8. [Стрелочные функции](./es6/7_arrow_functions.md)
 9. [Цикл for .. of](./es6/8_for_of_loop.md)
+10. [Расширение литерала объектов](./es6/9_object_literal.md)
