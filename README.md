@@ -5,6 +5,7 @@
 
 ### Статьи
 * [Перебирающие методы массивов изнутри](./articles/fn_array_methods.md)
+* [Стилизация плэйсхолдеров с препроцессором Sass](./articles/css_placeholders.md)
 
 ### Советы
 * HTML
