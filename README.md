@@ -2,6 +2,10 @@
 Репозиторий группы [Frontend Raccoon](http://vk.com/jsraccoon). В репозиторий регулярно добавляются советы по верстке и написанию JavaScript кода, а также небольшие заметки о тонкостях JavaScript.
 
 ## Содержание
+
+### Статьи
+* [Перебирающие методы массивов изнутри](./articles/fn_array_methods.md)
+
 ### Советы
 * HTML
 	* [Использование srcset для SVG изображений](./advices/srcset/srcset.md)
