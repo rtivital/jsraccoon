@@ -38,6 +38,7 @@
 7. [Простые числа](./exercises/is_prime/is_prime.md)
 8. [Найди анаграммы](./exercises/is_anagram/is_anagram.md)
 9. [Смешай цвета](./exercises/mix_colors/mix_colors.md)
+10. [Строковая шаблонизация](./exercises/template/template.md)
 
 ### Заметки
 1. [Числа с плавающей точкой](./tests/numbers/dot.md)
