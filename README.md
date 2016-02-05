@@ -40,6 +40,7 @@
 9. [Смешай цвета](./exercises/mix_colors/mix_colors.md)
 10. [Строковая шаблонизация](./exercises/template/template.md)
 11. [Пара двойников](./exercises/doubles/doubles.md)
+11. [Что за треугольник?](./exercises/triangles/triangles.md)
 
 ### Заметки
 1. [Числа с плавающей точкой](./tests/numbers/dot.md)
