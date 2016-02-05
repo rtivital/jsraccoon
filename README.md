@@ -27,6 +27,7 @@
 	* [Поиск всех соседних элементов (siblings)](./advices/siblings/siblings.md)
 	* [Передача аргументов в колбэки](./advices/callback_args/callback_args.md)
 	* [Простой chaining](./advices/chaining/chaining.md)
+	* [Измерение производительности блоков кода](./advices/console_time/console_time.md)
 
 ### Задачи
 1. [Удаление всех гласных букв из строки](./exercises/remove_letters/remove_letters.md)
