@@ -3,7 +3,6 @@ title: "Объектно-ориентированный JavaScript: функци
 date: 2016-02-06 15:50:58 +0300
 identifier: oop-constructors
 categories: JavaScript
-comments: false
 
 prevTitle: "Работа с объектами"
 prevLink: "http://jsraccoon.ru/oop-object-base"
