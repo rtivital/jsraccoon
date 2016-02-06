@@ -7,6 +7,9 @@ categories: JavaScript
 prevTitle: "Примитивы и объекты"
 prevLink: "http://jsraccoon.ru/oop-primitives"
 
+nextTitle: "Функции конструкторы"
+nextLink: "http://jsraccoon.ru/oop-constructors"
+
 description: "В прошлой статье мы выяснили, что не всё в JavaScript является объектом, и все данные разделяются на примитивы и объекты. В этой статье рассмотрим способы создания объектов, что такое методы, свойства, как их присваивать, способы итерации по всем свойствам объектов и использование ключегово слова <code>this</code>."
 ---
 
