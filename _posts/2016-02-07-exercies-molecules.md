@@ -1,7 +1,7 @@
 ---
 title: "Молекулы"
 categories: JavaScript
-date: 2016-02-06 13:00:00 +0300
+date: 2016-02-07 13:00:00 +0300
 type: exercise
 identifier: molecules
 
@@ -15,7 +15,7 @@ explode('KMnO4'); // {"K": 1, "Mn": 1, "O": 4}
 explode('Ca(OH)2'); // {"Ca": 1, "O": 2, "H": 2}
 explode('K4[Fe(CN)6]'); // {"K": 4, "Fe": 1, "C": 6, "N": 6}
 // Элементы могут повторяться
-explode('(NH4)2HPO4'); // {"N": 1, "H": 5, "P": 1, "O": 4}
+explode('(NH4)2HPO4'); // {"N": 2, "H": 9, "P": 1, "O": 4}
 explode('FeOOH'); // {"Fe": 1, "O": 2, "H": 1}
 {% endhighlight %}
 
