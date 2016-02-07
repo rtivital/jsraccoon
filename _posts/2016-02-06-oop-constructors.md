@@ -7,6 +7,9 @@ categories: JavaScript
 prevTitle: "Работа с объектами"
 prevLink: "http://jsraccoon.ru/oop-object-base"
 
+nextTitle: "Прототипы"
+nextLink: "http://jsraccoon.ru/oop-prototypes"
+
 description: "Итак, вам нужно создать десяток объектов с одинаковыми свойствами и методами. Как раз для этого есть функции конструкторы, которые позволят не переписывать код для каждого объекта и в значительной степени помогут сэкономить ресурсы."
 ---
 
