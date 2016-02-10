@@ -7,6 +7,7 @@
 	border-style: solid;
 	transition: all 200ms;
 	user-select: none;
+	cursor: pointer;
 
 	@include breakpoint(950px) {
 		display: inline-block;
@@ -18,7 +19,7 @@
 	}
 }
 
-.btn-default {
+%btn-deafult, .btn-default {
 	@extend %btn-base;
 
 	background-color: $white-gray;
@@ -31,7 +32,7 @@
 	}
 }
 
-.btn-primary {
+%btn-primary, .btn-primary {
 	@extend %btn-base;
 
 	background-color: $primary;

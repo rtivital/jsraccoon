@@ -7,17 +7,10 @@
   
     {% include header.html %}
 
-    <div class="wrapper">
       {{ content }}
-    </div>
 
     {% include footer.html %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="{{ site.url }}/js/blockrain.js"></script>
-    <script>
-      $('.game').blockrain({ autoplay: false, autoplayRestart: true });
-    </script>
 
   </body>
 
