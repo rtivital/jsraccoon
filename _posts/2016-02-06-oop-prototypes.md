@@ -7,6 +7,9 @@ categories: JavaScript
 prevTitle: "Функции конструкторы"
 prevLink: "http://jsraccoon.ru/oop-constructors"
 
+nextTitle: "Функции конструкторы"
+nextLink: "http://jsraccoon.ru/oop-example-validation"
+
 description: "Понимание принципов работы прототипного наследования очень важно для любого JavaScript разработчика. В этой статье расскажем, как создавать методы и свойства, которые будут доступны всем объектам, созданным с помощью одной функции-конструктора."
 ---
 
