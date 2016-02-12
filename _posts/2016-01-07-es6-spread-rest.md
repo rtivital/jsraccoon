@@ -11,10 +11,10 @@ comments: true
 identifier: es6-spread-reset
 
 prevTitle: "Блочные области видимости"
-prevLink: "http://jsraccoon.ru/es6-block-scoped-declarations/"
+prevLink: "http://jsraccoon.ru/es6-block-scoped-declarations"
 
 nextTitle: "Параметры по умолчанию"
-nextLink: "http://jsraccoon.ru/es6-defaults/"
+nextLink: "http://jsraccoon.ru/es6-defaults"
 
 description: "Новый оператор <code>...</code> существенно упростит работу с многими типами данных: массивами, коллекциями DOM элементов, датами и функциями."
 ---

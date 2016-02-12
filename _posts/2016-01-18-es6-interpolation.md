@@ -5,10 +5,10 @@ identifier: es6-interpolation
 categories: JavaScript
 
 prevTitle: "Реструктуризующее присваивание"
-prevLink: "http://jsraccoon.ru/es6-destructuring/"
+prevLink: "http://jsraccoon.ru/es6-destructuring"
 
 nextTitle: "Стрелочные функции"
-nextLink: "http://jsraccoon.ru/es6-arrow-functions/"
+nextLink: "http://jsraccoon.ru/es6-arrow-functions"
 
 description: "С выходом стандарта ES6 появилась возможность использовать строковую шаблонизацию. Новый вид строк, создаваемый с помощью символов <code>`</code> поддерживает интерполяцию переменных и любых логических выражений."
 ---

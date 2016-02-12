@@ -5,10 +5,10 @@ identifier: es6-arrow-functions
 categories: JavaScript
 
 prevTitle: "Интерполяция"
-prevLink: "http://jsraccoon.ru/es6-interpolation/"
+prevLink: "http://jsraccoon.ru/es6-interpolation"
 
 nextTitle: "Цикл for of"
-nextLink: "http://jsraccoon.ru/es6-for-of-loop/"
+nextLink: "http://jsraccoon.ru/es6-for-of-loop"
 
 description: 'Стрелочные функции не просто "синтаксический сахар", как это может показаться на первый взгляд. Главная причина их появления в ES6 — недопонимание, которое возникает у большинства разработчиков при работе с ключевым словом <code>this</code>. С релизом нового стандарта отпадает необходимость писать <code>var self = this</code> при использовании колбэков, что в значительной степени упрощает чтение кода и понимание происходящего.'
 ---

@@ -5,7 +5,7 @@ identifier: es6-object-literal
 categories: JavaScript
 
 prevTitle: "Цикл for .. of"
-prevLink: "http://jsraccoon.ru/es6-for-of-loop/"
+prevLink: "http://jsraccoon.ru/es6-for-of-loop"
 
 description: "Краткие формы записи свойств и методов объектов немного сократят код и сделают его немного более читабельным относительно аналогичного кода в ES5. Тем не менее новые краткие формы записи накладывают некоторые ограчения при работе с рекурсией и передаче методов объекта в качестве callback функции."
 ---

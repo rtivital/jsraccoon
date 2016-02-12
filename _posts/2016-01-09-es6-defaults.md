@@ -11,10 +11,10 @@ comments: true
 identifier: es6-defaults
 
 prevTitle: "Операторы Spread и Reset"
-prevLink: "http://jsraccoon.ru/es6-spread-rest/"
+prevLink: "http://jsraccoon.ru/es6-spread-rest"
 
 nextTitle: "Реструктуризующее присваивание"
-nextLink: "http://jsraccoon.ru/es6-destructuring/"
+nextLink: "http://jsraccoon.ru/es6-destructuring"
 
 description: "Параметры по умолчанию в ES6 призваны обобщить сразу несколько паттернов и существенно упростить восприятие функций."
 ---

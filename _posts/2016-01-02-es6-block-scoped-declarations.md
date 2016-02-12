@@ -11,10 +11,10 @@ comments: true
 identifier: es6-block-scoped-declarations
 
 prevTitle: "Вместо введения"
-prevLink: "http://jsraccoon.ru/es6-introduction/"
+prevLink: "http://jsraccoon.ru/es6-introduction"
 
 nextTitle: "Операторы spread и rest"
-nextLink: "http://jsraccoon.ru/es6-spread-rest/"
+nextLink: "http://jsraccoon.ru/es6-spread-rest"
 
 description: "Долгое время оператор <code>var</code> было единственным способом создания переменных. В статье разберем, что могут предложить новые операторы <code>let</code> и <code>const</code>, а также проблемы, с которыми можно столкнуться при их использовании."
 ---
