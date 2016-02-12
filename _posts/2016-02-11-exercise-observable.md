@@ -2,6 +2,7 @@
 title:  "События"
 categories: JavaScript
 date:   2016-02-11 15:00:58 +0300
+author: missingdays
 type: exercise
 identifier: exercise-observable
 
