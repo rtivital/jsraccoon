@@ -10,6 +10,7 @@
 * [Объектно-ориентированный JavaScript: работа с объектами](./articles/oop-object-base.md)
 * [Объектно-ориентированный JavaScript: функции конструкторы](./articles/oop-constructors.md)
 * [Объектно-ориентированный JavaScript: прототипы](./articles/oop-prototypes.md)
+* [Объектно-ориентированный JavaScript: немного практики](./articles/oop-example-validation.md)
 
 ### Советы
 * HTML
