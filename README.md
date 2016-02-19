@@ -7,6 +7,7 @@
 * [Перебирающие методы массивов изнутри](./articles/fn_array_methods.md)
 * [Стилизация плэйсхолдеров с препроцессором Sass](./articles/css_placeholders.md)
 * [Объектно-ориентированный JavaScript: примитивы и объекты](./articles/oop-primitives.md)
+* [Объектно-ориентированный JavaScript: работа с объектами](./articles/oop-object-base.md)
 
 ### Советы
 * HTML
