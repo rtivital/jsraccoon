@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Виселица</title>
+  <meta name="description" content="Виселица — простая игра, в которой загадывается слово, а игрок пытается его угадать, называя по одной букве за раз. Если игрок назвал назвал неправильную бук...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercies-hangman">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Виселица</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Виселица — простая игра, в которой загадывается слово, а игрок пытается его угадать, называя по одной букве за раз. Если игрок назвал назвал неправильную букву, то ему начисляется одна ошибка. Если буква была названа правильно, то эта буква показывается в слове. Игра продолжается до тех пор, пока игрок не угадает слово или не совершит 6 ошибок.</p>
+
+<p>Напишите функцию конструктор <code>Hangman</code>. Функция принимает один аргумент — слово, которое необходимо угадать игроку. После этого можно вызывать метод <code>guess</code>, для того, чтобы ввести букву. После каждого выполнения метода <code>guess</code> игроку показывают:</p>
+
+<ol>
+<li>Слово с уже разгаданными буквами <code>_ro_t_nd</code></li>
+<li>Введённые им неправильные буквы через разделитель <code>_ro_t_nd | zae</code></li>
+<li>Количество оставшихся ошибок <code>_ro_t_nd | za | left: 4</code></li>
+</ol>
+
+<p>Правила:</p>
+
+<ol>
+<li>Не учитывается регистр букв</li>
+<li>Не учитываются пробельные символы внутри строки. При передаче нескольких слов в функцию внутренние пробельные символы не закрываются <code>_</code>. Все внешние пробельные символы удаляются. Например, строка <code>&#39;Frontend Raccoon&#39;</code> будет выглядеть следующим образом: <code>________ _______</code>, так же как и строка <code>&#39; Frontend Raccoon &#39;</code>.</li>
+</ol>
+
+<p>Пример выполнения функции:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Пробельные символы не учитываются</span>
+<span class="kd">var</span> <span class="nx">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hangman</span><span class="p">(</span><span class="s1">'Frontend Raccoon'</span><span class="p">);</span> <span class="c1">// "________ _______ | left: 6"</span>
+
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'a'</span><span class="p">);</span> <span class="c1">// "________ _a_____ | left: 6"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'z'</span><span class="p">);</span> <span class="c1">// "________ _a_____ | z | left: 5"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'t'</span><span class="p">);</span> <span class="c1">// "____t___ _a_____ | z | left: 5"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'c'</span><span class="p">);</span> <span class="c1">// "____t___ _acc___ | z | left: 5"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'m'</span><span class="p">);</span> <span class="c1">// "____t___ _acc___ | zm | left: 4"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'f'</span><span class="p">);</span> <span class="c1">// "F___t___ _acc___ | zm | left: 4"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'r'</span><span class="p">);</span> <span class="c1">// "Fr__t___ Racc___ | zm | left: 4"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'g'</span><span class="p">);</span> <span class="c1">// "Fr__t___ Racc___ | zmg | left: 3"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'o'</span><span class="p">);</span> <span class="c1">// "Fro_t___ Raccoo_ | zmg | left: 3"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span> <span class="c1">// "Front_n_ Raccoon | zmg | left: 3"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'c'</span><span class="p">);</span> <span class="c1">// "You have already entered this letter"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'b'</span><span class="p">);</span> <span class="c1">// "Front_n_ Raccoon | zmgb | left: 2"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'e'</span><span class="p">);</span> <span class="c1">// "Fronten_ Raccoon | zmgb | left: 2"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'d'</span><span class="p">);</span> <span class="c1">// "You won! The word was Frontend Raccoon"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'v'</span><span class="p">);</span> <span class="c1">// "You have already won! The word was Frontend Raccoon"</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ...</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'e'</span><span class="p">);</span> <span class="c1">// "Fronten_ Raccoon | zmgb | left: 2"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'y'</span><span class="p">);</span> <span class="c1">// "Fronten_ Raccoon | zmgby | left: 1"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'k'</span><span class="p">);</span> <span class="c1">// "Fronten_ Raccoon | zmgbyk | left: 0"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'i'</span><span class="p">);</span> <span class="c1">// "You lost. :( The word was Frontend Raccoon"</span>
+<span class="nx">fr</span><span class="p">.</span><span class="nx">guess</span><span class="p">(</span><span class="s1">'m'</span><span class="p">);</span> <span class="c1">// "You have already lost. :( The word was Frontend Raccoon"</span></code></pre></figure>
+
+<h5>Дополнительно</h5>
+
+<p>Напишите консольное приложение на node.js для реализации виселицы. Приложение работает также как и функция, только вместо выполнения метода <code>guess</code> надо просто вводить символ:
+<figure class="highlight"><pre><code></p>
+
+<blockquote>
+<p>hangman &#39;Frontend Raccoon&#39;
+________ _______ | left: 6
+f
+F_______ _______ | left: 6
+m
+F_______ _______ | m |left: 5
+...
+</code></pre></figure></p>
+</blockquote>
+
+<h2>Решение</h2>
+
+<p>Скоро будет доступно</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercies-hangman";
+          this.page.identifier = 'hangman';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

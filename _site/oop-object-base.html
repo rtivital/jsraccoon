@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Объектно-ориентированный JavaScript: работа с объектами</title>
+  <meta name="description" content="В прошлой статье мы выяснили, что не всё в JavaScript является объектом, и все данные разделяются на примитивы и объекты. В этой статье рассмотрим способы со...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/oop-object-base">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Объектно-ориентированный JavaScript: работа с объектами</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>В <a href="http://jsraccoon.ru/oop-primitives">прошлой статье</a> мы выяснили, что не всё в JavaScript является объектом, и все данные разделяются на примитивы и объекты. В этой статье рассмотрим способы создания объектов, что такое методы, свойства, как их присваивать, способы итерации по всем свойствам объектов и использование ключевого слова <code>this</code>.</p>
+
+<h5>Запись и чтение свойств и методов</h5>
+
+<p>Обычно создание объекта выглядит следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span></code></pre></figure>
+
+<p>После создания объекта в него можно добавлять любые свойства и методы двумя способами:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="c1">// Первый способ добавления свойств и методов к объекту</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">prop</span> <span class="o">=</span> <span class="s1">'this is object property'</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'this is object method'</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Второй способ добавления свойств и методов к объекту</span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'prop2'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'this is second object property'</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'method2'</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'this is second object method'</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>На самом деле, нет никаких причин разделять содержимое объекта на две разные категории (свойства и методы). Технически, всё, что содержится в объекте называется его свойствами. В этом можно убедиться создав объект, в который будут записаны уже существующие данные:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> <span class="p">};</span>
+<span class="kr">const</span> <span class="nx">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">];</span>
+
+<span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">log</span> <span class="o">=</span> <span class="nx">log</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">nums</span> <span class="o">=</span> <span class="nx">nums</span><span class="p">;</span>  </code></pre></figure>
+
+<p>Таким образом, каждое <strong>свойство</strong> объекта просто ссылается на определенные данные, в независимости от того, что они содержат: примитивы, другие объекты, массивы или функции. Тем не менее, свойства объектов, которые ссылаются на любую функцию, в том числе и анонимную, принято называть методами, хотя подобные свойства ничем не отличаются от всех остальных. </p>
+
+<p>Добавлять методы и свойства в объекты можно прямо при их создании:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">prop</span><span class="p">:</span> <span class="s1">'this is property'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'this is method'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Получить записанные в объект методы и свойства можно также получить двумя способами:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">prop</span><span class="p">:</span> <span class="s1">'this is property'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'this is method'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">prop</span><span class="p">;</span> <span class="c1">// "this is property"</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">method</span><span class="p">();</span> <span class="c1">// "this is method"</span>
+
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'prop'</span><span class="p">];</span> <span class="c1">// "this is property" </span>
+<span class="nx">obj</span><span class="p">[</span><span class="s1">'method'</span><span class="p">]();</span> <span class="c1">// "this is method"</span></code></pre></figure>
+
+<h5>Итерация по свойствам объекта</h5>
+
+<p>Итак, вы создали объект, в котором есть несколько свойств. Теперь вы хотите последовательно выполнять с ними операции. Для подобных случаев есть цикл <code>for .. in</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">employee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+  <span class="na">phone</span><span class="p">:</span> <span class="s1">'+7 (765) 000-98-34'</span><span class="p">,</span>
+  <span class="na">company</span><span class="p">:</span> <span class="s1">'Opera Software'</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="s1">'john@opera.com'</span><span class="p">,</span>
+  <span class="na">duties</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Frontend'</span><span class="p">,</span> <span class="s1">'Optimization'</span><span class="p">,</span> <span class="s1">'Testing'</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">employee</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// Выведет</span>
+<span class="c1">// name: John</span>
+<span class="c1">// phone: +7 (765) 000-98-34</span>
+<span class="c1">// company: Opera Software</span>
+<span class="c1">// email: john@opera.com</span>
+<span class="c1">// duties: Frontend, Optimization, Testing</span></code></pre></figure>
+
+<p>Любой объект условно можно разделить на две части: ключи и значения. Для объекта <code>employee</code> ключами будут: <code>name</code>, <code>phone</code>, <code>company</code>, <code>email</code> и <code>duties</code>, а значениями: <code>&#39;John&#39;</code>, <code>&#39;+7 (765) 000-98-34&#39;</code>, <code>&#39;Opera Software&#39;</code>, <code>&#39;john@opera.com&#39;</code> и <code>[&#39;Frontend&#39;, &#39;Optimization&#39;, &#39;Testing&#39;]</code>. При использовании цикла <code>for .. in</code> задаётся переменная, которую обычно называют <code>key</code>. С помощью этой переменной в теле цикла можно последовательно получить каждый ключ из итерируемого объекта. Чтобы получить соответствующее ключу значение в теле цикла всегда следует использовать форму записи <code>obj[key]</code>. </p>
+
+<p>Почему нельзя использовать форму <code>obj.key</code>? Всё просто. Используя такую запись вы подразумеваете, что хотите получить значение свойства <code>key</code> итерируемого объекта, а не значение соответствующее данному ключу. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">employee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+  <span class="na">phone</span><span class="p">:</span> <span class="s1">'+7 (765) 000-98-34'</span><span class="p">,</span>
+  <span class="na">company</span><span class="p">:</span> <span class="s1">'Opera Software'</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="s1">'john@opera.com'</span><span class="p">,</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s1">'this is key property in object'</span>
+<span class="p">};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Выведет</span>
+<span class="c1">// name: this is key property in object</span>
+<span class="c1">// phone: this is key property in object</span>
+<span class="c1">// company: this is key property in object</span>
+<span class="c1">// email: this is key property in object</span>
+<span class="c1">// key: this is key property in object</span></code></pre></figure>
+
+<h5>Object.keys</h5>
+
+<p>Другой способ итерации по объекту — заранее получить все ключи объекта в виде массива и провести итерацию с помощью любого <a href="http://jsraccoon.ru/fn-array-methods">перебирающего метода массивов</a>.</p>
+
+<p>Для того, чтобы получить массив ключей из объекта, нужно воспользоваться функцией <code>Object.keys</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">employee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+  <span class="na">phone</span><span class="p">:</span> <span class="s1">'+7 (765) 000-98-34'</span><span class="p">,</span>
+  <span class="na">company</span><span class="p">:</span> <span class="s1">'Opera Software'</span><span class="p">,</span>
+  <span class="na">email</span><span class="p">:</span> <span class="s1">'john@opera.com'</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">employee</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">keys</span><span class="p">);</span> <span class="c1">// ["name","phone","company","email","key"]</span></code></pre></figure>
+
+<p>После того, как желаемый массив был получен, его можно перебрать, например, с помощью метода <code>forEach</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">employee</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+<span class="p">});</span>
+
+<span class="c1">// Выведет</span>
+<span class="c1">// name: John</span>
+<span class="c1">// phone: +7 (765) 000-98-34</span>
+<span class="c1">// company: Opera Software</span>
+<span class="c1">// email: john@opera.com</span></code></pre></figure>
+
+<p>К сожалению подобным образом получить массив всех значений объекта не получится: функции <code>Object.values()</code> не существует. Но её легко можно заменить методом <code>map</code> в паре с <code>Object.keys()</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">employee</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p">);</span> <span class="c1">// ["John","+7 (765) 000-98-34","Opera Software","john@opera.com"]</span></code></pre></figure>
+
+<h5>Ключевое слово this</h5>
+
+<p>При работе с объектами очень часто бывает необходимо получить ссылку на сам объект внутри метода. Для таких целей конечно можно использовать имя самого объекта:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">num</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">b</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// 20</span></code></pre></figure>
+
+<p>Тем не менее, подобный способ накладывает на себя очень неприятные ограничения, которые будут подробно рассмотрены в следующей статье. Например, нельзя задать контекст выполнения метода с помощью <code>call</code> или <code>apply</code>. </p>
+
+<p>Более правильно для всех методов объекта использовать ключевое слово <code>this</code>. Переписать пример, приведенный выше можно следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="na">b</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">num</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">b</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// 110</span></code></pre></figure>
+
+<p><code>this</code> всегда содержит ссылку на объект, в котором находится. В данном примере <code>this</code> ссылается на объект <code>obj</code>.</p>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/oop-primitives" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Примитивы и объекты</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/oop-constructors" class="btn-default btn-icon-right">Читать далее: <b>Функции конструкторы</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/oop-object-base";
+          this.page.identifier = 'oop-object-base';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

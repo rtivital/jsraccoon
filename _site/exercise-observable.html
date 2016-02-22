@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>События</title>
+  <meta name="description" content="Напишите функцию observable, которая будет принимать объект и делать его &quot;наблюдаемым&quot;. После вызова функции объект должен поддерживать следующие м...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercise-observable">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta">Posted with <i class="fa fa-tags"></i>: </p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">События</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Напишите функцию <code>observable</code>, которая будет принимать объект и делать его &quot;наблюдаемым&quot;. После вызова функции объект должен поддерживать следующие методы.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">callback</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I'm called!"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">observable</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span> <span class="c1">// При каждом событии event вызвать callback</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">// I'm called!</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">// I'm called!</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">one</span><span class="p">(</span><span class="s2">"event2"</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span> <span class="c1">// Подписаться на событие единожды</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event2"</span><span class="p">);</span> <span class="c1">// I'm called!</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event2"</span><span class="p">);</span> <span class="c1">// Ничего не происходит</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">// Отписаться от события</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">// Ничего не происходит</span></code></pre></figure>
+
+<p>Из дополнительных опций - поддержка нескольких функций, подписанных на одно событие.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback1</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback2</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">// callback1 и callback2 вызваны</span></code></pre></figure>
+
+<p>Unbind конкретной функции, а не всего события.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback1</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback2</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback1</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">);</span> <span class="c1">//  callback2 вызван</span></code></pre></figure>
+
+<p>Передача аргументов в callback.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">one</span><span class="p">,</span> <span class="nx">two</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">one</span> <span class="o">+</span> <span class="nx">two</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"event"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span></code></pre></figure>
+
+<h3>Решение</h3>
+
+<p>Написать базовый вариант довольно просто.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">observable</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
+
+    <span class="nx">obj</span> <span class="o">=</span> <span class="nx">obj</span> <span class="o">||</span> <span class="p">{};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">__callbacks</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">on</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">func</span><span class="p">:</span> <span class="nx">callback</span><span class="p">,</span> 
+            <span class="na">once</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">func</span><span class="p">:</span> <span class="nx">callback</span><span class="p">,</span>
+            <span class="na">once</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]){</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">].</span><span class="nx">func</span><span class="p">();</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">].</span><span class="nx">once</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">unbind</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Однако даже в таком простом решении уже начинают появляться баги. Подумаем, что произойдет, если мы выполним этот код.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">observable</span><span class="p">();</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">one</span><span class="p">(</span><span class="s2">"one"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"first"</span><span class="p">);</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span><span class="p">(</span><span class="s2">"one"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"second"</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"one"</span><span class="p">);</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="s2">"one"</span><span class="p">);</span></code></pre></figure>
+
+<p>Надеюсь, вы догадались. Второй callback не будет вызван, и в консоли появится только &quot;first&quot;. Это происходит потому, что мы удаляем callback уже после того, как его вызвали, однако именно во время его вызова происходит новая подписка на это событие. Попробуем от этого избавиться. Для этого будем поддерживать уже массив callback&#39;ов, подписанных на одно событие, и удалять только нужный нам callback, а не все.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    
+    <span class="p">...</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">on</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="p">}</span> 
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">].</span><span class="nx">push</span><span class="p">({</span>
+            <span class="na">func</span><span class="p">:</span> <span class="nx">callback</span><span class="p">,</span> 
+            <span class="na">once</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">});</span>
+
+    <span class="p">};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">one</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="p">}</span> 
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">].</span><span class="nx">push</span><span class="p">({</span>
+            <span class="na">func</span><span class="p">:</span> <span class="nx">callback</span><span class="p">,</span> 
+            <span class="na">once</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">callbacks</span><span class="p">){</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">){</span>
+            <span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span><span class="p">();</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">once</span><span class="p">){</span>
+                <span class="nx">callbacks</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="nx">n</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">...</span></code></pre></figure>
+
+<p>Переменная <code>n</code> нам нужна, потому что во время вызова <code>callbacks[i].func()</code> в массив <code>callback</code> могут добавиться новые элементы, вызывать которые мы не хотим. Таким образом, <code>n</code> хранит размер &quot;старого&quot; массива, а справа от него push&#39;аштся новые функции. Перенесем функционал удаления функции в метод <code>unbind</code>, где ему и место.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    
+    <span class="p">...</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">callbacks</span><span class="p">){</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">){</span>
+            <span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span><span class="p">();</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">once</span><span class="p">){</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span><span class="p">);</span>
+                <span class="nx">n</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">unbind</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">fn</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">fn</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+            <span class="k">while</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span> <span class="o">===</span> <span class="nx">fn</span><span class="p">){</span>
+                    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">...</span></code></pre></figure>
+
+<p>Вот так, исправляя баг, мы выполнили два дополнительных пункта — поддержка нескольких callback&#39;ов и удаление конкретной функции в unbind. Осталась передача аргументов в наши callback.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="p">...</span>
+    <span class="nx">obj</span><span class="p">.</span><span class="nx">fire</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__callbacks</span><span class="p">[</span><span class="nx">event</span><span class="p">];</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">callbacks</span><span class="p">){</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">splice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">){</span>
+            <span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">once</span><span class="p">){</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callbacks</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">func</span><span class="p">);</span>
+                <span class="nx">n</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">...</span></code></pre></figure>
+
+<p>Тут все просто. Получаем все переданные нам аргументы, кроме первого, в <code>var args = [].splice.call(arguments, 1)</code>, и волшебным методом <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a> передаем нашему callback&#39;у все аргументы.</p>
+
+<p>Далее можно вынести <code>__callbacks</code> в замыкание, чтобы не засорять передаваемый нам объект. Можно сделать поддержку многих имен в аргументе <code>event</code>, например <code>obj.on(&quot;event anotherEvent thirdEvent&quot;, callback)</code>, <code>obj.unbind(&quot;event thirdEvent&quot;, callback)</code>. Однако статья получилась и так достаточно объемная, поэтому надеюсь, что все возможности выше вы сможете реализовать сами.</p>
+
+<h3>Альтернативные решения</h3>
+
+<p>Альтернативные решения этой задачи нам прислали <a href="https://gist.github.com/XXimiCC/fea65361da5e2d4f63b4">Андрей Гетманенко</a>, <a href="https://github.com/romanfazulianov/observer-sample/blob/master/observable.js">Роман Фазульянов</a>, и <a href="https://gist.github.com/overhawlin/31b24d63a315bafc698d">Евгений Зайцев</a>. Все они выполняют основной ряд задач, однако особенно стоит отметить современное решение Евгения Зайцева с использованием ES6, которое, однако, мне не удалось запустить под нодой 4 версии, даже с флагом <code>--harmony</code> :).</p>
+
+<h3>Заключение</h3>
+
+<p>Так мы получили небольшую событийную систему, исходный код которой не превышает ста строк. Неплохо! </p>
+
+<p>Данная статья была вдохновлена <a href="https://github.com/riot/observable">riot-observable</a> и определенными проблемами при ее использовании (тот самый баг с вложенным <code>one</code>). Поэтому я надеюсь, что после этой статьи читатели не побоятся, в случае надобности собственноручно писать нужный им функционал, если в существующих библиотеках они найдут баги, которые тормозят разработку. И после этого, конечно, отправят Pull Request в эту либу.</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercise-observable";
+          this.page.identifier = 'exercise-observable';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

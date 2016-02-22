@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Удаление элементов из массива по индексу</title>
+  <meta name="description" content="Напишите функцию, которая первым аргументом будет принимать массив, а все последующие аргументы — индексы элементов, которые следует удалить из массива. Инде...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercise-remove-from-array">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Удаление элементов из массива по индексу</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Напишите функцию, которая первым аргументом будет принимать массив, а все последующие аргументы — индексы элементов, которые следует удалить из массива. Индексов может быть несколько. В конце работы функция должна возвращать новый, отредактированный массив:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'JS'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'not'</span><span class="p">,</span> <span class="s1">'awesome'</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[{</span><span class="na">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="na">i</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="na">i</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="na">i</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="na">i</span><span class="p">:</span> <span class="mi">5</span><span class="p">}];</span>
+<span class="kd">var</span> <span class="nx">random</span> <span class="o">=</span> <span class="p">[</span><span class="kc">undefined</span><span class="p">,</span> <span class="s1">'str'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="p">{</span><span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">}];</span>
+
+<span class="nx">remove</span><span class="p">(</span><span class="nx">strings</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// ['JS', 'is', 'awesome']</span>
+<span class="nx">remove</span><span class="p">(</span><span class="nx">numbers</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// [7, 5, 2, 5, 6, 3, 4]</span>
+<span class="nx">remove</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// [{i: 1}, {i: 3}]</span>
+<span class="nx">remove</span><span class="p">(</span><span class="nx">random</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// [undefined, null, {data: [...]}]</span></code></pre></figure>
+
+<h2>Решение</h2>
+
+<p>Вот код готовой функции: </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">remove</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">indexes</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">arrayOfIndexes</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// (1)</span>
+  <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// (2)</span>
+    <span class="k">return</span> <span class="nx">arrayOfIndexes</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>      <span class="c1">// (3)</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4>Объяснение</h4>
+
+<ol>
+<li><code>arguments</code> — это псевдо массив, в котором хранятся все аргументы, переданные в функцию. Чтобы дальше не искать вхождение индекса перебором значений <code>arguments</code> в цикле, а использовать удобный метод <code>.indexOf()</code>, нужно перевести <code>arguments</code> в массив. Это осуществляется с помощью применения метода <code>.slice()</code> к пустому массиву и заменой значения параметра <code>this</code> на <code>arguments</code> с помощью функции <code>.call()</code>. Подробнее о работе <code>.call()</code> <a href="https://learn.javascript.ru/call-apply#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-call">здесь</a>.</li>
+<li>Теперь, используя метод <code>.filter()</code>, составим массив в который не будут входить элементы, подлежащие к удалению. Подробнее о <code>.filter()</code> <a href="https://learn.javascript.ru/array-iteration#filter">здесь</a>.</li>
+<li>Если индекс текущего элемента входит в массив индексов элементов, которые подлежат удалению, то метод <code>.indexOf()</code> вернёт значение равное или больше нуля. Callback-функция вернёт false и текущий элемент не войдёт в новый массив.</li>
+</ol>
+
+<h2>Решение #2</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">remove</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="nx">args</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">arg</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">};</span></code></pre></figure>
+
+<h2>Решение #3</h2>
+
+<p>Автор решения <a href="https://github.com/Felytic">Сергій Гулько</a>. Решение показывает возможности использования сетов в ES6.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">set</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span> 
+  <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">v</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">set</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">k</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2>Решение #4</h2>
+
+<p>Автор решений <a href="https://github.com/missingdays">Евгений Бовыкин</a>. Решения ориентированы на высокую производительность.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*
+ * Works O(m+nlog(n)) where n is the amount of indexes
+ */</span>
+<span class="kd">function</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+  <span class="kd">let</span> <span class="nx">ret</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kd">let</span> <span class="nx">indexes</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="nx">indexes</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">i</span> <span class="o">!==</span> <span class="nx">indexes</span><span class="p">[</span><span class="nx">j</span><span class="p">]){</span>
+      <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+ * Works O(m*n) where n is the amount of indexes
+ */</span>
+<span class="kd">function</span> <span class="nx">_remove</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+  <span class="kd">let</span> <span class="nx">ret</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="kd">let</span> <span class="nx">indexes</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">indexes</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+      <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+    <span class="p">}</span> 
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercise-remove-from-array";
+          this.page.identifier = 'exercise-remove-from-array';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

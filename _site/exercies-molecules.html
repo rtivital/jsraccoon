@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Молекулы</title>
+  <meta name="description" content="Напишите функцию explode, которая по переданной ей химической формуле будет определять количесто содержание каждого атома в молекуле. Функция возвращает объе...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercies-molecules">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Молекулы</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Напишите функцию <code>explode</code>, которая по переданной ей химической формуле будет определять количесто содержание каждого атома в молекуле. Функция возвращает объект, в котором каждый ключ соответствует атому, а значение — общему количеству данных атомов в молекуле.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">explode</span><span class="p">(</span><span class="s1">'H2O'</span><span class="p">);</span> <span class="c1">// {"H": 2, "O": 1}</span>
+<span class="nx">explode</span><span class="p">(</span><span class="s1">'KMnO4'</span><span class="p">);</span> <span class="c1">// {"K": 1, "Mn": 1, "O": 4}</span>
+<span class="nx">explode</span><span class="p">(</span><span class="s1">'Ca(OH)2'</span><span class="p">);</span> <span class="c1">// {"Ca": 1, "O": 2, "H": 2}</span>
+<span class="nx">explode</span><span class="p">(</span><span class="s1">'K4[Fe(CN)6]'</span><span class="p">);</span> <span class="c1">// {"K": 4, "Fe": 1, "C": 6, "N": 6}</span>
+<span class="c1">// Элементы могут повторяться</span>
+<span class="nx">explode</span><span class="p">(</span><span class="s1">'(NH4)2HPO4'</span><span class="p">);</span> <span class="c1">// {"N": 2, "H": 9, "P": 1, "O": 4}</span>
+<span class="nx">explode</span><span class="p">(</span><span class="s1">'FeOOH'</span><span class="p">);</span> <span class="c1">// {"Fe": 1, "O": 2, "H": 1}</span></code></pre></figure>
+
+<h2>Решение</h2>
+
+<p>Будет скоро доступно</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercies-molecules";
+          this.page.identifier = 'molecules';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

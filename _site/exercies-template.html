@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Шаблонизация</title>
+  <meta name="description" content="Напишите функцию template, которая первым аргументом принимает строку-шаблон, а вторым — описание литералов, которые в этот шаблон нужно вставить. ">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercies-template">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Шаблонизация</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Напишите функцию <code>template</code>, которая первым аргументом принимает строку-шаблон, а вторым — описание литералов, которые в этот шаблон нужно вставить. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">templates</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'Hello, {user}!'</span><span class="p">,</span>
+  <span class="s1">'How was your {dayOfTheWeek}?'</span><span class="p">,</span>
+  <span class="s1">'Would you like a cup of {drink1}, or maybe some {drink2}?'</span><span class="p">,</span>
+  <span class="s1">'I\'ve just learned how to play the {instrument}, so I\'m stil a bad {instrument}ist.'</span>
+<span class="p">];</span>
+<span class="c1">// Hello, missingdays!</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">template</span><span class="p">(</span><span class="nx">templates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">{</span> <span class="na">user</span><span class="p">:</span> <span class="s1">'missingdays'</span> <span class="p">}));</span> 
+
+<span class="c1">// How was your Monday?</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">template</span><span class="p">(</span><span class="nx">templates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span> <span class="na">dayOfTheWeek</span><span class="p">:</span> <span class="s1">'Monday'</span> <span class="p">}));</span> 
+
+<span class="c1">// Would you like a cup of tea, or maybe some coffee?</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">template</span><span class="p">(</span><span class="nx">templates</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">{</span> <span class="na">drink1</span><span class="p">:</span> <span class="s1">'tea'</span><span class="p">,</span> <span class="na">drink2</span><span class="p">:</span> <span class="s1">'coffee'</span> <span class="p">}));</span> 
+
+<span class="c1">// I've just learned how to play the guitar, so I'm still a bad guitarist.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">template</span><span class="p">(</span><span class="nx">templates</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">{</span> <span class="na">instrument</span><span class="p">:</span> <span class="s1">'guitar'</span> <span class="p">}));</span> </code></pre></figure>
+
+<p><strong>Дополнительно</strong>: функция может работать с массивами:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">frameworks</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Angular'</span><span class="p">,</span> <span class="s1">'Ember'</span><span class="p">,</span> <span class="s1">'Backbone'</span><span class="p">],</span>
+  <span class="na">libraries</span><span class="p">:</span> <span class="p">[</span><span class="s1">'jQuery'</span><span class="p">,</span> <span class="s1">'Underscore'</span><span class="p">,</span> <span class="s1">'D3'</span><span class="p">]</span>
+<span class="p">};</span>
+
+<span class="c1">// Popular frameworks: Angular, Ember, Backbone.</span>
+<span class="nx">template</span><span class="p">(</span><span class="s1">'Popular frameworks: {frameworks}.'</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span>
+
+<span class="c1">// Popular libraries: jQuery, Underscore, D3.</span>
+<span class="nx">template</span><span class="p">(</span><span class="s1">'Popular libraries: {libraries}.'</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span>
+
+<span class="c1">// Popular frameworks and libraries: Angular, Ember, Backbone, jQuery, Underscore, D3.</span>
+<span class="nx">template</span><span class="p">(</span><span class="s1">'Popular frameworks and libraries: {frameworks}, {libraries}.'</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span></code></pre></figure>
+
+<h2>Решение</h2>
+
+<p>Самым очевидным способом является использование регулярных выражений. Если у вас нету опыта работы с ними, настоятельно рекомендую ознакомиться. <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions">MDN</a>, <a href="http://www.regular-expressions.info/tutorial.html">раз туториал</a>, <a href="http://regexone.com/">два туториал</a>. У класса String есть замечательный метод <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">replace</a>, принимающий регулярное выражение и строку, на которую надо заменить все подстроки, которые соответствуют этому выражению. Итерируем по каждому литералу и постепенно преобразуем нашу строку.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">template</span><span class="p">(</span><span class="nx">string</span><span class="p">,</span> <span class="nx">literals</span><span class="p">){</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">literal</span> <span class="k">in</span> <span class="nx">literals</span><span class="p">){</span>
+        <span class="kd">let</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="err">`</span><span class="p">{</span><span class="nx">$</span><span class="p">{</span><span class="nx">literal</span><span class="p">}}</span><span class="err">`</span><span class="p">,</span> <span class="s2">"g"</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">replacement</span> <span class="o">=</span> <span class="nx">literals</span><span class="p">[</span><span class="nx">literal</span><span class="p">];</span>
+
+        <span class="nx">string</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">replacement</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">string</span><span class="p">;</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>Заметим, что на каждый литерал мы создаем новое регулярное выражение. Это, его компиляци и пробег по всей строке происходит для каждого литерала. Можем ли мы это исправить? Посмотрим в документацию метода replace. Вместо того, чтобы передевать строку, на которую мы хотим заменить, мы можем передавать функцию, в которую будет переданы все подстроки, которые соответсвуют регулярному выражению. Будем искать любое слово, которое обернуто в <code>{}</code>. Для этого хватит <code>/\{\w+\}/g</code>. Однако, тогда в нашу функцию будет передаваться вся подстрока, включая и сами <code>{}</code>. Если же обернуть само слово в группу, вторым аргументом будет передана она сама. Таким образом, код получается проще и эффективнее.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">template</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">literals</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\{(\w</span><span class="sr">+</span><span class="se">)\}</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">literals</span><span class="p">[</span><span class="nx">x</span><span class="p">]);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2>Дополнительное</h2>
+
+<p>Можно заметить, что если один из литералов является массивом, то при неявном преобразовании в строку, каждый элемент в нем будет соединен запятой. Например, <code>[&quot;a&quot;, &quot;b&quot;]</code> превратится в <code>&quot;a,b&quot;</code>. Выглядит не эстетично. К счастью, нас спасает метод <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/join">join</a>, который соединяет все элементы в строку, используя в качестве разделителя любую строку, что мы ему передадим. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">template</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\{(\w</span><span class="sr">+</span><span class="se">)\}</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">x</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">?</span> <span class="nx">value</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span> <span class="p">:</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Именно такой код прислал нам <a href="http://vk.com/semigradsky">Дмитрий Семиградский</a>. </p>
+
+<h2>Самописное решение</h2>
+
+<p>Для меня регулярные выражения для данной задачи кажутся стрельбой из пушки по воробьям. Свою работу они делают, но регулярки известны своей нерасторопностью. Пробежимся по строке один раз, и каждой строке внутри фигурных скобок будем сопоставлять нужный литерал.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">template</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">literals</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">subs</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="nx">insideBrackets</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">literal</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="nx">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">l</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">l</span><span class="o">++</span><span class="p">){</span>
+
+        <span class="nx">c</span> <span class="o">=</span> <span class="nx">str</span><span class="p">[</span><span class="nx">l</span><span class="p">];</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nx">c</span> <span class="o">===</span> <span class="s2">"{"</span><span class="p">){</span>
+            <span class="nx">insideBrackets</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">c</span> <span class="o">===</span> <span class="s2">"}"</span><span class="p">){</span>
+            <span class="nx">insideBrackets</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+            <span class="nx">literal</span> <span class="o">=</span> <span class="nx">literals</span><span class="p">[</span><span class="nx">subs</span><span class="p">];</span>
+
+            <span class="nx">ret</span> <span class="o">+=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">literal</span><span class="p">)</span> <span class="p">?</span> <span class="nx">literal</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span> <span class="p">:</span> <span class="nx">literal</span><span class="p">;</span>
+
+            <span class="nx">subs</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">insideBrackets</span><span class="p">){</span>
+                <span class="nx">subs</span> <span class="o">+=</span> <span class="nx">c</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">ret</span> <span class="o">+=</span> <span class="nx">c</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>Уфф, код получился объемнее. Может, это стоит того? Запустим бенчмарки и посмотрим.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">regExp</span> <span class="nx">x</span> <span class="mi">26</span><span class="p">,</span><span class="mi">779</span> <span class="nx">ops</span><span class="o">/</span><span class="nx">sec</span> <span class="err">±</span><span class="mf">1.38</span><span class="o">%</span> <span class="p">(</span><span class="mi">65</span> <span class="nx">runs</span> <span class="nx">sampled</span><span class="p">)</span>
+<span class="nx">linear</span> <span class="nx">x</span> <span class="mi">38</span><span class="p">,</span><span class="mi">551</span> <span class="nx">ops</span><span class="o">/</span><span class="nx">sec</span> <span class="err">±</span><span class="mf">4.22</span><span class="o">%</span> <span class="p">(</span><span class="mi">68</span> <span class="nx">runs</span> <span class="nx">sampled</span><span class="p">)</span>
+<span class="nx">Fastest</span> <span class="nx">is</span> <span class="nx">linear</span></code></pre></figure>
+
+<p>Выигрыш сомнительный. Да и поддерживать такой код будет несколько сложнее. Затея оказалась не очень удачная, хотя в критических местах пара сотен миллисекунд и может сыграть роль.</p>
+
+<p>Надеюсь, вы справились с заданием. Спасибо за внимание!</p>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercies-template";
+          this.page.identifier = 'template-string';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

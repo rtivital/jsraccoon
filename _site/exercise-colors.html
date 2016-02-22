@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Смесь цветов</title>
+  <meta name="description" content="Стандартно любой цвет кодируется шестью шестнадцатеричными цифрами, например белый это ffffff, красный — ff0000, зеленый — 00ff00, синий — 0000ff. Все осталь...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercise-colors">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Смесь цветов</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Стандартно любой цвет кодируется шестью шестнадцатеричными цифрами, например белый это <code>ffffff</code>, красный — <code>ff0000</code>, зеленый — <code>00ff00</code>, синий — <code>0000ff</code>. Все остальные цвета получаются их смешением: <code>серый = белый + черный</code>, <code>желтый = красный + зеленый</code> и т.д.</p>
+
+<p>Напишите функцию <code>mixColors</code>, которая принимает два цвета и возвращает новый цвет - их смесь.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mixColors</span><span class="p">(</span><span class="s1">'000000'</span><span class="p">,</span> <span class="s1">'ffffff'</span><span class="p">);</span>   <span class="c1">// 808080</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'ff0000'</span><span class="p">,</span> <span class="s1">'00ff00'</span><span class="p">);</span>   <span class="c1">// 808000</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'ff00ff'</span><span class="p">,</span> <span class="s1">'ff00ff'</span><span class="p">);</span>   <span class="c1">// ff00ff</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'ff0000'</span><span class="p">,</span> <span class="s1">'0000ff'</span><span class="p">);</span>   <span class="c1">// 800080</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'777777'</span><span class="p">,</span> <span class="s1">'999999'</span><span class="p">);</span>   <span class="c1">// 888888</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'111222'</span><span class="p">,</span> <span class="s1">'222444'</span><span class="p">);</span>   <span class="c1">// 1a1b33</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'abcdef'</span><span class="p">,</span> <span class="s1">'fedcba'</span><span class="p">);</span>   <span class="c1">// d5d5d5</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'000000'</span><span class="p">,</span> <span class="s1">'000222'</span><span class="p">);</span>   <span class="c1">// 000111</span></code></pre></figure>
+
+<p>Подсказка: смешивать стоит отдельно красную составляющую, отдельно зеленую, отдельно синюю.</p>
+
+<p>Дополнительное задание: улучшить функцию, чтобы в аргументах можно было передавать и цвета в формате <code>#xxxxxx</code>. Возвращается всегда цвет с ведущим <code>#</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">mixColors</span><span class="p">(</span><span class="s1">'000000'</span><span class="p">,</span> <span class="s1">'ffffff'</span><span class="p">);</span>   <span class="c1">// #808080</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'#ff0000'</span><span class="p">,</span> <span class="s1">'00ff00'</span><span class="p">);</span>  <span class="c1">// #808000</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'ff00ff'</span><span class="p">,</span> <span class="s1">'#ff00ff'</span><span class="p">);</span>  <span class="c1">// #ff00ff</span>
+<span class="nx">mixColors</span><span class="p">(</span><span class="s1">'#ff0000'</span><span class="p">,</span> <span class="s1">'#0000ff'</span><span class="p">);</span> <span class="c1">// #800080</span></code></pre></figure>
+
+<h2>Решение</h2>
+
+<p>Для начала поймем, почему посчитать среднее арифметическое между двумя цветами это нехорошее решение. Сделать это легко - достаточно перевести оба цвета в десятичную систему счисления, сложить и поделить пополам, не забыв округлить. Теперь возьмем два цвета - темно-зеленый <code>#000100</code> и черный <code>#000000</code>. Переведем оба числа в десятичную, получим 256 и 0. Сложим, поделим, получим 128. Переведем обратно. Получим синий <code>#000080</code>. Не совсем то, чего мы ожидали от смешения темно-зеленого и черного. Так получилось потому, что цвета не отображаются в числа линейно. Вот у нас есть насыщенный синий <code>#0000ff</code>. Прибавим к нему единицу, получим темно-зеленый <code>#000100</code>. Прибавим еще 255, и цвет превратится в синий с зеленоватым оттенком <code>#001ff</code>. Что ж, наивное решение не прошло.</p>
+
+<p>Теперь попробуем избавиться от этого эффекта и будем смешивать каждый цвет отдельно. Поскольку строки, которые мы получаем, всегда имею длину строго 6, мы можем смело &quot;отсекать&quot; каждые два символа, и работать только с ними.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">mixColors</span><span class="p">(</span><span class="nx">color1</span><span class="p">,</span> <span class="nx">color2</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">){</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">color</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Для выделения подстроки из строки существует функция <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/slice">slice</a>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">mixColors</span><span class="p">(</span><span class="nx">color1</span><span class="p">,</span> <span class="nx">color2</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">partColor1</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">partColor2</span> <span class="o">=</span> <span class="nx">color2</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">color</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Теперь это дело нам нужно перевести из шестнадцатеричной строки в десятичное число. Напишем небольшую вспомогательную функцию.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">hexToInt</span><span class="p">(</span><span class="nx">h</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">h</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Теперь можно смело смешивать каждый из спектров наших цветов, не боясь, что один повлияет на другой. Поскольку может получится десятичная дробь, округляем в ближайшую сторону.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">...</span>
+    <span class="kd">var</span> <span class="nx">partColor1</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">partColor2</span> <span class="o">=</span> <span class="nx">color2</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">mixed</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">hexToInt</span><span class="p">(</span><span class="nx">partColor1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">hexToInt</span><span class="p">(</span><span class="nx">partColor2</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">...</span></code></pre></figure>
+
+<p>Стоит заметить, что может получиться число, состоящее всего из одного разряда. При переводе его обратно в цвет нам нужно добавить один ведущий ноль, если требуется. Например, чтобы цвет не выглядел как <code>#fab1</code>, а как <code>#f0ab01</code>.</p>
+
+<p>Теперь наш новый спектр можно смело добавлять к конечному цвету.</p>
+
+<p>Конечный код, после небольшого укорочения, может выглядеть примерно так. Здесь я считаю важным оставить комментарий, чтобы облегчить понимание кода себе и другим разработчикам, когда кто-нибудь будет его читать в будущем.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">toHexInt</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">mixColors</span><span class="p">(</span><span class="nx">color1</span><span class="p">,</span> <span class="nx">color2</span><span class="p">){</span>
+
+    <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+    <span class="cm">/*
+     * Сначала считаем среднее по красному цвету - xx---- + yy----
+     * Затем по зеленому --xx-- + --yy--
+     * И по синему ----xx + ----yy
+     */</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">partColor</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">toHexInt</span><span class="p">(</span><span class="nx">color1</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="nx">toHexInt</span><span class="p">(</span><span class="nx">color2</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+
+        <span class="nx">color</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">partColor</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">?</span> <span class="s2">"0"</span> <span class="o">+</span> <span class="nx">partColor</span> <span class="p">:</span> <span class="nx">partColor</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">color</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2>Дополнительное задание</h2>
+
+<p>Допишем функцию, чтобы она опционально могла принимать цвета с ведущими &#39;#&#39;. Тут все просто. Переименуем текущую функцию в <code>_mixColors</code>, а новую назовем прежним именем <code>mixColors</code>. Новая <code>mixColors</code> должна снова принимать два цвета, если в них есть ведущий <code>#</code> убирать его, получать результат из <code>_mixColors</code>, и возвращать его, опять добавив <code>#</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">mixColors</span><span class="p">(</span><span class="nx">color1</span><span class="p">,</span> <span class="nx">color2</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">c1</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="s2">"#"</span> <span class="p">?</span> <span class="nx">color1</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nx">color1</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">c2</span> <span class="o">=</span> <span class="nx">color2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="s2">"#"</span> <span class="p">?</span> <span class="nx">color2</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nx">color2</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="s2">"#"</span> <span class="o">+</span> <span class="nx">_mixColors</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2>Альтернативное решение</h2>
+
+<p>Альтернативное решение предложил <a href="https://github.com/stweet">Сергей Рыжук</a>. В нем мы сразу преобразовываем наши цвета в числа, однако не просто считаем среднее, а все также разбиваем его на 3 спектра и работаем с каждым отдельно. Проделано это с помощью побитовых сдвигов. Заметим, что 6 шестнадцатеричных цифр будут представлены как 24 бита, по 4 на каждую цифру. Для получения красного спектра &quot;отбросим&quot; первые (правые) 16 бит, и побитово умножим на 255. Почему именно так? Напишем красный <code>#ff0000</code> в битах <code>|11111111|00000000|00000000</code>. Линиями я разделил все три спектра. Отбросим первые 16 бит <code>|тут могут оказаться|не только нули|11111111</code>. Поскольку слева от единиц могут быть не только нули, побитово умножим наше число на 255 - <code>|000...000|11111111</code>. Так мы превратим в нули все биты, кроме первых восьми, а их самих не тронем.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">mixColors</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="nx">c2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i1</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span><span class="nx">i2</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">c2</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="kr">double</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">((((</span><span class="nx">i1</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="nx">i2</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)),</span>
+        <span class="kr">double</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">((((</span><span class="nx">i1</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="nx">i2</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)),</span>
+        <span class="kr">double</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(((</span><span class="nx">i1</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">i2</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">))].</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>
+<span class="p">}</span>
+            
+<span class="kd">function</span> <span class="kr">double</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nx">a</span> <span class="o">=</span> <span class="s2">"0"</span> <span class="o">+</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercise-colors";
+          this.page.identifier = 'exercise-colors';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

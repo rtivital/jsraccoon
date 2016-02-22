@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>ES6: Перед тем, как вы начнёте</title>
+  <meta name="description" content="Перед тем, как вы приступите к изучению ES6 и начнете читать данный цикл статей, я настоятельно рекомендую вам ознакомиться с предыдущим стандартом ES5. ">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/es6-before-you-start">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta">Posted with <i class="fa fa-tags"></i>: <a href="/tag/gh-pages/">GitHub Pages</a>, <a href="/tag/css/">CSS</a></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ES6: Перед тем, как вы начнёте</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Перед тем, как вы приступите к изучению ES6 и начнете читать данный цикл статей, я настоятельно рекомендую вам ознакомиться с предыдущим стандартом ES5. </p>
+
+<p>Если вы всё ещё не достаточно уверены в своих знаниях, то данные ресурсы помогут вам освоить всё самое необходимое.</p>
+
+<p>Материалы на <strong>русском</strong> языке:</p>
+
+<ol>
+<li><p><a href="https://learn.javascript.ru/">JavaScript.ru</a> − самый объемный и полный онлайн учебник. Первая часть учебника полностью посвящена стандарту ES и разбору всех синтаксических конструкций. </p></li>
+<li><p><a href="http://habrahabr.ru/post/240219/">Выразительный JavaScript</a> − бесплатная книга, полностью переведенная на Хабре. Книга послужит очень прочным фундаментом для дальнейшего изучения JavaScript и подойдет абсолютно для всех − в независимости от вашего уровня подготовки вы обязательно узнаете что-нибудь новое. </p></li>
+<li><p><a href="http://www.ozon.ru/context/detail/id/31286240/">JavaScript. Подробное руководство</a> − наиболее полное изложение всех особенностей языка JavaScript, включая стандарт ES5.</p></li>
+<li><p><a href="http://www.ozon.ru/context/detail/id/28288656/">JavaScript. Сильные стороны</a> − книга, полностью посвященная лучшим сторонам JavaScript. Перед прочтением рекомендую ознакомиться с <a href="https://www.youtube.com/watch?v=hQVTIJBZook">докладом</a> Дугласа Крокфорда (автора книги). В докладе кратко излагаются основные идеи, описанные в книге. </p></li>
+<li><p><a href="http://www.ozon.ru/context/detail/id/22421421/">Секреты JavaScript ниндзя</a> − книга, написанная создателем jQuery (Джоном Резигом). Вся книга посвящена использованию функционального программирования в JavaScrip. Ясное представление того, что JavaScript − язык <em>функционального</em> программирование, отличает мастера от середнячка. </p></li>
+</ol>
+
+<p>Материалы на <strong>английском</strong> языке:</p>
+
+<p>Лучшее, что сможете найти для детального изучения всех особенностей JavaScript − серия книг You Don&#39;t Know JS. Все книги бесплатные, подробно и без лишней воды описывают всё, что вы вообще можете захотеть знать о JavaScript, а также сложности и неочевидные моменты, которые часто возникают при изучении JavaScript. Серия содержит книги для людей с разным уровнем подготовки, поэтому рекомендую придержитваться следующего порядка прочтения:</p>
+
+<ol>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20&amp;%20going/README.md#you-dont-know-js-up--going">Up &amp; Going</a> − В книге описаны основы JavaScript. Именно на знания полученные из этой книги вы будете опираться в будущем.</li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&amp;%20grammar/README.md#you-dont-know-js-types--grammar">Types &amp; Grammar</a> − подробно рассмотрен каждый тип данных и &quot;грамматика&quot; (как работают синтаксические конструкции).</li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&amp;%20closures/README.md#you-dont-know-js-scope--closures">Scope &amp; Closures</a> − области видимости и замыкания.</li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&amp;%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes">this &amp; Object Prototypes</a> − ключевое слово <code>this</code> и принципы прототипного наследования (основы объектно-ориентированного программирования).</li>
+</ol>
+
+<h2>Проверьте свои знания</h2>
+
+<p>Для проверки своих знаний прошлых спецификаций вы можете ответить на следующие вопросы:</p>
+
+<ol>
+<li><p>Что такое <code>strict mode</code>? Для чего он используется и какие ошибки способен предотвратить? </p>
+
+<ul>
+<li><a href="https://learn.javascript.ru/strict-mode">use strict</a> − JavaScript.ru</li>
+<li><a href="http://frontender.info/why-use-strict-in-javascript-can-save-you-hours/">Как строгий режим &quot;use strict&quot; в JavaScript может сэкономить вам пару часов</a> − frontender.info</li>
+</ul></li>
+<li><p>Чем отличаются операторы <code>==</code> и <code>===</code>?</p>
+
+<ul>
+<li><a href="http://habrahabr.ru/post/138272/">Отличия == и === в JavaScript</a> − Хабр</li>
+<li><a href="https://learn.javascript.ru/comparison">Операторы сравнения и логические значения</a> − JavaScript.ru</li>
+</ul></li>
+<li><p>В чем отличия <code>null</code> от <code>undefined</code>?</p>
+
+<ul>
+<li><a href="http://frontender.info/exploring-the-abyss-of-null-and-undefined-in-javascript/">Исследование бездны null и undefined в JavaScript</a> − frontender.info</li>
+</ul></li>
+<li><p>Что такое замыкания (closures)? Как их можно использовать?</p>
+
+<ul>
+<li>Замыкания в JavaScript: <a href="http://habrahabr.ru/post/223459/">часть 1</a> и <a href="http://habrahabr.ru/post/229887/">часть 2</a> − Хабр</li>
+<li><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Closures#%D0%97%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B5">Замыкания на практике</a> − MDN</li>
+</ul></li>
+<li><p>Что такое функции высшего порядка?</p>
+
+<ul>
+<li><a href="http://habrahabr.ru/post/241155/">Функции высшего порядка</a> − Выразительный JavaScript</li>
+</ul></li>
+<li><p>В чем разница между <code>function declaration</code> и <code>function expression</code>?</p>
+
+<ul>
+<li><a href="https://learn.javascript.ru/function-declaration-expression">Функциональные выражения</a> − JavaScript.ru</li>
+</ul></li>
+<li><p>Чем отличается метод <code>Object.create()</code> от оператора <code>new</code>?</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a> − MDN</li>
+<li><a href="http://habrahabr.ru/post/140810/">Prototype, proto и оператор new</a> − Хабр</li>
+</ul></li>
+</ol>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+
+		
+			<a href="http://jsraccoon.ru/es6-introduction" class="btn-default btn-icon-right">Читать далее: <b>Вместо введения</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/es6-before-you-start";
+          this.page.identifier = 'es6-before-you-start';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

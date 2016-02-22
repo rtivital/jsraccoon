@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>ES6: Вместо введения</title>
+  <meta name="description" content="Открывая любую книгу, посвященную JavaScript, вы с огромной долей вероятности обнаружите в ней целую главу посвященную истории развития ECMAScript, избыточно...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/es6-introduction">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ES6: Вместо введения</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Открывая любую книгу, посвященную JavaScript, вы с огромной долей вероятности обнаружите в ней целую главу посвященную истории развития ECMAScript, избыточно описывающую тот долгий путь, пройденный стандартом. Но, на самом деле, ES практически не развивался с момента релиза третьей версии (ES3), который состоялся в декабре <strong>1999</strong> года. Позже, в июне 2011 года, ES5 стал официальным стандартом. Путем нехитрых вычислений вы можете подсчитать, что между релизами двух стандартов прошло чуть менее 12 лет. Что было добавлено в стандарт ES5 в результате 12 лет разработки:</p>
+
+<ul>
+<li><a href="https://learn.javascript.ru/strict-mode">Strict mode</a></li>
+<li><a href="http://forwebdev.ru/javascript/native-accessor-properties/">Аксессоры</a> (геттеры и сеттеры)</li>
+<li>Небольшие изменения синтаксиса:
+
+<ul>
+<li>появилась возможность использовать ключевые слова в качестве свойств объектов</li>
+<li>строковые литералы теперь можно размещать в несколько строк кода</li>
+<li>после последнего элемента массива и объекта можно ставить запятую</li>
+</ul></li>
+<li>Несколько десятков новых функций в стандартной библиотеке для работы с <a href="https://learn.javascript.ru/array-iteration">массивами</a>, объектами (<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a>, <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty</a>, <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys</a> и так далее), <a href="https://learn.javascript.ru/bind">функциями</a> и <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date/now">датами</a></li>
+<li>Поддержка JSON </li>
+</ul>
+
+<p>Более подробное описание всех нововведений ES5 можно посмотреть в книге <a href="http://speakingjs.com/es5/ch25.html">Speaking JavaScript</a> (доступна онлайн).</p>
+
+<p>Список новых возможностей, добавленных в стандарт ES5, можно пересчитать по пальцам одной руки. Из всего вышеперечисленного может сложиться впечатление, что развитие JavaScript и в будущем будет происходить крайне медленно. Это не так. Новый стандарт ES6 принёс с собой огромное количество нововведений, наиболее полный список которых можно посмотреть в <a href="https://github.com/bevacqua/es6">этом репозитории</a> (список содержит 350 пунктов). </p>
+
+<p>Все нововведения подразделяются на три группы:</p>
+
+<ul>
+<li>Улучшение синтаксиса для уже существующих решений (например, в библиотеках):
+
+<ul>
+<li>Классы</li>
+<li>Модули</li>
+</ul></li>
+<li>Новая функциональность в стандартной библиотеке:
+
+<ul>
+<li>Новые методы для массивов и строк</li>
+<li>Promises</li>
+<li>Maps и Sets</li>
+</ul></li>
+<li>Абсолютно новые возможности:
+
+<ul>
+<li>Генераторы (Generators)</li>
+<li>Прокси (Proxies)</li>
+<li>WeakMaps</li>
+</ul></li>
+</ul>
+
+<p>ES6 был утвержден в июне 2015 года. Уже сейчас вы <a href="http://habrahabr.ru/post/241275/">можете использовать</a> многие возможности нового стандарта в свежих версиях браузеров и <a href="https://nodejs.org/en/docs/es6/">node.js</a>. Подробную таблицу совместимости можно посмотреть <a href="http://kangax.github.io/compat-table/es6/">здесь</a>.</p>
+
+<h2>ES6 или ES2015? Что вообще происходит?</h2>
+
+<p>Официальное название нового стандарта − <strong>ES2015</strong>. Тем не менее, <strong>ES6</strong> − название, которое все понимают и используют. </p>
+
+<p>Зачем было менять систему названий версий? Подобное решение связано с новым процессом разработки стандарта. Все предыдущие стандарты разрабатывались крупными компаниями (Google, Microsoft, Yahoo и прочими), связанными с созданием браузеров или других сред, поддерживающих JavaScript. При подобном подходе к разработке стандарта рядовой разработчик практически никак не мог повлиять на развитие языка. </p>
+
+<p>Процесс разработки стандарта ES6 кардинально отличается от предыдущего. <a href="https://tc39.github.io/process-document/">Новый процесс</a> выглядит следующим образом:</p>
+
+<ol>
+<li>Создается предложение внести новую возможность, поменять текущую синтаксическую конструкцию или любое другое улучшение.</li>
+<li>Создается &quot;черновик&quot; − подробное описание того, как работает предлагаемое изменение.</li>
+<li>Изменение становится &quot;кандидатом&quot; на внесение в стандарт. Будучи &quot;кандидатом&quot; изменение рассматривается теми, кто будет создавать имплементации, а также обычными пользователями.</li>
+<li>Изменение вносится в стандарт.</li>
+</ol>
+
+<p>Подобная схема разработки стандарта позволяет тестировать огромное количество изменений и нововведений, а также учитывать мнение людей, ежедневно использующих JavaScript в своей работе. В связи с такими объемными работами над стандартом каждый год (скорее всего, летом) будет выходить новая версия. Таким образом, уже в июне 2016 года новым стандартом станет <a href="http://kangax.github.io/compat-table/es7/">ES2016</a>, или ES7 (по старой системе наименования).</p>
+
+<h2>Стоит ли вообще изучать стандарт ES5 сейчас?</h2>
+
+<p>Да, стоит. Вот почему:</p>
+
+<ul>
+<li>ES6 − расширение стандарта ES5. Новая версия стандарта не протироворечит ничему, что было описано в предыдущей версии. Таким образом, все, что вы знаете о ES5 не уйдет в никуда.</li>
+<li>В ES6 добавлены несколько возможностей, которые заменяют аналогичые им в ES5, но используют их в качестве основы.</li>
+<li>На протяжении нескольких лет вам придется компилировать свой ES6 код в ES5 для поддержки большего числа браузеров. Согласитесь, что неплохо было бы понимать скомпилированный код.</li>
+<li>Важно понимать чужой код, написанный с использованием старого стандарта.</li>
+</ul>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/es6-before-you-start" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Перед тем, как вы начнете</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/es6-block-scoped-declarations" class="btn-default btn-icon-right">Читать далее: <b>Блочные области видимости</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/es6-introduction";
+          this.page.identifier = 'es6-introduction';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

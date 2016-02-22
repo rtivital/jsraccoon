@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Что за треугольник?</title>
+  <meta name="description" content="Напишите функцию triangle, которая тестирует переданный ей треугольник и возвращает его тип. Треугольники бывают: остроугольными, прямоугольными и тупоугольн...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/exercise-triangles">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Что за треугольник?</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Напишите функцию <code>triangle</code>, которая тестирует переданный ей треугольник и возвращает его тип. Треугольники бывают: остроугольными, прямоугольными и тупоугольными. Функция принимает три числа, которые соответствуют длине каждой стороны.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">triangle</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="c1">// Не существует</span>
+<span class="nx">triangle</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// Не существует</span>
+<span class="nx">triangle</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span> <span class="c1">// Остроугольный</span>
+<span class="nx">triangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// Прямоугольный</span>
+<span class="nx">triangle</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span> <span class="c1">// Тупоугольный</span></code></pre></figure>
+
+<h3>Решение</h3>
+
+<p>Чтобы решить задачу придётся вспомнить немного школьной геометрии. Начнём с простого: треугольник не существует, если сумма длины двух любых его сторон меньше, либо равен длине третьей стороны:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">&lt;=</span> <span class="nx">c</span> <span class="o">||</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="nx">b</span> <span class="o">||</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span> <span class="o">&lt;=</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Треугольник не существует'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Условие выглядит громоздким и трудным для чтения. Его можно немного упростить с помощью методов массивов <code>sort</code>: если отсортировать аргументы по возрастанию, то мы точно будем знать, что на последнем месте будет находиться сторона с наибольшей длиной:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">sort</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Треугольник не существует'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Недостаток данного способа заключается в том, что функция будет обрабатывать все передаваемы ей аргументы, а не только первые три. Эту проблему достаточно просто решить с помощью метода массивов <code>slice</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="nx">sort</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Треугольник не существует'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Данное дейтвие также приведёт к преобразованию псевдомассива <code>arguments</code> к массиву, поэтому можно сразу же воспользоваться методом <code>sort</code>.</p>
+
+<p>Итак, что мы уже имеем? Отсортированный по возрастанию массив аргументов и вывод о том, что треугольника не существует. Задача практически решена. Остаётся только сравнивать квадраты длин сторон в соотвествие с правилами:</p>
+
+<ol>
+<li>Если квадраты двух меньших сторон равны квадрату третьей стороны, то треугольник прямогульный.</li>
+<li>Если меньше, то — треугольник тупоугольный.</li>
+<li>Если больше, то — треугольник остроугольный.</li>
+</ol>
+
+<p>Решение целиком:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sides</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="nx">sort</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">sides</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">sides</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Треугольник не существует'</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">side</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">===</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник прямоугольный'</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&lt;</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник тупоугольный'</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&gt;</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник остроугольный'</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Тесты</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triangle</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span> <span class="c1">// Не существует</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triangle</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// Не существует</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triangle</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">));</span> <span class="c1">// Остроугольный</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span> <span class="c1">// Прямоугольный</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triangle</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span> <span class="c1">// Тупоугольный</span></code></pre></figure>
+
+<p>Немного короче с ES6 (<a href="https://babeljs.io/repl/#?experimental=true&amp;evaluate=true&amp;loose=false&amp;spec=false&amp;code=const%20triangle%20%3D%20(...args)%20%3D%3E%20%7B%0D%0A%20%20const%20sides%20%3D%20args.slice(0%2C%203).sort()%3B%0D%0A%20%20if%20(sides%5B0%5D%20%2B%20sides%5B1%5D%20%3C%3D%20sides%5B2%5D)%20%7B%0D%0A%20%20%20%20return%20&#x27;%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%BD%D0%B5%20%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82&#x27;%3B%0D%0A%20%20%7D%0D%0A%0D%0A%20%20const%20sum%20%3D%20(Math.pow(sides%5B0%5D%2C%202)%20%2B%20Math.pow(sides%5B1%5D%2C%202)).toFixed(2)%3B%0D%0A%20%20const%20side%20%3D%20Math.pow(sides%5B2%5D%2C%202).toFixed(2)%3B%0D%0A%0D%0A%20%20if%20(sum%20%3D%3D%3D%20side)%20%7B%20return%20&#x27;%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9&#x27;%3B%20%7D%0D%0A%20%20if%20(sum%20%3C%20side)%20%7B%20return%20&#x27;%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D1%82%D1%83%D0%BF%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9&#x27;%3B%20%7D%0D%0A%20%20if%20(sum%20%3E%20side)%20%7B%20return%20&#x27;%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%BE%D1%81%D1%82%D1%80%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9&#x27;%3B%20%7D%0D%0A%7D%3B%0D%0A%0D%0Aconsole.log(triangle(2%2C%204%2C%206))%3B%20%2F%2F%20%D0%9D%D0%B5%20%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82%0D%0Aconsole.log(triangle(7%2C%203%2C%202))%3B%20%2F%2F%20%D0%9D%D0%B5%20%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82%0D%0Aconsole.log(triangle(8%2C%205%2C%207))%3B%20%2F%2F%20%D0%9E%D1%81%D1%82%D1%80%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%0D%0Aconsole.log(triangle(3%2C%204%2C%205))%3B%20%2F%2F%20%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%0D%0Aconsole.log(triangle(7%2C%2012%2C%208))%3B%20%2F%2F%20%D0%A2%D1%83%D0%BF%D0%BE%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9">посмотреть на babejs.io</a>):</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">triangle</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">sides</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">).</span><span class="nx">sort</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">sides</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nx">sides</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">'Треугольник не существует'</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kr">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">side</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">sides</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">===</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник прямоугольный'</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&lt;</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник тупоугольный'</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span> <span class="o">&gt;</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'Треугольник остроугольный'</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+  </div>
+
+  
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/exercise-triangles";
+          this.page.identifier = 'exercise-triangles';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

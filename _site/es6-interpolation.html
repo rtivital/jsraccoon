@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>ES6: Интерполяция</title>
+  <meta name="description" content="Если вы используете в своей работе Sass, или любой другой CSS-препроцессор, то понятие интерполяции вам уже знакомо:// Интерполяция в scss$var: 'awesome';.#{...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/es6-interpolation">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ES6: Интерполяция</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Если вы используете в своей работе Sass, или любой другой CSS-препроцессор, то понятие интерполяции вам уже знакомо:</p>
+
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Интерполяция в scss
+</span><span class="nv">$var</span><span class="p">:</span> <span class="s1">'awesome'</span><span class="p">;</span>
+<span class="nc">.</span><span class="si">#{</span><span class="nv">$var</span><span class="si">}</span><span class="nc">-selector</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// CSS код после компиляции
+</span><span class="nc">.awesome-selector</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+<span class="p">}</span> </code></pre></figure>
+
+<p>Интерполяция в JavaScript работает схожим образом. В строке создаётся конструкция <code>${...}</code>, внутри которой вы можете поместить любую переменную или выражение:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">$</span><span class="p">{</span><span class="nx">age</span><span class="p">}</span> <span class="nx">years</span> <span class="nx">old</span><span class="err">`</span><span class="p">);</span> <span class="c1">// I am 25 years old</span>
+
+<span class="c1">// Эквивалентно</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'I am '</span> <span class="o">+</span> <span class="nx">age</span> <span class="o">+</span> <span class="s1">'years old'</span><span class="p">);</span> <span class="c1">// I am 25 years old</span></code></pre></figure>
+
+<p><strong>Важно</strong>: строки, созданные с помощью обычных кавычек (<code>&#39;</code> и <code>&quot;</code>) не поддерживают интерполяцию. Для поддержки интерполяции следует использовать обратную кавычку ` (клавиша <code>ё</code> на клавиатуре):</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="c1">// С обычными кавычками интерполяция не поддерживается</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'I am ${age} years old'</span><span class="p">);</span> <span class="c1">// I am ${age} years old</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"I am ${age} years old"</span><span class="p">);</span> <span class="c1">// I am ${age} years old</span>
+<span class="c1">// Поддерживается только с обратными</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">$</span><span class="p">{</span><span class="nx">age</span><span class="p">}</span> <span class="nx">years</span> <span class="nx">old</span><span class="err">`</span><span class="p">);</span> <span class="c1">// I am 25 years old</span></code></pre></figure>
+
+<h2>Интерполяция выражений</h2>
+
+<p>С помощью интерполяции в строку можно поместить результат выполнения любого выражения, например, вызов функции:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">up</span> <span class="o">=</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="err">`</span><span class="k">this</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span> <span class="nx">up</span><span class="p">(</span><span class="s1">'sting'</span><span class="p">)</span> <span class="p">}</span> <span class="k">in</span> <span class="nx">uppercase</span><span class="err">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span> <span class="c1">// this is STRING in uppercase</span></code></pre></figure>
+
+<p>или более сложных выражений:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">`</span><span class="nx">Sum</span> <span class="nx">is</span> <span class="nx">equal</span> <span class="nx">$</span><span class="p">{</span><span class="nx">args</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">start</span><span class="p">,</span> <span class="nx">arg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">start</span> <span class="o">+</span> <span class="nx">arg</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span><span class="err">`</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">32</span><span class="p">));</span> <span class="c1">// Sum is equal 67</span></code></pre></figure>
+
+<h2>Вложенная интерполяция</h2>
+
+<p>Скорее всего, будут возникать ситуации, когда одного уровня интерполяции будет недостаточно. В подобных случаях удобно пользоваться вложенностью (интерполяция внутри интерполяции). Следует помнить, что весь код, находящийся внутри <code>${...}</code> интерпретируется, как отдельное выражение, то есть может содержать обратные кавычки, которые не будут восприняты, как конец строки:
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> up = (str) =&gt; str.toUpperCase();
+<span class="kd">let</span> user = <span class="s1">&#39;user&#39;</span>;
+<span class="kd">let</span> str = <code>these ${up(</code>${user}s<code>)} are great</code>;
+console.log(str); <span class="c1">// these USERS are great</span>
+</code></pre></figure></p>
+
+<p>В переменной <code>str</code> используется вложенная интерполяция. Используя, старый стандарт код можно переписать следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="s1">'user'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">'these '</span> <span class="o">+</span> <span class="nx">up</span><span class="p">(</span><span class="nx">user</span> <span class="o">+</span> <span class="s1">'s'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' are great'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span> <span class="c1">// these USERS are great</span></code></pre></figure>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/es6-destructuring" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Реструктуризующее присваивание</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/es6-arrow-functions" class="btn-default btn-icon-right">Читать далее: <b>Стрелочные функции</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/es6-interpolation";
+          this.page.identifier = 'es6-interpolation';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

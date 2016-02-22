@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>ES6: Параметры по умолчанию</title>
+  <meta name="description" content="ES5 реализацииЕсли вы просмотрите исходный код любой библиотеки, то с огромной долей вероятности обнаружите, что там используется паттерн &quot;параметры по ...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/es6-defaults">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">ES6: Параметры по умолчанию</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2>ES5 реализации</h2>
+
+<p>Если вы просмотрите исходный код любой библиотеки, то с огромной долей вероятности обнаружите, что там используется паттерн &quot;параметры по умолчанию&quot;. Работает это следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">||</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">||</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>    <span class="c1">// 21</span>
+<span class="nx">sum</span><span class="p">();</span>     <span class="c1">// 30</span></code></pre></figure>
+ 
+
+<p>Функция <code>sum</code> принимает два параметра <code>a</code> и <code>b</code> и возвращает их сумму. Если параметр <code>b</code> не был передан, то он автоматически становится равным <code>20</code>, если же не было передано ни одного параметра − <code>a</code> присваивается значение <code>10</code>, а <code>b</code> − <code>20</code>. Всё работает хорошо до тех пор, пока не появляется необходимость передать <a href="https://developer.mozilla.org/ru/docs/Glossary/Falsy">ложное значение</a>, например, ноль:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Выражение ( 0 || 10 ) вернет 10, так как 0 − ложное значение</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 11</span></code></pre></figure>
+ 
+
+<p>Для того, чтобы избежать подобных проблем, можно использовать одно из следующих решений:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Принимаются все переданные значения, кроме undefined</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">?</span> <span class="nx">a</span> <span class="p">:</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">b</span> <span class="o">=</span> <span class="p">(</span><span class="nx">b</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">?</span> <span class="nx">b</span> <span class="p">:</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 5</span>
+<span class="nx">sum</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span> <span class="c1">// 50</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// 60</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>      <span class="c1">// NaN</span>
+
+<span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Принимаются все переданные значения</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="k">in</span> <span class="nx">arguments</span><span class="p">)</span> <span class="p">?</span> <span class="nx">a</span> <span class="p">:</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="k">in</span> <span class="nx">arguments</span><span class="p">)</span> <span class="p">?</span> <span class="nx">b</span> <span class="p">:</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span> 
+
+<span class="nx">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 5</span>
+<span class="nx">sum</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span> <span class="c1">// NaN</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// NaN</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">// NaN</span></code></pre></figure>
+ 
+
+<h2>ES6 реализация</h2>
+
+<p>С релизом ES6 появилась возможность задавать параметры по умолчанию при объявлении функции:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">sum</span><span class="p">();</span> <span class="c1">// 30</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>    <span class="c1">// 25</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 15</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">// 25</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 5 − null преобразуется в 0</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">// 1 − null преобразуется в 0</span></code></pre></figure>
+ 
+
+<p>Чтобы пропустить какой-либо параметр достаточно передать в функцию <code>undefined</code> (параментр не будет пропущен при передаче любого другого ложного значения). Новая синтаксическая конструкция сочетает в себе несколько прошлых реализаций и в большей степени похожа на <code>a !== undefined ? a : 10</code>, чем на более распросраненный паттерн <code>a || 10</code>. </p>
+
+<p>Подобная реализация позволяет не только присваивать определённые значения, но и вычислять их динамически с помощью простых выражений или функций:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">reverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">logReverse</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">phrase</span> <span class="o">=</span> <span class="s1">'Hello World!'</span><span class="p">,</span> <span class="nx">reversed</span> <span class="o">=</span> <span class="nx">reverse</span><span class="p">(</span><span class="nx">phrase</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reversed</span><span class="p">);</span> 
+<span class="p">};</span>
+
+<span class="nx">logReverse</span><span class="p">();</span> <span class="c1">// !dlroW olleH</span>
+<span class="nx">logReverse</span><span class="p">(</span><span class="s1">'ES6 is awesome'</span><span class="p">);</span> <span class="c1">// emosewa si 6SE</span></code></pre></figure>
+ 
+
+<p>Тем не менее, использовать переменную в своей же инициализации нельзя:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="nx">z</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">f</span><span class="p">();</span> <span class="c1">// 1 2 null</span></code></pre></figure>
+ 
+
+<p>Подобное поведение называется <a href="http://jsraccoon.ru/es6-block-scoped-declarations/">временной мёртвой зоной</a>. Как и при объявлении переменных с помощью операторов <code>let</code> и <code>const</code>, имя переменной <code>z</code> резервируется, поэтому интерпретатор никогда не использует переменную с таким же именем из более высокой области видимости.</p>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/es6-spread-rest" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Операторы Spread и Reset</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/es6-destructuring" class="btn-default btn-icon-right">Читать далее: <b>Реструктуризующее присваивание</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/es6-defaults";
+          this.page.identifier = 'es6-defaults';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

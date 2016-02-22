@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Объектно-ориентированный JavaScript: прототипы</title>
+  <meta name="description" content="В прошлой статье мы начали рассматривать прототипы и выяснили, что каждый объект может использовать любые методы, которые находятся в функции-конструкторе, с...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/oop-prototypes">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Объектно-ориентированный JavaScript: прототипы</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>В <a href="http://jsraccoon.ru/oop-constructors">прошлой статье</a> мы начали рассматривать прототипы и выяснили, что каждый объект может использовать любые методы, которые находятся в функции-конструкторе, с помощью которой данный объект и был создан. Например, обычный массив сам по себе не имеет ни одного метода, но функция конструктор <code>Array</code> любезно предоставляет ему все методы из своего прототипа в использование. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">([].</span><span class="nx">__proto__</span><span class="p">);</span>
+<span class="c1">// То же самое, что и</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span></code></pre></figure>
+
+<p>Разумеется, мы сами можем создавать функции конструкторы и задавать им прототипы. Итак, вы являетесь счастливым владельцем зоопарка. Для каждого животного вы хотите создать объект, содержащий вид и кличку животного. Каждое животное также может издавать звуки. Функция-конструктор в данном случае будет выглядеть следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">species</span><span class="p">,</span> <span class="nx">sound</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">=</span> <span class="nx">species</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">=</span> <span class="nx">sound</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">speak</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' says '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s1">'!'</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Теперь мы можем создать один или несколько объектов с помощью функции конструктора <code>Animal</code> и оператора <code>new</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Wizard'</span><span class="p">,</span> <span class="s1">'Cat'</span><span class="p">,</span> <span class="s1">'Meow'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Pancho'</span><span class="p">,</span> <span class="s1">'Dog'</span><span class="p">,</span> <span class="s1">'Woof'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">fox</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Oliver'</span><span class="p">,</span> <span class="s1">'Fox'</span><span class="p">,</span> <span class="s1">'????'</span><span class="p">);</span></code></pre></figure>
+
+<p>Каждый созданный нами объект не содержит своего метода <code>speak</code>. В этом вы можете убедиться, просто выведя объект в консоль <code>console.dir(cat)</code>. Тем не менее, все созданные объекты могут использовать метод <code>speak</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">.</span><span class="nx">speak</span><span class="p">());</span> <span class="c1">// Dog Pancho says Woof!</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">speak</span><span class="p">());</span> <span class="c1">// Cat Wizard says Meow!</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fox</span><span class="p">.</span><span class="nx">speak</span><span class="p">());</span> <span class="c1">// Fox Oliver says ????!</span></code></pre></figure>
+
+<p>Что происходит на самом деле. Когда вы используете метод <code>speak</code> с объектом, сначала происходит проверка того, есть ли у самого объекта этот метод. Если метода нет, то далее следует проверка на присутствие метода в прототипе. Если метода нет и в прототипе, то метод может быть найден в прототипе прототипа. И так далее, пока выполнение не дойдёт до последнего прототипа, который всегда содержит в себе все методы функции-конструктора <code>Object</code>. Чтобы в этом убедиться попробуйте выполнить в консоле браузера несколько строчек кода:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Прототипы для чисел</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">((</span><span class="mi">10</span><span class="p">).</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Number</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">((</span><span class="mi">10</span><span class="p">).</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Object</span>
+
+<span class="c1">// Прототипы для строк</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="s1">'str'</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// String</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="s1">'str'</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Object</span>
+
+<span class="c1">// Прототипы для объектов</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">([].</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Array</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">([].</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Object</span>
+
+<span class="c1">// Прототипы для созданной нами функции-конструктора Animal</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Animal</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// Object</span></code></pre></figure>
+
+<p>Таким образом, созданный нами объект <code>cat</code> унаследовал все методы не только от функции <code>Animal</code>, но и от <code>Object</code>. В этом легко убедиться с помощью использования любого метода объектов, например, <code>toString()</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// "[object Object]"</span></code></pre></figure>
+
+<p>Как я уже писал выше, при использовании любого метода сначала проверяется его наличие в самом объекте. Поэтому мы может сами переназначить тот же метод <code>toString</code> для отдельного объекта <code>cat</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Wizard'</span><span class="p">,</span> <span class="s1">'Cat'</span><span class="p">,</span> <span class="s1">'Meow'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Pancho'</span><span class="p">,</span> <span class="s1">'Dog'</span><span class="p">,</span> <span class="s1">'Woof'</span><span class="p">);</span>
+
+<span class="nx">cat</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// Cat Wizard</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// "[object Object]"</span></code></pre></figure>
+
+<p>Или же можно записать данный метод в прототип <code>Animal</code>, чтобы все создаваемые с помощью этой функции-конструктора объекты использовали именно его:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'This is '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">cat</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Wizard'</span><span class="p">,</span> <span class="s1">'Cat'</span><span class="p">,</span> <span class="s1">'Meow'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Pancho'</span><span class="p">,</span> <span class="s1">'Dog'</span><span class="p">,</span> <span class="s1">'Woof'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">fox</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Oliver'</span><span class="p">,</span> <span class="s1">'Fox'</span><span class="p">,</span> <span class="s1">'????'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// Cat Wizard</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// This is Dog Pancho</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fox</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// This is Fox Oliver</span></code></pre></figure>
+
+<p>Теперь объекты <code>dog</code> и <code>fox</code> обращаются к прототипу <code>Animal</code>, а объект <code>cat</code> имеет собственный метод и использует его.</p>
+
+<p>Есть два способа устанавливать свойства в прототипы для объектов: плохой и хороший. Хороший способ вы уже видели — все примеры приведённые выше написаны с его помощью.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">speak</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* code here */</span> <span class="p">};</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* code here */</span> <span class="p">};</span></code></pre></figure>
+
+<p>В данном примере к прототипу просто добавляется ещё одно свойство, в независимости от того, что было в прототипе было раньше.</p>
+
+<p>Пример плохого добавления свойств в прототип — непосредственная его перезапись новым объектом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* code here */</span> <span class="p">};</span>
+<span class="c1">// ...</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">speak</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Почему так делать плохо? Всё просто. Перезаписывая прототип новым объектом, вы полностью стираете все методы, которые были записаны в него ранее. Поэтому в приведённом выше примере метода <code>toString</code> у всех объектов, созданных с помощью функции-конструктора <code>Animal</code>, не будет.</p>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/oop-constructors" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Функции конструкторы</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/oop-example-validation" class="btn-default btn-icon-right">Читать далее: <b>Функции конструкторы</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/oop-prototypes";
+          this.page.identifier = 'oop-prototypes';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

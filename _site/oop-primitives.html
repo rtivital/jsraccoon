@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Объектно-ориентированный JavaScript: примитивы и объекты</title>
+  <meta name="description" content="Скорее всего, вы читали или слышали, что всё в JavaScript является объектом. Ещё чаще можно увидеть опровержения этого утверждения. Подобные споры возникают ...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/oop-primitives">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Объектно-ориентированный JavaScript: примитивы и объекты</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Скорее всего, вы читали или слышали, что всё в JavaScript является объектом. Ещё чаще можно увидеть опровержения этого утверждения. Подобные споры возникают регулярно и обусловлены в большей степени недопониманием концепций JavaScript. И, на самом деле, причина считать примитивы объектами есть — у примитивов можно запрашивать свойства и методы, поведение которых во многом схоже со свойствами и методами объектов. Например, строки и массивы содержат одинаковые свойство <code>length</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'this'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'an'</span><span class="p">,</span> <span class="s1">'array'</span><span class="p">];</span>
+<span class="kr">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">'this is string'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 4</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 14</span></code></pre></figure>
+
+<p>На первый взгляд, может показаться, что свойство <code>length</code> работает одинаково для строк и массивов. Тем не менее, разница есть. Чтобы понять в чём она заключается достаточно использовать оператор <code>typeof</code> для каждого типа данных:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">typeof</span> <span class="nx">str</span><span class="p">;</span> <span class="c1">// "string"</span>
+<span class="k">typeof</span> <span class="nx">arr</span><span class="p">;</span> <span class="c1">// "object"</span></code></pre></figure>
+
+<p>И что? Это не отменяет того, что мы можем использовать полноценные методы и свойства у примитивов. Всё верно. Но следует учитывать то, что происходит &quot;за сценой&quot;. У каждого примитивного типа данных есть своя функция конструктор, например, для строк — <code>String</code>, для чисел — <code>Number</code>. Когда вы хотите получить какое-либо свойство или метод для примитивов, вы обращаетесь не к самому примитиву, а к объекту, созданному функцией-конструктором данного примитива. Другими словами, <strong>примитивы не имеют свойств и методов и не являются объектами</strong>. Чтобы разобраться в том, что происходит &quot;за сценой&quot;, можно инициализировать создание новой строки с помощью функции конструктора <code>String</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'Hello, World!'</span><span class="p">);</span>
+<span class="k">typeof</span> <span class="nx">str</span><span class="p">;</span> <span class="c1">// "object"</span></code></pre></figure>
+
+<p>Подобное обращение к конструктору <code>String</code> происходит каждый раз, когда вы запрашиваете у строки свойство или метод. Создаётся новый объект с помощью функции конструктора, выполняется определённое действие (получение свойства или выполнение метода), а затем созданный ранее объект уничтожается, оставляя после себя только результат. Представить для себя подобное выполнение кода можно следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Получение свойства length строки</span>
+<span class="kd">let</span> <span class="nx">length</span> <span class="o">=</span> <span class="s1">'this is string'</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="c1">// За сценой</span>
+<span class="c1">// После получения значения созданный объект уничтожится</span>
+<span class="kd">let</span> <span class="nx">length</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'this is string'</span><span class="p">)).</span><span class="nx">length</span><span class="p">;</span></code></pre></figure>
+
+<p>Почему важно понимать, что не всё в JavaScript является объектом? Всё просто. Для любого объекта можно задать значение свойства вручную. Например, то же свойство <code>length</code> для массивов и строк:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Присваивание значение свойтву length у объектов</span>
+<span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'this'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'an'</span><span class="p">,</span> <span class="s1">'array'</span><span class="p">];</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// Присваивание значение свойтву length у примитивов</span>
+<span class="kr">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">'this is string'</span><span class="p">;</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// 10 (свойство установлено)</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// 14 (свойство не установлено)</span></code></pre></figure>
+
+<p>Почему свойство <code>length</code> у строки не изменилось? Когда вы пытаетесь установить свойство у любого примитива, то происходит следующее:</p>
+
+<ol>
+<li>Создаётся новый <strong>объект</strong>: <code>new String(&#39;this is string&#39;)</code></li>
+<li>У <strong>нового</strong> объекта устанавливается свойство <code>length</code> со значением <code>10</code></li>
+<li>Созданный объект уничтожается</li>
+</ol>
+
+<p>В результате подобной схемы становится очевидно, что данные, находящиеся в исходной переменной не изменяются, а все изменения происходят с новым объектом, который в будущем будет просто уничтожен.</p>
+
+<p>То же самое произойдёт и в случае, если вы захотите присвоить новое свойство или метод примитиву:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="s1">'str'</span><span class="p">;</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">newProp</span> <span class="o">=</span> <span class="s1">'my new property'</span><span class="p">;</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">newMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'my new method'</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">str</span><span class="p">.</span><span class="nx">newProp</span><span class="p">;</span> <span class="c1">// undefined</span>
+<span class="nx">str</span><span class="p">.</span><span class="nx">newMethod</span><span class="p">();</span> <span class="c1">// Uncaught TypeError: str.newMethod is not a function</span></code></pre></figure>
+
+<p>Схема работы такая же, как и в прошлом примере:</p>
+
+<ol>
+<li>Создаётся новый <strong>объект</strong>: <code>new String(&#39;str&#39;)</code>, которому присваивается свойство <code>newProp</code> со значением <code>&#39;my new property&#39;</code></li>
+<li>Созданный объект уничтожается</li>
+<li>Создаётся <strong>ещё один</strong> новый объект <code>new String(&#39;str&#39;)</code>, которому присваивается метод <code>newMethod</code></li>
+<li>Объект уничтожается </li>
+<li>Мы пытаемся получить значение несуществующего свойства <code>newProp</code>, в результате чего получаем <code>undefined</code></li>
+<li>Мы пытаемся выполнить несуществующий метод <code>newMethod</code>, что эквивалентно <code>undefined()</code>, и получаем ошибку</li>
+</ol>
+
+<h5>Примитивные данные</h5>
+
+<p>В JavaScript все примитивные данные разделяются на 6 типов:</p>
+
+<ol>
+<li>строки: <code>&#39;str&#39;</code>, <code>&quot;str&quot;</code>, <code>`str`</code></li>
+<li>числа: <code>2</code>, <code>0</code>, <code>100.34</code></li>
+<li>boolean: <code>true</code> и <code>false</code></li>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li>символы <code>Symbol()</code></li>
+</ol>
+
+<p>У строк, чисел и boolean есть функции конструкторы, с помощью, которых можно их инициализировать:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'str'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">num</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">bool</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span></code></pre></figure>
+
+<p>Но несмотря на то, что у вас есть возможность создавать примитивы с помощью функций конструкторов, делать это в реальных проектах не надо ни при каких обстоятельствах. <strong>Всегда используйте литералы для создания примитивов</strong> (за исключением символов, так как для них не предусмотрено формы литерала, их нужно создавать при помощи функции <code>Symbol()</code>). Почему не стоит создавать примитивы с помощью функций конструкторов? Всё, что вам нужно запомнить — при подобном создании примитива вы не получаете само значение, а только его объект-обвертку. В некоторых ситуациях подобное поведение может быть опасным и привести к проблемам. Например, при создании значения типа <code>boolean</code> через конструктор:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">val</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello, World!'</span><span class="p">);</span> <span class="p">}</span></code></pre></figure>
+
+<p>В результате выполнения данного кода в консоль выведется сообщение. Код внутри конструкции <code>if</code> выполняется, так как значение, находящееся в переменной <code>val</code>, является объектом с содержимым <code>{[[PrimitiveValue]]: false}</code>, а любой объект, даже пустой, в JavaScript является правдивым значением. </p>
+
+<p>Вы можете использовать функции <code>String</code>, <code>Number</code> и <code>Boolean</code> без ключевого слова <code>new</code>. При подобном использовании всё, что они будут делать — приводить типы. Несколько примеров:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Приведение строки к числу</span>
+<span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="s1">'20'</span><span class="p">);</span>
+<span class="k">typeof</span> <span class="nx">num</span><span class="p">;</span> <span class="c1">// "number"</span>
+
+<span class="c1">// Приведение числа к строке </span>
+<span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="k">typeof</span> <span class="nx">str</span><span class="p">;</span> <span class="c1">// "string"</span>
+
+<span class="c1">// Приведение любого значения к типу boolean</span>
+<span class="kd">let</span> <span class="nx">bool1</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="s1">'str'</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="kd">let</span> <span class="nx">bool2</span> <span class="o">=</span> <span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// false</span>
+
+<span class="k">typeof</span> <span class="nx">bool1</span><span class="p">;</span> <span class="c1">// "boolean"</span>
+<span class="k">typeof</span> <span class="nx">bool2</span><span class="p">;</span> <span class="c1">// "boolean"</span></code></pre></figure>
+
+<p>Иногда подобные решения бывают полезными и позволяют сократить объем необходимого кода, например, если нужно отфильтровать все ложные значения из массива, то можно воспользоваться функцией <code>Boolean</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">falsyArr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="kc">false</span><span class="p">];</span>
+<span class="kr">const</span> <span class="nx">truthyArr</span> <span class="o">=</span> <span class="nx">falsyArr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">);</span>
+
+<span class="c1">// Аналогично</span>
+<span class="kr">const</span> <span class="nx">truthyArr</span> <span class="o">=</span> <span class="nx">falsyArr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!!</span><span class="nx">item</span><span class="p">;</span> 
+<span class="p">});</span>
+
+<span class="c1">// С использование стрелочных функций из ES6</span>
+<span class="kr">const</span> <span class="nx">truthyArr</span> <span class="o">=</span> <span class="nx">falsyArr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="o">!!</span><span class="nx">item</span><span class="p">);</span></code></pre></figure>
+
+<h5>null является объектом?</h5>
+
+<p>Если вы попробуете использовать оператор <code>typeof</code> для всех примитивов, то, в целом, вы не обнаружите ничего нового для себя:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">typeof</span> <span class="s1">'str'</span><span class="p">;</span>     <span class="c1">// "string"</span>
+<span class="k">typeof</span> <span class="mi">100</span><span class="p">;</span>       <span class="c1">// "number"</span>
+<span class="k">typeof</span> <span class="kc">true</span><span class="p">;</span>      <span class="c1">// "boolean"</span>
+<span class="k">typeof</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// "undefined"</span>
+<span class="k">typeof</span> <span class="nx">Symbol</span><span class="p">();</span>  <span class="c1">// "symbol" </span></code></pre></figure>
+
+<p>Всё складывается хорошо, до тех пор, пока вы не опробуете данный оператор на <code>null</code></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">typeof</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// "object"</span></code></pre></figure>
+
+<p>Если вы подумали, что что-то тут неправильно и нелогично, то вы абсолютно правы. Подобное поведение является не более, чем багом языка. Но за столько лет можно же было бы это исправить? Конечно, можно, но следует понимать, что подобное поведение <code>typeof null</code> используется практически в каждом приложении или библиотеке. Таким образом, исправить подобный баг невозможно, так как это сломает весь существующий на данный момент JavaScript код. Ввести подобное нововведение в новый стандарт ECMAScript тоже не получится, так как будет потеряна обратная совместимость.</p>
+
+<p>Итого, <code>null</code> не является объектом, несмотря на то, что оператор <code>typeof</code> утверждает обратное. Это значит, что в <code>null</code> не могут быть записаны никакие свойства или методы, то есть действуют все правила примитивов. </p>
+
+<h5>Объекты</h5>
+
+<p>Выше были перечислены все типы данных, которые являются примитивами. Всё остальное в JavaScript является объектом: массивы, функции, сами объекты. Любому объекту можно присвоить свойства и методы. Например, для любой функции:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">messages</span><span class="p">);</span> <span class="p">};</span>
+<span class="nx">log</span><span class="p">.</span><span class="nx">messages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'first'</span><span class="p">,</span> <span class="s1">'second'</span><span class="p">,</span> <span class="s1">'third'</span><span class="p">];</span>
+<span class="nx">log</span><span class="p">();</span> <span class="c1">// ["first","second","third"]</span></code></pre></figure>
+
+<p>В данном примере к свойству <code>messages</code> функции <code>log</code> можно обратиться сразу при её инициализации. Разумеется, подобным образом можно записывать и методы:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">transform</span><span class="p">());</span> <span class="p">};</span>
+<span class="nx">log</span><span class="p">.</span><span class="nx">messages</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'first'</span><span class="p">,</span> <span class="s1">'second'</span><span class="p">,</span> <span class="s1">'third'</span><span class="p">];</span>
+<span class="nx">log</span><span class="p">.</span><span class="nx">transform</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">log</span><span class="p">.</span><span class="nx">messages</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">message</span> <span class="o">+</span> <span class="s1">' message'</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+<span class="nx">log</span><span class="p">();</span> <span class="c1">// ["first message","second message","third message"]</span></code></pre></figure>
+
+<p>Подобным образом можно присвоить свойства и методы любому другому объекту. Но всегда стоит понимать, зачем вы это делаете и как это работает. Если раздавать методы и свойства всем видам объектов подряд, то, скорее всего, вы очень быстро заметите странное поведение. Например, если задать свойство <code>newProp</code> у массива, то вы обнаружите, что в результате выполнения любого перебирающего метода (например, <code>forEach</code>) с именованным свойством <code>newProp</code> не была вызвана <code>callback</code> функция, а также оно не влияет на длину самого массива:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 5</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">newProp</span> <span class="o">=</span> <span class="s1">'awesome property'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 5</span>
+
+<span class="c1">// свойство newProp не выводится в консоль</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span> <span class="c1">// 1 2 3 4 5 </span>
+<span class="p">});</span></code></pre></figure>
+
+<h5>Итого</h5>
+
+<p>Все типы данных в JavaScript разделяются на примитивы и объекты. Примитивы не могут иметь собственных свойств и методов, объекты могут. Утверждение, что всё в JavaScript является объектом неверное. Более правильно говорить, что <strong>всё в JavaScript ведёт себя, как объект, но необязательно им является</strong>. </p>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+
+		
+			<a href="http://jsraccoon.ru/oop-object-base" class="btn-default btn-icon-right">Читать далее: <b>Работа с объектами</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/oop-primitives";
+          this.page.identifier = 'oop-primitives';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

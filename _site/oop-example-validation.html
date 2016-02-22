@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Объектно-ориентированный JavaScript: немного практики</title>
+  <meta name="description" content="В прошлых статьях мы рассмотрели основы работы с объектами, функции конструкторы и прототипы. А, значит, настало время окончательно во всём разобраться и нап...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/oop-example-validation">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Объектно-ориентированный JavaScript: немного практики</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>В прошлых статьях мы рассмотрели <a href="http://jsraccoon.ru/oop-object-base">основы работы с объектами</a>, <a href="http://jsraccoon.ru/oop-constructors">функции конструкторы</a> и <a href="http://jsraccoon.ru/oop-prototypes">прототипы</a>. А, значит, настало время окончательно во всём разобраться и написать боевой пример — небольшую библиотеку для валидации данных. Полный код библиотеки, которую будем создавать в этой статье, можно найти в <a href="https://github.com/rtivital/validate">этом репозитории</a>. Если же вы хотите в ходе чтения статьи следовать всем инструкциям, то вы можете скачать <a href="https://gist.github.com/rtivital/229191009ff742df62bd">стартовый шаблон</a>.</p>
+
+<h5>Идея</h5>
+
+<p>Библиотека предназначена для валидации данных из одного поля ввода (тега <code>&lt;input&gt;</code> или <code>&lt;textarea&gt;</code>) и предоставляет несколько простых методов проверки данных. Например, можно проверить правильность введённого email адреса или указать максимальное и минимальное количество символов. Сама по себе, библиотека не даёт огромного функционала, но очень проста в расширении, предлагая пользователю самому дописать необходимые ему методы для валидации данных. В комплекте с библиотекой идёт простой строковый шаблонизатор, который поможет выводить понятные сообщения об ошибках.</p>
+
+<h5>Параметры</h5>
+
+<p>Необходимо всегда точно осознавать, что будет делать созданная вами функция-конструктор перед тем, как вы начнёте писать код. Поэтому, для начала, попробуем описать, что будет делать валидатор данных. Мы уже знаем, что нам обязательно нужно передавать DOM элемент (<code>&lt;input&gt;</code> или <code>&lt;textarea&gt;</code>), но помимо этого нам также необходимо узнать правила валидации, шаблоны сообщений об ошибках и <code>callback</code> функции, которые будут срабатывать при успешном или, наоборот, неуспешном завершении валидации. Очевидно, что параметров достаточно много и передавать их в функцию по одному будет крайне неудобно. Как раз для таких целей и существуют объекты. Используя объект, мы можем удобно сгруппировать все передаваемые в функцию данные. Таким образом, все параметры, которые нужно предоставить функции-конструктору: DOM элемент и объект настроек.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementbyId</span><span class="p">(</span><span class="s1">'email'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">emailValidation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/* объект настроек */</span> <span class="p">});</span></code></pre></figure>
+
+<h5>Объект настроек</h5>
+
+<p>Итак, у нас уже есть поле ввода, данные из которого будут проверяться, но этого же недостаточно. По крайней мере, нужно указать правила, в соответствие с которыми будет проводиться валидация. Для этого создадим свойство <code>rules</code> в объекте настроек, которое будет содержать все правила:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">min</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="na">match</span><span class="p">:</span> <span class="s1">'email'</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Данная конфигурация скажет функции-конструктору, что поле ввода должно содержать валидный адрес электронной почты, длина которого не меньше 8 и не больше 50 символов. </p>
+
+<p>К каждому правилу должно прилагаться сообщение об ошибке, которое будет использовано, когда валидация данных будет провалена. Поэтому создадим ещё одно свойство объекта <code>settings</code>, которое будет содержать все сообщения об ошибках.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">min</span><span class="p">:</span> <span class="s1">'Поле должно содержать больше 8 символов'</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="s1">'Поле не должно содержать больше 50 символов'</span><span class="p">,</span>
+    <span class="na">match</span><span class="p">:</span> <span class="s1">'Поле должно содержать валидный адрес электронной почты'</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Теперь остался последний, но самый важный шаг для завершения конфигурации — <code>callback</code> функции. Для наглядности назовём их <code>onError</code> и <code>onSuccess</code>. Данные функции, передаваемые с объектом настроек, будут срабатывать при завершении валидации в зависимости от её результата. Они могут содержать всё что угодно, но пока для простоты будем просто выводить в консоль сообщения.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+  <span class="na">onError</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Валидация провалена'</span><span class="p">);</span> <span class="p">},</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Валидация прошла успешно'</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Итак, основа нашего объекта настроек готова, и мы уже определились со всеми параметрами, передаваемыми в функцию, а, значит, половина работы мы уже сделали.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">min</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="na">match</span><span class="p">:</span> <span class="s1">'email'</span>
+  <span class="p">},</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">min</span><span class="p">:</span> <span class="s1">'Поле должно содержать больше 8 символов'</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="s1">'Поле не должно содержать больше 50 символов'</span><span class="p">,</span>
+    <span class="na">match</span><span class="p">:</span> <span class="s1">'Поле должно содержать валидный адрес электронной почты'</span>
+  <span class="p">},</span>
+  <span class="na">onError</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Валидация провалена'</span><span class="p">);</span> <span class="p">},</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Валидация прошла успешно'</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">email</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementbyId</span><span class="p">(</span><span class="s1">'email'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">emailValidation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="nx">settings</span><span class="p">);</span></code></pre></figure>
+
+<h5>Паттерн &quot;Модуль&quot;</h5>
+
+<p>При создании библиотеки мы не хотим, чтобы все наши &quot;внутренние&quot; переменные попали в чужие руки (кто знает, что задумали другие разработчики-злодеи). Может возникнуть конфликт имён и любую переменную из нашей библиотеки сможет перезаписать сторонний код. Чтобы этого не произошло, необходимо ограничить доступ. Удобнее всего это сделать с помощью <a href="http://forwebdev.ru/javascript/module-pattern/">паттерна &quot;Модуль&quot;</a>. Всё, что для этого нужно, — обвернуть весь наш код в немедленно вызываемую анонимную функцию и записать результат её выполнения в переменную, которая и будет использоваться другими разработчиками.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Validator</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{})();</span></code></pre></figure>
+
+<p>Таким образом, мы создали новую область видимости. Всё, что находится внутри неё, не будет доступно для записи и чтения, если мы сами не запишем данные, как свойство объекта <code>window</code>, или не вернём значение — в этом случае то, что возвращает функция будет записано в переменную <code>Validator</code>. Создадим функцию-конструктор и экспортируем её из модуля:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Validator</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">Validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="nx">Validate</span><span class="p">;</span>
+<span class="p">})();</span></code></pre></figure>
+
+<p>Теперь у нас есть возможность использовать функцию <code>Validate</code> вне модуля, так как она была записана в переменную <code>Validator</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">emailValidation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">(</span><span class="s1">'element'</span><span class="p">,</span> <span class="s1">'options'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">emailValidation</span><span class="p">);</span> <span class="c1">// { element: "element", options: "options" }</span></code></pre></figure>
+
+<p>Как я уже писал выше, мы также можем записать любые данные, как свойство объекта <code>window</code>. При подобной подходе у нас уже не возникает необходимости возвращать что-либо из модуля. Поэтому и результат выполнения записывать в переменную нет необходимости. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">Validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nx">Validator</span> <span class="o">=</span> <span class="nx">Validate</span><span class="p">;</span>
+<span class="p">})();</span></code></pre></figure>
+
+<h5>Запись свойств</h5>
+
+<p>Мы уже приступили к созданию функции-конструктора <code>Validate</code> и записали два свойства: <code>element</code> и <code>options</code>. Этого вполне достаточно, но было бы удобно обращаться к некоторым свойствам напрямую, например, писать каждый раз не <code>this.options.rules</code>, а просто <code>this.rules</code>. Поэтому создадим ещё несколько свойств для удобства:</p>
+
+<ul>
+<li><code>value</code> для обращения к введенным в поле ввода данным</li>
+<li><code>length</code> — количество символов в полученном <code>value</code></li>
+<li><code>rules</code> — объект, содержащий все правила</li>
+<li>и <code>messages</code> — объект со всеми сообщениями</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">rules</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">rules</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">mesages</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">messages</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>Методы</h5>
+
+<p>В начале статьи я писал, что библиотека достаточно минималистична и не располагает огромным количеством методов. Поэтому ограничимся самым минимальным набором:</p>
+
+<ul>
+<li><code>required</code> — проверка наличия хотя бы одного непробельного символа</li>
+<li><code>min</code> — минимальное количество символов</li>
+<li><code>max</code> — максимальное количество символов</li>
+<li><code>match</code> — проверка соответствия какому-либо паттерну</li>
+</ul>
+
+<h5>required</h5>
+
+<p>Всё, что необходимо сделать в методе — сравнить длину значения <code>this.length</code> с нулём. Таким, образом мы убедимся, что был введён хотя бы один непробельный символ: </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">required</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>min и max</h5>
+
+<p>Методы <code>min</code> и <code>max</code> практически повторяют метод <code>required</code>, но также принимают параметр, с которым будут сравнивать длину полученного значения <code>this.length</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">param</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">param</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>match</h5>
+
+<p>Метод <code>match</code> работает с регулярными выражениями. Для простоты создадим объект, который будет содержать все наши регулярные выражения. Положим его в переменную <code>regExps</code> и объявим её вне метода.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">regExps</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">email</span><span class="p">:</span> <span class="sr">/^</span><span class="se">([\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">(?:\.[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">)</span><span class="sr">*</span><span class="se">)</span><span class="sr">@</span><span class="se">((?:[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">\.)</span><span class="sr">*</span><span class="se">\w[\w</span><span class="sr">-</span><span class="se">]{0,66})\.([</span><span class="sr">a-z</span><span class="se">]{2,6}(?:\.[</span><span class="sr">a-z</span><span class="se">]{2})?)</span><span class="sr">$/i</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">:</span> <span class="sr">/^</span><span class="se">((</span><span class="sr">https</span><span class="se">?)</span><span class="sr">:</span><span class="se">\/\/(\w</span><span class="sr">+:</span><span class="se">{0,1}\w</span><span class="sr">*@</span><span class="se">)?(\S</span><span class="sr">+</span><span class="se">)</span><span class="sr">|</span><span class="se">)(</span><span class="sr">:</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">+</span><span class="se">)?(\/</span><span class="sr">|</span><span class="se">\/([\w</span><span class="sr">#!:.?+=&amp;%@!</span><span class="se">\-\/]))?</span><span class="sr">$/</span><span class="p">,</span>
+  <span class="na">numbers</span><span class="p">:</span> <span class="sr">/^</span><span class="se">\d</span><span class="sr">+</span><span class="se">(\.\d{1,2})?</span><span class="sr">$/</span><span class="p">,</span>
+  <span class="na">digits</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">*$/</span><span class="p">,</span>
+  <span class="na">letters</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">a-z</span><span class="se">][</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">*$/</span>
+<span class="p">};</span>
+
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{};</span></code></pre></figure>
+
+<p>Теперь мы сможем получить к ним доступ внутри метода <code>match</code>. В будущем нам ещё понадобится этот объект, так что поместить его вне метода <code>match</code> — хорошая идея. 
+Чтобы проверить соответствие значения <code>this.value</code> регулярному выражению нужно воспользоваться методом <code>test</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// выбираем регулярное выражение</span>
+  <span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="nx">regExps</span><span class="p">[</span><span class="nx">param</span><span class="p">];</span>
+  <span class="c1">// Тестируем</span>
+  <span class="k">return</span> <span class="nx">re</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Кратко</span>
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">regExps</span><span class="p">[</span><span class="nx">param</span><span class="p">].</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>Всё вместе</h5>
+
+<p>Итак, мы написали 4 метода для валидации данных:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">required</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">param</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">param</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">regExps</span><span class="p">[</span><span class="nx">param</span><span class="p">].</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Для их создания нам каждый раз приходилось обращаться к прототипу функции-конструктора <code>Validate</code>. Запись <code>Validate.prototype</code> достаточно громоздкая. Чтобы каждый раз не использовать её можно создать переменную, которая будет ссылаться на прототип. Так как любой прототип является не более чем простым объектом, мы можем смело задавать подобные переменные:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+<span class="nx">fn</span><span class="p">.</span><span class="nx">required</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="p">};</span>
+<span class="nx">fn</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">param</span><span class="p">;</span> <span class="p">};</span>
+<span class="nx">fn</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">param</span><span class="p">;</span> <span class="p">};</span>
+<span class="nx">fn</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">regExps</span><span class="p">[</span><span class="nx">param</span><span class="p">].</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">};</span></code></pre></figure>
+
+<h5>Валидация</h5>
+
+<p>Сами по себе написанные нами ранее методы бесполезны. Они ничего не умеют, кроме проверки данных. То есть для создания сообщений, группировки этих методов и вызова <code>callback</code> функций они не подходят. Поэтому создадим ещё один метод <code>validate</code>, который будет отвечать за обработку всего выше перечисленного.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span></code></pre></figure>
+
+<p>Первое, что нужно сделать — перезаписать значение для <code>this.value</code> и <code>this.length</code>. При каждом запуске метода <code>validate</code> мы хотим получать новые данные из поля ввода и только потом проверять их. </p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Теперь у нас есть самые &quot;свежие&quot; данные и мы можем их использовать для проверки соответствия правилам, которые записаны в объекте <code>this.rules</code>. Свойства объекта <code>this.rules</code> соответствуют написанным нами ранее методам. Удобнее всего правила перебрать с помощью цикла <code>for .. in</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Пример объекта правил</span>
+<span class="c1">// {</span>
+<span class="c1">//   min: 8,</span>
+<span class="c1">//   max: 50,</span>
+<span class="c1">//   match: 'email'</span>
+<span class="c1">// }</span>
+
+<span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rule</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Итак, мы написали цикл, с помощью которого мы переберём все передаваемые в функцию правила. При каждой итерации внутри цикла у нас будет доступ к имени текущего правила, например, <code>min</code>, а также к параметру правила, например <code>8</code> для правила <code>min</code>. Всё, что нам остаётся сделать, — последовательно применить созданные нам ранее методы.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rule</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">rule</span><span class="p">](</span><span class="nx">param</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Переменная <code>result</code> всегда содержит значение типа <code>boolean</code>, с помощью которого мы можем сказать соответствует ли наше <code>this.value</code> требованиям, описанным в правилах. Если мы узнали, что значение не соответствует какому-либо правилу, то мы сразу же прерываем выполнение цикла и вызываем <code>callback</code> функцию <code>onError</code>. Если же значение прошло проверки на все заданные правила, то нужно вызвать функцию <code>onSuccess</code>. Перед циклом объявим переменную <code>isValid</code>, которая будет сигнализировать о состоянии валидации.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="c1">// Изначально считаем, что все правила пройдены</span>
+  <span class="kd">var</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rule</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">rule</span><span class="p">](</span><span class="nx">param</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Если вылидация провалилась, то выставляем значение false</span>
+      <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="c1">// Вызываем функцию onError</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onError</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+      <span class="c1">// И прерываем выполнение цикла</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// После завершения цикла проверяем isValid</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isValid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Если всё хорошо, то вызываем функцию onSuccess</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>Пишем сообщения</h5>
+
+<p>Написанный нами метод <code>validate</code> уже сейчас достаточно хорошо. Он умеет проверять соответствие данных всем переданным правилам и вызывать функции в зависимости от результата проверки. Но мы также хотим передавать содержательные сообщения о полученных ошибках. В этом нам поможет простая функция для строковой шаблонизации. Допустим, что на выходе мы хотим получить сообщение, которое будет содержать введённые пользователем данные, а также параметр из наших правил. Чтобы получить подобную конструкцию мы можем составить строку:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">rules</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">min</span><span class="p">:</span> <span class="mi">8</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">messages</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">min</span><span class="p">:</span> <span class="s1">'Значение должно быть не менее %rule% символов. Значение "%data%" не подходит.'</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>В полученной строке необходимо заменить <code>%rule%</code> на параметр (в данном случае 8), а <code>%data%</code> на значение, полученное от пользователя. Таким образом, со всеми заменами строка будет выглядеть следующим образом: <code>&#39;Значение должно быть не менее 8 символов. Значение &quot;банан&quot; не подходит.&#39;</code></p>
+
+<p>Реализовать подобную шаблонизацию достаточно просто с помощью метода строк <code>replace</code>. Чтобы не забивать наш метод <code>validate</code> большим количеством кода, создадим для этого отдельную функцию <code>createMessage</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">createMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">rule</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'%rule%'</span><span class="p">,</span> <span class="nx">rule</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'%data%'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Сразу же опробуем функцию</span>
+<span class="nx">createMessage</span><span class="p">(</span><span class="s1">'Данные: %data%, Правило: %rule%'</span><span class="p">,</span><span class="s1">'желтый'</span><span class="p">,</span> <span class="s1">'банан'</span><span class="p">);</span>
+<span class="c1">// Данные: банан, Правило: желтый</span></code></pre></figure>
+
+<p>Функция работает. Но работает только для наших конкретных переменных. Если в будущем мы захотим передавать и другие значения, то у нас ничего не получится. Чтобы это исправить будем передавать в функцию не отдельные параметры, а объект, содержащий все значения, которые нужно заменить.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">createMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">settings</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
+    <span class="nx">str</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'%'</span> <span class="o">+</span> <span class="nx">key</span> <span class="o">+</span> <span class="s1">'%'</span><span class="p">,</span> <span class="nx">settings</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Сразу же опробуем функцию</span>
+<span class="nx">createMessage</span><span class="p">(</span><span class="s1">'Данные: %data%, Правило: %rule%'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="s1">'Банан'</span><span class="p">,</span>
+  <span class="na">rule</span><span class="p">:</span> <span class="s1">'Жёлтый'</span>
+<span class="p">});</span>
+<span class="c1">// Данные: банан, Правило: желтый</span></code></pre></figure>
+
+<p>Теперь функция принимает неограниченное число значений для замены и не зависит от порядка следования этих значений в объекте. Добавим эту функцию в наш модуль и будем использовать в методе <code>validate</code>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="c1">// Изначально считаем, что все правила пройдены</span>
+  <span class="kd">var</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rule</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">rule</span><span class="p">](</span><span class="nx">param</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="c1">// Получаем шаблон сообщения из переданного пользователем объекта messages</span>
+      <span class="kd">var</span> <span class="nx">messageTemplate</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">messages</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+      <span class="c1">// Создаем сообщение с параметрами data и rule</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">createMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">rule</span><span class="p">:</span> <span class="nx">param</span>
+      <span class="p">})</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onError</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isValid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Теперь у нас есть сообщение. Но как его можно будет использовать? Как вы, наверное, уже заметили, мы вызываем функции <code>onError</code> и <code>onSuccess</code> с помощью метода <code>call</code>, с помощью которого можно задавать значение <code>this</code> для функций. Другими словами, первый аргумент, передаваемый в метод <code>call</code> будет использован функцией, как <code>this</code>. Таким образом, мы получим возможность использовать все свойства и методы внутри функций.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">onError</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Ошибка: '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">};</span></code></pre></figure>
+
+<h5>Обращение к прототипу</h5>
+
+<p>Чтобы обеспечить удобство создания методов в нашей библиотеке, мы можем экспортировать из нашего модуля не только ссылку на функцию конструктор, но и на её прототип.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Validator</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  
+  <span class="kd">var</span> <span class="nx">Validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+  <span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">init</span><span class="p">:</span> <span class="nx">Validate</span><span class="p">,</span>
+    <span class="na">fn</span><span class="p">:</span> <span class="nx">fn</span>
+  <span class="p">}</span>
+<span class="p">})();</span></code></pre></figure>
+
+<p>Теперь для создания новой валидации нам придется использовать следующую конструкцию:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">emailValidation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="cm">/* опции */</span><span class="p">);</span></code></pre></figure>
+
+<p>Стало немного сложнее, но подобное решение позволяет создавать новые методы для конструктора <code>Validate</code>, обращаясь к его прототипу.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Vaidator</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s1">'1234qwerty'</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">passwordValidation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'password'</span><span class="p">),</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">password</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">password</span><span class="p">:</span> <span class="s1">'Пароль %data% неверный'</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<h5>Код библиотеки целиком</h5>
+
+<p>Вы можете посмотреть результат применения библиотеки на <a href="http://codepen.io/rtivital/pen/JGwaoV">codepen</a> или <a href="https://gist.github.com/rtivital/d5499b4b6c8377d79dd2/archive/4484ac046d7daba0adb1caa80632bc39f9305689.zip">скачать работающий пример</a>.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Validator</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">_createMessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">settings</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'%'</span> <span class="o">+</span> <span class="nx">key</span> <span class="o">+</span> <span class="s1">'%'</span><span class="p">,</span> <span class="nx">settings</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// http://youmightnotneedjquery.com/#deep_extend</span>
+  <span class="kd">var</span> <span class="nx">_extend</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">out</span> <span class="o">=</span> <span class="nx">out</span> <span class="o">||</span> <span class="p">{};</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">)</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="s1">'object'</span><span class="p">)</span>
+            <span class="nx">out</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">_extend</span><span class="p">(</span><span class="nx">out</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+          <span class="k">else</span>
+            <span class="nx">out</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">out</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">regExps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">email</span><span class="p">:</span> <span class="sr">/^</span><span class="se">([\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">(?:\.[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">)</span><span class="sr">*</span><span class="se">)</span><span class="sr">@</span><span class="se">((?:[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+</span><span class="se">\.)</span><span class="sr">*</span><span class="se">\w[\w</span><span class="sr">-</span><span class="se">]{0,66})\.([</span><span class="sr">a-z</span><span class="se">]{2,6}(?:\.[</span><span class="sr">a-z</span><span class="se">]{2})?)</span><span class="sr">$/i</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="sr">/^</span><span class="se">((</span><span class="sr">https</span><span class="se">?)</span><span class="sr">:</span><span class="se">\/\/(\w</span><span class="sr">+:</span><span class="se">{0,1}\w</span><span class="sr">*@</span><span class="se">)?(\S</span><span class="sr">+</span><span class="se">)</span><span class="sr">|</span><span class="se">)(</span><span class="sr">:</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">+</span><span class="se">)?(\/</span><span class="sr">|</span><span class="se">\/([\w</span><span class="sr">#!:.?+=&amp;%@!</span><span class="se">\-\/]))?</span><span class="sr">$/</span><span class="p">,</span>
+    <span class="na">numbers</span><span class="p">:</span> <span class="sr">/^</span><span class="se">\d</span><span class="sr">+</span><span class="se">(\.\d{1,2})?</span><span class="sr">$/</span><span class="p">,</span>
+    <span class="na">digits</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">*$/</span><span class="p">,</span>
+    <span class="na">letters</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">a-z</span><span class="se">][</span><span class="sr">A-Z</span><span class="se">]</span><span class="sr">*$/</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">messages</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">required</span><span class="p">:</span> <span class="s1">'This field is required'</span><span class="p">,</span>
+    <span class="na">min</span><span class="p">:</span> <span class="s1">'This field should contain at least %rule% characters'</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="s1">'This field should not contain more than %rule% characters'</span><span class="p">,</span>
+    <span class="na">match</span><span class="p">:</span> <span class="s1">'This field shold countain a valid %rule%'</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">Validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">regExps</span><span class="p">:</span> <span class="nx">regExps</span><span class="p">,</span>
+      <span class="na">messages</span><span class="p">:</span> <span class="nx">messages</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">_extend</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">element</span> <span class="o">=</span> <span class="nx">element</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">regExps</span> <span class="o">=</span> <span class="nx">regExps</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">Validate</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+
+  <span class="nx">fn</span><span class="p">.</span><span class="nx">validate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rule</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">rules</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">rule</span><span class="p">];</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">[</span><span class="nx">rule</span><span class="p">](</span><span class="nx">param</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">isValid</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">_createMessage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">messages</span><span class="p">[</span><span class="nx">rule</span><span class="p">],</span> <span class="p">{</span><span class="na">rule</span><span class="p">:</span> <span class="nx">param</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">});</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onError</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isValid</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">fn</span><span class="p">.</span><span class="nx">required</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;};</span>
+  <span class="nx">fn</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">param</span><span class="p">;</span> <span class="p">};</span>
+  <span class="nx">fn</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">param</span><span class="p">;</span> <span class="p">};</span>
+  <span class="nx">fn</span><span class="p">.</span><span class="nx">match</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">regExps</span><span class="p">[</span><span class="nx">param</span><span class="p">].</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="p">};</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">init</span><span class="p">:</span> <span class="nx">Validate</span><span class="p">,</span>
+    <span class="na">fn</span><span class="p">:</span> <span class="nx">fn</span>
+  <span class="p">};</span>
+<span class="p">})();</span></code></pre></figure>
+
+<p>Заметили, каким хитрым образом мы установили объект настроек <code>this.options</code>? Функция <code>_extend</code> широко используется в подобных ситуациях и позволяет переназначить параметры, заданные по умолчанию с помощью объекта настроек.</p>
+
+<h5>Что дальше?</h5>
+
+<p>Написанное нами решение небезопасно и недружелюбно к пользователю. Всё из-за того, что мы не включили ни одной обработки ошибок. Представьте, что будет, если пользователь попробует передать в функцию-конструктор <code>Validate</code> DOM элемент, у которого не будет свойства <code>value</code>. Или что случится, когда пользователь попробует воспользоваться несуществующим сообщением об ошибке или же регулярным выражением? Попробуйте сами предусмотреть подобные ситуации и улучшить библиотеку. Вы также можете посмотреть мои в <a href="https://github.com/rtivital/validate">этом репозитории</a>.</p>
+
+<p>Если вы хотите ещё попрактиковаться на данном примере, то попробуйте написать следующие методы:</p>
+
+<p>Метод <code>contain</code> проверяет нахождение всех переданных подстрок в проверяемых данных:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">emailValidator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">email</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">contain</span><span class="p">:</span> <span class="p">[</span><span class="s1">'@'</span><span class="p">,</span> <span class="s1">'.com'</span><span class="p">,</span> <span class="s1">'gmail'</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Метод <code>only</code> проверяет сотоит ли введённое пользователем значение только из указанных символов:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">phoneValidator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Validator</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">phone</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">only</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'+'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="s1">'('</span><span class="p">,</span> <span class="s1">')'</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/oop-prototypes" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Прототипы</b></a>
+		
+
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/oop-example-validation";
+          this.page.identifier = 'oop-example-validation';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>

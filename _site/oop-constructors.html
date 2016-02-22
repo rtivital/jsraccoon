@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Theme for mobile Chrome -->
+  <meta name="theme-color" content="#e74c3c">
+
+  <title>Объектно-ориентированный JavaScript: функции конструкторы</title>
+  <meta name="description" content="Представьте, у вас есть небольшой магазин. В магазине есть два менеджера, занимающихся продажей ваших товаров. И вы решаете организовать их работу. Для каждо...">
+   
+  <!-- Link favicon -->
+  <link rel="shortcut icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="http://jsraccoon.ru/favicon.ico" type="image/x-icon">
+
+  <!-- Link Google Fonts: Open Sans for headings, Arimo for content, Roboto Mono for code blocks -->
+  <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic|Open+Sans:700,800|Roboto+Mono:400,700,700italic,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
+
+  <!-- Main CSS File (compiled from _sass forder) -->
+  <link rel="stylesheet" href="/css/main.min.css">
+
+  <!-- Canonical url (https://support.google.com/webmasters/answer/139066) -->
+  <link rel="canonical" href="http://jsraccoon.ru/oop-constructors">
+
+  <!-- Regional url (https://support.google.com/webmasters/answer/189077) -->
+  <link rel="alternate" type="application/rss+xml" title="Frontend Raccoon" href="http://jsraccoon.ru/feed.xml">
+</head>
+
+
+  <body>
+  <p id="post-meta"></p>
+    <header class="site-header">
+	<div class="wrapper">
+		<div class="logo-section">
+			<a class="logo" href="http://jsraccoon.ru/">
+				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+			</a>
+		</div>
+	</div>
+
+	<nav role="navigation" class="site-navbar container">
+		<div class="mobile-nav">
+			<h2 class="navbar-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+			<div class="burger-icon">
+				<div class="burger"></div>
+			</div>
+		</div>
+		<div class="navbar-toggle">
+			<ul class="nav main-section">
+				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+			</ul>
+
+			<ul class="nav social-section">
+				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper post-wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Объектно-ориентированный JavaScript: функции конструкторы</h1>
+    <div class="meta-container center"><span class="meta type">
+  
+  
+</span>
+
+
+
+
+  <span class="meta category"><a href="./tag/">
+    <i class="meta-icon fa fa-navicon"></i>
+    
+  </a></span>
+</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Представьте, у вас есть небольшой магазин. В магазине есть два менеджера, занимающихся продажей ваших товаров. И вы решаете организовать их работу. Для каждого менеджера создаётся отдельный объект:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'John'</span><span class="p">,</span>
+  <span class="na">sales</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="na">sell</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Итак, один менеджер готов. Джон умеет продавать вещи, знает своё имя и количество продаж.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nx">john</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Apple'</span><span class="p">);</span>      <span class="c1">// Manager John sold Apple</span>
+<span class="nx">john</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Pomegrade'</span><span class="p">);</span>  <span class="c1">// Manager John sold Pomegrade</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 12</span></code></pre></figure>
+
+<p>Остался ещё один:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">mary</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Mary'</span><span class="p">,</span>
+  <span class="na">sales</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+  <span class="na">sell</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Это было просто и всё работает хорошо. Или нет? У каждого менеджера есть свой метод <code>sell</code>. В том, что он у всех будет разным можно убедиться с помощью сравнения:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">john</span><span class="p">.</span><span class="nx">sell</span> <span class="o">===</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sell</span><span class="p">;</span> <span class="c1">// false</span></code></pre></figure>
+
+<p>Это означает, что каждый объект содержит свою собственную копию функции. Под каждую подобную функцию выделяется место в памяти. Представьте, что будет, когда ваш магазин вырастет и пополнится парой сотен менеджеров, для каждого из которых будет необходимо создать отдельный метод. А если и методов будет много? Очевидно, что создавать объекты подобным способом — не самая лучшая затея. Чтобы решить подобную проблему существуют функции конструкторы. </p>
+
+<p>Как и следует из названия функции конструкторы являются не более чем обычными функциями. Отличие только одно — конструкторы, вызванные с помощью оператора <code>new</code> <strong>всегда возвращают объект</strong>. </p>
+
+<p>Для начала разберёмся, что мы хотим сделать: написать функцию, которая будет возвращать объект со всеми указанными нами свойствами и методами. Написать подобную функцию очень просто:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">manager</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sales</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="na">sales</span><span class="p">:</span> <span class="nx">sales</span><span class="p">,</span>
+    <span class="na">sell</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span> 
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Теперь мы можем создать объекты для двух наших менеджеров с помощью этой функции:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="nx">manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">mary</span> <span class="o">=</span> <span class="nx">manager</span><span class="p">(</span><span class="s1">'Mary'</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">,</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 10 120</span>
+<span class="nx">john</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Apple'</span><span class="p">);</span>      <span class="c1">// Manager John sold Apple</span>
+<span class="nx">mary</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Pomegrade'</span><span class="p">);</span>  <span class="c1">// Manager Mary sold Pomegrade</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">,</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 11 121</span></code></pre></figure>
+
+<p>Таким же образом будет работать и функция конструктор:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sales</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">=</span> <span class="nx">sales</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sell</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">mary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'Mary'</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span></code></pre></figure>
+
+<p>Приведённые выше функции <code>manager</code> и <code>Manager</code> делают одно и то же, но разными способами. Но функция <code>Manager</code> является конструктором, а <code>manager</code> — нет. Что это значит? То, что внутри функции <code>Manager</code> мы можем пользоваться ключевым словом <code>this</code>, которое содержит ссылку на <strong>новый</strong> объект. Другими словами, каждый раз, когда вы вызываете любую функцию с оператором <code>new</code>, вы подразумеваете, что будет создан новый объект, к которому можно обратиться с помощью ключевого слова <code>this</code> внутри функции. </p>
+
+<p>Как вы могли заметить, при создании функции-конструктора <code>Manager</code> мы не использовали <code>return</code>, для того, чтобы вернуть созданный функцией объект. Но в переменных <code>john</code> и <code>mary</code> всё равно есть объекты. Это значит, что при использовании оператора <code>new</code> возвращать что-либо из функции необязательно. Хотя вы можете вернуть <strong>любой</strong> объект, если в этом есть смысл:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sales</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">=</span> <span class="nx">sales</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sell</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">{</span><span class="na">prop</span><span class="p">:</span> <span class="s1">'Prop of new object'</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span> <span class="c1">// {"prop":"Prop of new object"}</span></code></pre></figure>
+
+<p>Создавая объект с помощью функции-конструктора, вы автоматически присваиваете объекту свойство: <code>constructor</code>, которое содержит ссылку на функцию-конструктор, с помощью которой был создан объект:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">constructor</span><span class="p">);</span> <span class="c1">// function Manager(name, sales) { ... };</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Manager</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span> <span class="k">instanceof</span> <span class="nx">Manager</span><span class="p">);</span> <span class="c1">// true</span></code></pre></figure>
+
+<p>Таким образом, с помощью свойства <code>constructor</code> можно получить, как саму функцию-конструктор, так и её имя. </p>
+
+<p>Итак, мы выяснили, что с помощью функций-конструкторов и оператора <code>new</code> можно создать объект. Но нашу проблему всё равно не решили. Для каждого нового объекта будет создаваться новая функция, которая будет записываться в метод <code>sell</code>. И здесь нам поможет прототип функции <code>Manager</code>. Перейдём сразу к делу:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sales</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">=</span> <span class="nx">sales</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Manager</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sell</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">mary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'Mary'</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">,</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 10 120</span>
+<span class="nx">john</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Apple'</span><span class="p">);</span>      <span class="c1">// Manager John sold Apple</span>
+<span class="nx">mary</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Pomegrade'</span><span class="p">);</span>  <span class="c1">// Manager Mary sold Pomegrade</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sales</span><span class="p">,</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sales</span><span class="p">);</span> <span class="c1">// 11 121</span></code></pre></figure>
+
+<p>Что вообще происходит? Каждый объект в JavaScript обладает прототипом. Чтобы в этом убедиться, откройте консоль и введите <code>console.dir([]);</code>. Открыв свойство <code>__proto__</code> вы сможете увидеть все методы для работы с массивами, которые предусмотрены в вашем браузере. Очевидно, что каждый массив по-отдельности не снабжается всеми данными методами. Но, тем не менее, мы без проблем можем их использовать, например, <code>[1, 2, 3].map((n) =&gt; n * 2)</code>. Когда вы используете какой-либо метод массивов, например, <code>map</code> или <code>forEach</code>, то вы подразумеваете, что этот метод будет взят из прототипа функции-конструктора <code>Array</code>. Любой массив может использовать все методы, записанные в прототип конструктора <code>Array</code>, хотя у самого массива нет ни одного метода. Таким образом, любой объект получает возможность использовать все методы, записанные в прототипе его функции-конструктора. </p>
+
+<p>Само свойство <code>prototype</code> является не более чем обычным объектом, поэтому, если вы хотите сразу же записать несколько методов в прототип, то пример выше можно переписать следующим образом:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sales</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">=</span> <span class="nx">sales</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Manager</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">sell</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">thing</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sales</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">'Manager '</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' sold '</span> <span class="o">+</span> <span class="nx">thing</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">speak</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">word</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">' says '</span> <span class="o">+</span> <span class="nx">word</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">john</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'John'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">mary</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="s1">'Mary'</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+
+<span class="nx">john</span><span class="p">.</span><span class="nx">sell</span><span class="p">(</span><span class="s1">'Apple'</span><span class="p">);</span> <span class="c1">// Manager John sold Apple</span>
+<span class="nx">mary</span><span class="p">.</span><span class="nx">speak</span><span class="p">(</span><span class="s1">'Hello!'</span><span class="p">);</span> <span class="c1">// Mary says Hello!</span></code></pre></figure>
+
+<p>Как и при работе внутри функции-конструктора <code>this</code> содержит ссылку на текущий экземпляр объекта, поэтому им можно пользоваться во всех объявляемых в прототипе методах.</p>
+
+<p>Теперь мы решили проблему: теперь все методы находятся в прототипе и могут быть использованы каждый созданным объектом, но при этом объявляются всего один раз.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">sell</span> <span class="o">===</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">sell</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">speak</span> <span class="o">===</span> <span class="nx">mary</span><span class="p">.</span><span class="nx">speak</span><span class="p">);</span> <span class="c1">// true</span></code></pre></figure>
+
+<p>Подобным образом мы можем создать любое количество объектов с помощью функции конструктора <code>Manager</code> и оператора <code>new</code> и всем им будут доступны методы из прототипа <code>Manager</code>.</p>
+
+  </div>
+
+  
+	<div class="post-pagination">
+		
+			<a href="http://jsraccoon.ru/oop-object-base" class="btn-default btn-icon-left"><i class="fa fa-arrow-left"></i>Предыдущая статья: <b>Работа с объектами</b></a>
+		
+
+		
+			<a href="http://jsraccoon.ru/oop-prototypes" class="btn-default btn-icon-right">Читать далее: <b>Прототипы</b><i class="fa fa-arrow-right"></i></a>
+		
+	</div>
+
+
+</article>
+
+      </div>
+
+    </div>
+
+    
+      <!-- Disqus Comments -->
+      <div id="disqus_thread" class="wrapper comments"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = "http://jsraccoon.ru/oop-constructors";
+          this.page.identifier = 'oop-constructors';
+        };
+          
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//jsraccoon.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+    
+
+    <footer class="site-sooter">
+  <div class="wrapper">
+    <div class="social-section">
+  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
+  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
+  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
+</div>
+  </div>
+</footer>
+<!-- Google Analitics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72078847-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+<script src="./js/main.js"></script>
+
+  </body>
+
+</html>
