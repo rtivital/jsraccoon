@@ -7,7 +7,8 @@ twitter_username: rtivital
 github_username:  rtivital
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
+markdown: redcarpet
 permalink: /:title
 
 # Default settings
@@ -21,3 +22,15 @@ defaults:
       layout: "post"
       type: article
       comments: true
+
+exclude: 
+  - node_modules
+  - bower_components
+  - gulpfile.js
+  - bower.json
+
+gems:
+  - jekyll-paginate
+
+paginate: 10
+paginate_path: "/page/:num"

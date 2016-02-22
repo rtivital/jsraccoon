@@ -1,44 +1,24 @@
 <span class="meta type">
   {% assign t = post.type %}
   {% case t %}
-    {% when 'article' %} <i class="meta-icon fa fa-file-text-o"></i> Статья
-    {% when 'advice' %} <i class="meta-icon fa fa-cogs"></i> Совет
-    {% when 'question' %} <i class="meta-icon fa fa-question"></i> Вопрос
-    {% when 'exercise' %} <i class="meta-icon fa fa-code"></i> Задача
-    {% when 'digest' %} <i class="meta-icon fa fa-list"></i> Дайджест
+    {% when 'article' %} <a href="./tag/article"><i class="meta-icon fa fa-file-text-o"></i> Статья</a>
+    {% when 'advice' %} <a href="./tag/advice"><i class="meta-icon fa fa-cogs"></i> Совет</a>
+    {% when 'question' %} <a href="./tag/question"><i class="meta-icon fa fa-question"></i> Вопрос</a>
+    {% when 'exercise' %} <a href="./tag/exercise"><i class="meta-icon fa fa-code"></i> Задача</a>
+    {% when 'digest' %} <a href="./tag/digest"><i class="meta-icon fa fa-list"></i> Дайджест</a>
   {% endcase %}
-</span>
-<span class="meta date">
-  <i class="meta-icon fa fa-clock-o"></i>
-  {{ post.date | date: "%-d" }}
-  {% assign m = post.date | date: "%-m" %}
-  {% case m %}
-    {% when '1' %}Января
-    {% when '2' %}Февраля
-    {% when '3' %}Марта
-    {% when '4' %}Апреля
-    {% when '5' %}Мая
-    {% when '6' %}Июня
-    {% when '7' %}Июля
-    {% when '8' %}Августа
-    {% when '9' %}Сентября
-    {% when '10' %}Октября
-    {% when '11' %}Ноября
-    {% when '12' %}Декабря
-  {% endcase %}
-  {{ post.date | date: "%Y" }}
 </span>
 
 {% if post.author %}
-  <span class=" meta author">
+  <span class=" meta author"><a href="./tag/{{ post.author_nic }}">
     <i class="meta-icon fa fa-pencil"></i>
     {{ post.author }}
-  </span>
+  </a></span>
 {% endif %}
 
-{%if post.hideCat != true %}
-  <span class="meta category">
+{% unless post.hideCat %}
+  <span class="meta category"><a href="./tag/{{ post.categories }}">
     <i class="meta-icon fa fa-navicon"></i>
     {{ post.categories }}
-  </span>
-{% endif %}
+  </a></span>
+{% endunless %}

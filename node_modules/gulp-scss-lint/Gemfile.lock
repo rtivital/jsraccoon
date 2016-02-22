@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rainbow (2.0.0)
+    sass (3.4.15)
+    scss_lint (0.40.1)
+      rainbow (~> 2.0)
+      sass (~> 3.4.1)
+    scss_lint_reporter_checkstyle (0.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  scss_lint
+  scss_lint_reporter_checkstyle
+
+BUNDLED WITH
+   1.10.5
