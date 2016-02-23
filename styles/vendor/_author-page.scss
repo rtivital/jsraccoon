@@ -5,20 +5,33 @@
 
 	display: flex;
 
+	@media (max-width: 640px) {
+		display: block;
+	}
+
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.1);
 }
 
 .author-image {
 	width: 20%;
+	@media (max-width: 640px) {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 2rem;
+	}
 }
 
 .author-avatar {
-	display: block;
+	display: inline-block;
 	max-width: 100%;
 	border-radius: 50%;
 	padding: .5rem;
 	border: 1px solid #f0f0f0;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+
+	@media (max-width: 640px) {
+		max-width: 150px;
+	}
 }
 
 .author-description {
