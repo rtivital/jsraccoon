@@ -5,12 +5,12 @@
     <description>Фронтенд и веб-разработка</description>
     <link>http://jsraccoon.ru/</link>
     <atom:link href="http://jsraccoon.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Feb 2016 22:58:51 +0300</pubDate>
-    <lastBuildDate>Tue, 23 Feb 2016 22:58:51 +0300</lastBuildDate>
+    <pubDate>Tue, 23 Feb 2016 23:18:32 +0300</pubDate>
+    <lastBuildDate>Tue, 23 Feb 2016 23:18:32 +0300</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>События</title>
+        <title>Объект наблюдатель</title>
         <description>&lt;p&gt;Напишите функцию &lt;code&gt;observable&lt;/code&gt;, которая будет принимать объект и делать его &amp;quot;наблюдаемым&amp;quot;. После вызова функции объект должен поддерживать следующие методы.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
