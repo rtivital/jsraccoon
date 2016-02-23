@@ -1,0 +1,11 @@
+- slug: exercise
+  name: Задача
+
+- slug: advice
+  name: Совет
+
+- slug: digest
+  name: Дайджест
+
+- slug: article
+  name: Статья

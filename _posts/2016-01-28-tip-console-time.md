@@ -6,6 +6,8 @@ type: advice
 identifier: tip-console-time
 
 description: "Измерять производительность блоков кода очень просто с помощью инструментов разработчика и функций <code>console.time()</code> и <code>console.timeEnd()</code>."
+
+tags: [javascript]
 ---
 Используйте `console.time()` для измерения производетельности отдельных блоков кода:
 {% highlight javascript %}

@@ -1,12 +1,15 @@
 ---
-title: 'Шаблонизация'
-author: Missingdays
+title: "Шаблонизация"
+author_name: "Евгений Бовыкин"
+author: missingdays
 categories: JavaScript
 date: 2016-01-30 14:00:00 +0200
 type: exercise
 identifier: template-string
 
-description: 'Создание новой строки на основе шаблона'
+description: "Создание новой строки на основе шаблона"
+
+tags: [javascript]
 ---
 
 Напишите функцию `template`, которая первым аргументом принимает строку-шаблон, а вторым — описание литералов, которые в этот шаблон нужно вставить. 

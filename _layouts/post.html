@@ -11,7 +11,13 @@ layout: posts
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
-
+	<div class="post-tags">
+	  {% for tag in page.tags %}
+			<a href="/tag/{{ tag }}" class="tag"><i class="fa fa-tag"></i>{{ tag }}</a>
+	  {% endfor %}
+	  <a href="/type/{{ page.type }}" class="tag"><i class="fa fa-tag"></i>{{ page.type }}</a>
+  </div>
   {% include post_pagination.html %}
+	
 
 </article>

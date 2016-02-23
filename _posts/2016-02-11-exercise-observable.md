@@ -2,13 +2,14 @@
 title:  "События"
 categories: JavaScript
 date:   2016-02-11 15:00:58 +0300
+author_name: "Евгений Бовыкин"
 author: missingdays
 type: exercise
 identifier: exercise-observable
 
 description: "Observable это тип объекта, который поддерживает различные события и подписку на них."
 
-tags: [JavaScript, Exercise]
+tags: [javascript]
 ---
 
 Напишите функцию `observable`, которая будет принимать объект и делать его "наблюдаемым". После вызова функции объект должен поддерживать следующие методы.

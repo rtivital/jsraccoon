@@ -1,23 +1,26 @@
+{% unless post %}
+  {% assign post = page %}
+{% endunless %}
 <span class="meta type">
   {% assign t = post.type %}
   {% case t %}
-    {% when 'article' %} <a href="./tag/article"><i class="meta-icon fa fa-file-text-o"></i> Статья</a>
-    {% when 'advice' %} <a href="./tag/advice"><i class="meta-icon fa fa-cogs"></i> Совет</a>
-    {% when 'question' %} <a href="./tag/question"><i class="meta-icon fa fa-question"></i> Вопрос</a>
-    {% when 'exercise' %} <a href="./tag/exercise"><i class="meta-icon fa fa-code"></i> Задача</a>
-    {% when 'digest' %} <a href="./tag/digest"><i class="meta-icon fa fa-list"></i> Дайджест</a>
+    {% when 'article' %} <a href="/type/article"><i class="meta-icon fa fa-file-text-o"></i> Статья</a>
+    {% when 'advice' %} <a href="/type/advice"><i class="meta-icon fa fa-cogs"></i> Совет</a>
+    {% when 'question' %} <a href="/type/question"><i class="meta-icon fa fa-question"></i> Вопрос</a>
+    {% when 'exercise' %} <a href="/type/exercise"><i class="meta-icon fa fa-code"></i> Задача</a>
+    {% when 'digest' %} <a href="/type/digest"><i class="meta-icon fa fa-list"></i> Дайджест</a>
   {% endcase %}
 </span>
 
 {% if post.author %}
-  <span class=" meta author"><a href="./tag/{{ post.author_nic }}">
+  <span class=" meta author"><a href="/author/{{ post.author }}">
     <i class="meta-icon fa fa-pencil"></i>
-    {{ post.author }}
+    {{ post.author_name }}
   </a></span>
 {% endif %}
 
 {% unless post.hideCat %}
-  <span class="meta category"><a href="./tag/{{ post.categories }}">
+  <span class="meta category"><a href="/tag/{{ post.categories }}">
     <i class="meta-icon fa fa-navicon"></i>
     {{ post.categories }}
   </a></span>

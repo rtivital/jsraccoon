@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+<body>
+{% include header.html %}
+
+<div class="container">
+  <div class="author-wrapper">
+    <div class="author-header">
+      <div class="author-image">
+        <img src="{{ page.pic }}" alt="author-avatar" class="author-avatar">
+      </div>
+      <div class="author-description">
+        <h2 class="author-title">{{ page.author_name }}</h2>
+        <p>{{ page.description }}</p>
+        
+        <div class="author-links">
+          {% if page.github %}
+            <a href="{{ page.github }}" class="author-link"><i class="fa fa-github"></i></a>
+          {% endif %}
+
+          {% if page.vk %}
+            <a href="{{ page.vk }}" class="author-link"><i class="fa fa-vk"></i></a>
+          {% endif %}
+
+          {% if page.email %}
+            <a href="mailto:{{ page.email }}" class="author-link"><i class="fa fa-envelope"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% for post in site.posts %}
+      {% if page.author == post.author %}
+        <article class="article type-{{ post.type }}">
+          <header class="article-header">
+
+            <h2 class="article-title">
+              <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+            </h2>
+
+            <div class="meta-container">{% include meta.html %}</div>
+
+          </header>
+
+          <div class="description">
+            <p class="post-description">{{post.description}}</p>
+          </div>
+
+          <footer class="article-footer">
+            <div class="post-tags">
+              {% for tag in post.tags %}
+                <a href="./tag/{{ tag }}" class="tag"><i class="fa fa-tag"></i>{{tag}}</a>    
+              {% endfor %}
+            </div>
+            <div class="post-date">
+              <i class="fa fa-calendar-o"></i>
+              <span class="date">{% include date.html %}</span>
+            </div>
+          </footer>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>  
+
+
+{% include footer.html %}
+</body>
+</html>

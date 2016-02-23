@@ -1,3 +1,6 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
 // @charset 'utf-8';
 
 // @import 'modules/foundation/foundation';
@@ -39,7 +42,13 @@ $menu-item-padding: 1.5rem 2rem;
 @include foundation-flex-grid;
 @include foundation-typography;
 @include foundation-menu;
+@include foundation-pagination;
 
 
 @import 'vendor/header';
+@import 'vendor/footer';
 @import 'vendor/home-page'; 
+@import 'vendor/author-page'; 
+@import 'vendor/post'; 
+@import 'vendor/highlight'; 
+@import 'vendor/code'; 

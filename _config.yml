@@ -18,7 +18,8 @@ defaults:
       path: ""
       type: "posts"
     values: 
-      author: "Виталий Ртищев"
+      author: "rtivital"
+      author_name: "Виталий Ртищев"
       layout: "post"
       type: article
       comments: true

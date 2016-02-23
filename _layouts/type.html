@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include head.html %}
+</head>
+<body>
+	
+	{% include header.html %}
+
+
+<div class="container">
+	<div class="search-wrapper">
+		<!-- <h1 class="search-title">Статьи по типу</h1> -->
+		 <a href="/type/{{ page.type }}" class="tag tag-active"><i class="fa fa-tag"></i>{{ page.type }}</a>
+		 <a href="/tag/javascript" class="tag"><i class="fa fa-tag"></i> JavaScript</a>
+		 <a href="/tag/es6" class="tag"><i class="fa fa-tag"></i> ES6</a>
+		 <a href="/tag/oop" class="tag"><i class="fa fa-tag"></i> OOP</a>
+		 <a href="/tag/oop" class="tag"><i class="fa fa-tag"></i> CSS</a>
+	</div>
+	{% for post in site.posts %}
+		{% if post.type == page.type %}
+			{% include article.html %}
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% include footer.html %}
+</body>
+</html>

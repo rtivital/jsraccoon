@@ -2,7 +2,7 @@
 layout: post
 
 title:  "Темы для мобильного Chrome"
-categories: HTML
+categories: css
 author: "Виталий Ртищев"
 date:   2016-01-16 12:50:58 +0300
 type: advice
@@ -11,6 +11,8 @@ comments: true
 identifier: tip-chrome-theme
 
 description: "Мобильный браузер Chrome начиная с 39 версии поддеживает темы. Теперь вы можете задать тему с помощью всего одного тега <code>&lt;meta&gt;</code>."
+
+tags: [css]
 ---
 
 Мобильный браузер Chrome начиная с 39 версии (Android 5.0+) поддеживает темы. Теперь вы можете задать тему с помощью всего одного тега `<meta>` и аттрибутов `name` и `content`.

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -36,11 +34,10 @@
 
 
   <body>
-  <p id="post-meta"></p>
     <header class="site-header">
 	<div class="wrapper">
 		<div class="logo-section">
-			<a class="logo" href="http://jsraccoon.ru/">
+			<a class="logo" href="/">
 				<img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
 			</a>
 		</div>
@@ -55,16 +52,16 @@
 		</div>
 		<div class="navbar-toggle">
 			<ul class="nav main-section">
-				<li><a href="" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-				<li><a href="#0" class="nav-item"><i class="fa fa-bars"></i> <span>Рубрики</span></a></li>
-				<li><a href="" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
-				<li><a href="" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+				<li><a href="/" class="nav-item"><i class="fa fa-home"></i> <span>Главная</span></a></li>
+				<li><a href="/type/exercise" class="nav-item"><i class="fa fa-code"></i> <span>Задачи</span></a></li>
+				<li><a href="/type/article" class="nav-item"><i class="fa fa-file-text-o"></i> <span>Статьи</span></a></li>
+				<li><a href="/type/advice" class="nav-item"><i class="fa fa-cogs"></i> <span>Советы</span></a></li>
 			</ul>
 
 			<ul class="nav social-section">
-				<li><a href="" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
-				<li><a href="" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
-				<li><a href="" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="https://github.com/rtivital/jsraccoon" class="nav-item_icon"><i class="fa fa-github"></i></a></li>
+				<li><a href="http://vk.com/jsraccoon" class="nav-item_icon"><i class="fa fa-vk"></i></a></li>
+				<li><a href="https://twitter.com/frontendraccoon" class="nav-item_icon"><i class="fa fa-twitter"></i></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -72,22 +69,29 @@
 
 
     <div class="page-content">
-      <div class="wrapper post-wrapper">
+      <div class="container post-wrapper">
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">ES6: Интерполяция</h1>
-    <div class="meta-container center"><span class="meta type">
+    <div class="meta-container center">
+<span class="meta type">
   
-  
+   <a href="/type/article"><i class="meta-icon fa fa-file-text-o"></i> Статья</a>
+    
 </span>
 
 
+  <span class=" meta author"><a href="/author/rtivital">
+    <i class="meta-icon fa fa-pencil"></i>
+    Виталий Ртищев
+  </a></span>
 
 
-  <span class="meta category"><a href="./tag/">
+
+  <span class="meta category"><a href="/tag/JavaScript">
     <i class="meta-icon fa fa-navicon"></i>
-    
+    JavaScript
   </a></span>
 </div>
   </header>
@@ -152,7 +156,14 @@ console.log(str); <span class="c1">// these USERS are great</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span> <span class="c1">// these USERS are great</span></code></pre></figure>
 
   </div>
-
+	<div class="post-tags">
+	  
+			<a href="/tag/javascript" class="tag"><i class="fa fa-tag"></i>javascript</a>
+	  
+			<a href="/tag/es6" class="tag"><i class="fa fa-tag"></i>es6</a>
+	  
+	  <a href="/type/article" class="tag"><i class="fa fa-tag"></i>article</a>
+  </div>
   
 	<div class="post-pagination">
 		
@@ -164,6 +175,7 @@ console.log(str); <span class="c1">// these USERS are great</span>
 		
 	</div>
 
+	
 
 </article>
 
@@ -173,7 +185,9 @@ console.log(str); <span class="c1">// these USERS are great</span>
 
     
       <!-- Disqus Comments -->
-      <div id="disqus_thread" class="wrapper comments"></div>
+      <div id="disqus_thread" class="container comments">
+        <h2 class="comments-title">Комментарии</h2>
+      </div>
       <script>
         var disqus_config = function () {
           this.page.url = "http://jsraccoon.ru/es6-interpolation";
@@ -190,13 +204,31 @@ console.log(str); <span class="c1">// these USERS are great</span>
       <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
     
 
-    <footer class="site-sooter">
-  <div class="wrapper">
-    <div class="social-section">
-  <a href="https://github.com/rtivital/jsraccoon" class="social-icon github"><i class="fa fa-github"></i></a>
-  <a href="http://vk.com/jsraccoon" class="social-icon vk"><i class="fa fa-vk"></i></a>
-  <a href="https://twitter.com/frontendraccoon" class="social-icon twitter"><i class="fa fa-twitter"></i></a>
-</div>
+    <footer class="site-footer container">
+  <div class="container">
+  	<div class="row">
+  		<div class="columns medium-2 small-12 center"><a class="footer-logo" href="http://jsraccoon.ru/">
+        <img src="http://jsraccoon.ru/images/logo-raccoon.svg" alt="logo">
+        <h2 class="footer-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
+      </a></div>
+  		<div class="columns medium-5 small-12">
+        <nav class="footer-navbar">
+    			<h3 class="footer-title">Теги для быстрого поиска</h3>
+          <ul class="footer-nav">
+            <li><a href="/tag/javascript" class="footer-nav_item tag"><i class="fa fa-tag"></i> JavaScript</a></li>
+            <li><a href="/tag/es6" class="footer-nav_item tag"><i class="fa fa-tag"></i> ES6</a></li>
+            <li><a href="/tag/css" class="footer-nav_item tag"><i class="fa fa-tag"></i> CSS</a></li>
+            <li><a href="/type/exercise" class="footer-nav_item tag"><i class="fa fa-tag"></i> Задачи</a></li>
+            <li><a href="/type/article" class="footer-nav_item tag"><i class="fa fa-tag"></i> Статьи</a></li>
+            <li><a href="/type/advice" class="footer-nav_item tag"><i class="fa fa-tag"></i> Советы</a></li>
+          </ul>
+        </nav>
+  		</div>
+  		<div class="columns">
+        <h3 class="footer-title">О проекте</h3>
+  			<p>Сайт создан с помощью генератора статических сайтов <a href="https://jekyllrb.com/">Jekyll</a>. Весь код размешён на <a href="https://github.com/rtivital/jsraccoon/tree/gh-pages">Github</a>. </p>
+  		</div>
+  	</div>
   </div>
 </footer>
 <!-- Google Analitics -->
@@ -212,9 +244,9 @@ console.log(str); <span class="c1">// these USERS are great</span>
 </script>
 
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/velocity.min.js"></script>
-<script src="./js/main.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/velocity.min.js"></script>
+<script src="/js/main.js"></script>
 
   </body>
 

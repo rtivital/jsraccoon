@@ -1,3 +1,42 @@
+$purple: #8e44ad;
+$white-purple: lighten($purple, 15%);
+$light-purple: lighten($purple, 5%);
+$dark-purple: darken($purple, 5%);
+$black-purple: darken($purple, 15%);
+
+// Primary blue
+$blue: #3498db;
+$white-blue: lighten($blue, 15%);
+$light-blue: lighten($blue, 5%);
+$dark-blue: darken($blue, 5%);
+$black-blue: darken($blue, 15%);
+
+// Primary green
+$green: #2ecc71;
+$white-green: lighten($green, 15%);
+$light-green: lighten($green, 5%);
+$dark-green: darken($green, 5%);
+$black-green: darken($green, 15%);
+
+
+@mixin article-type($type, $color) {
+	&.type-#{$type} {
+		.article-title a {
+			color: $color;
+			&:hover {
+				color: darken($color, 10%);
+			}
+		}
+
+		.meta {
+			a:hover {
+				background-color: $color;
+				border-color: darken($color, 10%);
+			}
+		}
+	}
+}
+
 .article {
 	background-color: #fff;
 	margin-top: 2rem;
@@ -9,6 +48,10 @@
 	@media (max-width: 560px) {
 		padding-bottom: 0;
 	}
+
+	@include article-type('advice', $blue);
+	@include article-type('digest', $purple);
+	@include article-type('exercise', $dark-green);
 }
 
 .article-title {
@@ -108,10 +151,28 @@
 	}
 }
 
+.tag-active {
+	background-color: $primary-color;
+	color: #fff;
+	border: 1px solid darken($primary-color, 15%);
+	&:hover {
+		color: #fff;
+		background-color: darken($primary-color, 10%);
+	}
+}
+
 .post-tags {
 	display: flex;
 	margin-top: 1rem;
 	.tag {
 		margin-right: 1rem;
 	}
+}
+
+.pagination {
+	text-align: center;
+	margin-top: 3rem;
+	padding: 1rem;
+	background-color: #fff;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }

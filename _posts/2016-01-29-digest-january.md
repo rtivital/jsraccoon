@@ -3,7 +3,6 @@ layout: post
 
 title:  "Дайджест лучших материалов за январь"
 categories: "Дайджест"
-hideCat: true
 date: 2016-01-30 00:50:58 +0300
 type: digest
 
@@ -11,6 +10,8 @@ comments: true
 identifier: digest-january
 
 description: "Дайджест лучших материалов из группы за первый месяц 2016 года."
+
+tags: [javascript, css, es6]
 ---
 Дайджест лучших материалов из [группы](http://vk.com/jsraccoon) за первый месяц 2016 года. 
 
