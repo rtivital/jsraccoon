@@ -1497,9 +1497,6 @@ body {
     background-color: #d62c1a; }
 
 .post-tags {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-top: 1rem; }
   .post-tags .tag {
     margin-right: 1rem; }
