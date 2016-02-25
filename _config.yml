@@ -8,7 +8,7 @@ github_username:  rtivital
 
 # Build settings
 # markdown: kramdown
-markdown: redcarpet
+markdown: kramdown
 permalink: /:title
 
 # Default settings
@@ -29,6 +29,7 @@ exclude:
   - bower_components
   - gulpfile.js
   - bower.json
+  - styles
 
 gems:
   - jekyll-paginate

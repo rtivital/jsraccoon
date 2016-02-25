@@ -1798,6 +1798,12 @@ body {
   .highlight .nx {
     color: #292e33; }
 
+pre,
+code {
+  font-size: .9rem;
+  line-height: 1.5rem;
+  font-family: 'Roboto Mono', monospace; }
+
 code, .highlighter-rouge {
   border-radius: .2rem;
   background-color: #f8f8f5;
@@ -1845,3 +1851,9 @@ pre {
     border: 0;
     padding-right: 0;
     padding-left: 0; }
+
+blockquote {
+  padding-left: 2rem;
+  border-left: 3px solid #e74c3c;
+  font-style: italic;
+  color: #888; }

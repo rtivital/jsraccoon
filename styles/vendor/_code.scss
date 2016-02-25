@@ -1,10 +1,8 @@
 pre,
 code {
-  // font-size: .95rem;
-  // font-family: $font-family-code;
-  // @include breakpoint(768px) {
-  //   font-size: 1.4rem;
-  // }
+  font-size: .9rem;
+  line-height: 1.5rem;
+  font-family: 'Roboto Mono', monospace;
 }
  
 // Inline code styles
@@ -21,6 +19,7 @@ figure {
 }
 
 .highlight {
+
   margin-bottom: 1rem;
   margin-left: -4rem;
   margin-right: -4rem;
