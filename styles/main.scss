@@ -1,12 +1,9 @@
-*, *::before, *::after {
-	box-sizing: border-box;
-}
 // @charset 'utf-8';
 
 // @import 'modules/foundation/foundation';
 // // Import partials from '_sass' directory
 // // Third-party plugins and modules
-// @import 'modules/breakpoint/breakpoint';
+@import 'modules/breakpoint/breakpoint';
 // // @import 'modules/normalize/normalize';
 // // @import 'modules/gridlex/gridlex';
 
@@ -32,17 +29,17 @@
 // @import 'vendor/site/main'; 
 // @import 'vendor/site/post';
 // @import 'vendor/site/404';
-@import 'vendor/foundation-variables';
+// @import 'vendor/foundation-variables';
 $menu-item-padding: 1.5rem 2rem;
 @import 'modules/normalize/normalize';
-@import 'modules/foundation/foundation';
+// @import 'modules/foundation/foundation';
 @import 'modules/burger';
 @import 'vendor/foundation-variables';
 
-@include foundation-flex-grid;
-@include foundation-typography;
-@include foundation-menu;
-@include foundation-pagination;
+// @include foundation-flex-grid;
+// @include foundation-typography;
+// @include foundation-menu;
+// @include foundation-pagination;
 
 
 @import 'vendor/header';
@@ -53,3 +50,15 @@ $menu-item-padding: 1.5rem 2rem;
 @import 'vendor/highlight'; 
 @import 'vendor/code'; 
 @import 'vendor/quotes'; 
+
+@import 'variables/variables';
+
+@import 'mixins/breakpoints';
+@import 'mixins/spacing';
+@import 'mixins/blocks';
+@import 'mixins/article';
+
+@import 'typography/typography';
+
+@import 'site/tags'; 
+@import 'site/article'; 

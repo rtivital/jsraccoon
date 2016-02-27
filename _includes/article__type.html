@@ -1,0 +1,12 @@
+{% unless post.type %}
+  {% assign post = page %}
+{% endunless %}
+
+{% assign type = post.type %}
+{% case type %}
+  {% when "article" %}Статья
+  {% when "advice" %}Совет
+  {% when "question" %}Вопрос
+  {% when "exercise" %}Задача
+  {% when "digest" %}Дайджест
+{% endcase %}

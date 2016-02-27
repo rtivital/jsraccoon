@@ -1,0 +1,12 @@
+{% unless post.type %}
+  {% assign post = page %}
+{% endunless %}
+
+{% assign type = post.type %}
+{% case type %}
+  {% when "article" %} <i class="meta-icon fa fa-file-text-o"></i>
+  {% when "advice" %} <i class="meta-icon fa fa-cogs"></i>
+  {% when "question" %} <i class="meta-icon fa fa-question"></i>
+  {% when "exercise" %} <i class="meta-icon fa fa-code"></i>
+  {% when "digest" %} <i class="meta-icon fa fa-list"></i>
+{% endcase %}

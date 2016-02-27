@@ -1,5 +1,5 @@
 {% unless post.date %}
-{% assign post = page %}
+  {% assign post = page %}
 {% endunless %}
 
 {{ post.date | date: "%-d" }}

@@ -1,28 +1,65 @@
-<article class="article type-{{ post.type }}">
-  <header class="article-header">
+<article class="article">
 
-    <h2 class="article-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+  <!-- Article Header Begin -->
+  <header class="article__header">
+
+    <h2 class="title">
+      <a class="title__link title__link--{{ post.type }}" href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
     </h2>
 
-    <div class="meta-container">{% include meta.html %}</div>
+    <div class="date">
+      <span class="date__icon">
+        <i class="fa fa-calendar-o"></i>
+      </span>
+
+      <span class="date__text">
+        {% include date.html %}
+      </span>
+    </div>
 
   </header>
+  <!-- Article Header End -->
 
-  <div class="description">
-    <p class="post-description">{{post.description}}</p>
+
+  <!-- Article Body Begin -->
+  <div class="article__body">
+    <p class="description">{{post.description}}</p>
   </div>
+  <!-- Article Body End -->
 
-  <footer class="article-footer">
-    <div class="post-tags">
+
+  <!-- Article Footer Begin -->
+  <footer class="article__footer">
+    <div class="tags-cloud">
       {% for tag in post.tags %}
-        <a href="/tag/{{ tag }}" class="tag"><i class="fa fa-tag"></i>{{tag}}</a>     
+        <a href="/tag/{{ tag }}" class="tags-cloud__tag">
+          <span class="tag__icon"><i class="fa fa-tag"></i></span>
+          <span class="tag__text">{{tag}}</span>
+        </a>     
       {% endfor %}
-        <a href="/type/{{ post.type }}" class="tag"><i class="fa fa-tag"></i>{{ post.type }}</a>
     </div>
-    <div class="post-date">
-      <i class="fa fa-calendar-o"></i>
-      <span class="date">{% include date.html %}</span>
+
+    <div class="meta">
+
+      <a class="meta__item" href="/author/{{ post.author }}">
+        <span class="meta__item_icon">
+          <i class="fa fa-pencil"></i>
+        </span>
+
+        <span class="meta__item_text">
+          {{ post.author_name }}
+        </span>
+      </a>
+
+      <a class="meta__item meta__item--{{ post.type }}" href="/type/{{ post.type }}">
+        <span class="meta__item_icon">{% include article__icon.html %}</span>
+        <span class="meta__item_text">{% include article__type.html %}</span>
+      </a>
+
     </div>
   </footer>
+  <!-- Article Footer End -->
+
 </article>

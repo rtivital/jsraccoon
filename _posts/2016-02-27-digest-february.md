@@ -10,6 +10,8 @@ type: digest
 identifier: digest-february
 
 description: "Дайджест лучших материалов из группы за второй месяц 2016 года"
+
+tags: [javascript, css, oop]
 ---
 Дайджест лучших материалов из [группы](http://vk.com/jsraccoon) за второй месяц 2016 года. 
 

@@ -1,0 +1,67 @@
+%block-padding {
+  // For small screen width only
+  padding: spacing(small, vertical) spacing(small, horizontal);
+
+  // For medium screen width only
+  @include larger-than-small {
+    padding: spacing(medium, vertical) spacing(medium, horizontal);
+  }
+
+  // For lage screen width only
+  @include larger-than-medium {
+    padding: spacing(large, vertical) spacing(large, horizontal);
+  }
+}
+
+%block-unbound {
+  // For small screen width only
+  margin-left: -1 * spacing(small, horizontal);
+  margin-right: -1 * spacing(small, horizontal);
+
+  // For medium screen width only
+  @include larger-than-small {
+    margin-left: -1 * spacing(medium, horizontal);
+    margin-right: -1 * spacing(medium, horizontal);
+  }
+
+  // For lage screen width only
+  @include larger-than-medium {
+    margin-left: -1 * spacing(large, horizontal);
+    margin-right: -1 * spacing(large, horizontal);
+  }
+}
+
+%block-unbound-with-padding {
+  // For small screen width only
+  margin-left: -1 * spacing(small, horizontal);
+  margin-right: -1 * spacing(small, horizontal);
+  
+  padding-left: spacing(small, horizontal);
+  padding-right: spacing(small, horizontal);
+
+  // For medium screen width only
+  @include larger-than-small {
+    margin-left: -1 * spacing(medium, horizontal);
+    margin-right: -1 * spacing(medium, horizontal);
+    
+    padding-left: spacing(medium, horizontal);
+    padding-right: spacing(medium, horizontal);
+  }
+
+  // For lage screen width only
+  @include larger-than-medium {
+    margin-left: -1 * spacing(large, horizontal);
+    margin-right: -1 * spacing(large, horizontal);
+
+    padding-left: spacing(large, horizontal);
+    padding-right: spacing(large, horizontal);
+  }
+}
+
+
+%block-base {
+  display: block;
+  margin-top: 3rem;
+  background-color: $white;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.085);
+}

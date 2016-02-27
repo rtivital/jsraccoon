@@ -1,0 +1,26 @@
+@function spacing($size, $type) {
+  $map: map-get($spacing, $size);
+  @return map-get($map, $type);
+}
+
+@mixin spacing-side($side) {
+  $type: if($side == top or $side == bottom, vertical, horizontal);
+
+  // For small screen width only
+  padding-#{$side}: spacing(small, $type);
+
+  // For medium screen width only
+  @include larger-than-small {
+    padding-#{$side}: spacing(medium, $type);
+  }
+
+  // For lage screen width only
+  @include larger-than-medium {
+    padding-#{$side}: spacing(large, $type);
+  }
+}
+
+@mixin block-unbound($size) {
+  margin-left: -1 * spacing($size, horizontal);
+  margin-right: -1 * spacing($size, horizontal);
+}

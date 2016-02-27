@@ -1,0 +1,99 @@
+.article {
+  @extend %block-base;
+  @extend %block-padding;
+
+  padding-bottom: 0;
+}
+
+.article__header {
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: .3rem solid $white-gray;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 1.5rem;
+
+  font-family: $font-family-base;
+  font-weight: normal;
+  font-size: 2rem;
+  letter-spacing: 0;
+
+  @include larger-than-small {
+    font-size: 2.5rem;
+  }
+  
+  & > .title__link {
+    text-decoration: none;
+    transition: color map-get($transitions, fast);
+  }
+}
+
+.date {
+  font-size: 1.4rem;
+  color: $dark-gray;
+
+  &__icon {
+    margin-right: 0.75rem;
+  }
+}
+
+.article__footer {
+  @extend %block-unbound;
+  @include spacing-side(left);
+  @include larger-than-small {
+    display: flex;
+    margin-top: 5rem;
+  }
+  
+  margin-top: 2rem;
+  
+  & > .meta {
+    display: flex;
+
+    margin-top: 2rem;
+    margin-left: -1 * spacing(small, horizontal);
+    
+    @include larger-than-small {
+      justify-content: flex-end;
+      
+      margin-left: auto;
+      margin-top: 0;
+    }
+  }
+}
+
+.meta__item {
+  padding: 2rem 3rem;
+  border-right: .2rem solid $light-gray;
+
+  color: $black;
+  text-align: center;
+  text-decoration: none;
+  
+  background-color: $white-gray;
+
+  transition: background-color map-get($transitions, fast);
+
+  &:last-of-type {
+    border-right: 0;
+  }
+
+  &:hover {
+    background-color: $light-gray;
+  }
+
+  @include small-only {
+    display: block;
+    width: 50%;
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+
+@each $type, $color in $article-types {
+  @include article-type($type, $color);
+}

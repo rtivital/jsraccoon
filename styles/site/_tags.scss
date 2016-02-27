@@ -1,0 +1,26 @@
+.tags-cloud {
+  &__tag {
+    padding: .5rem 1.5rem;
+    margin-right: 1rem;
+    border: .1rem solid $light-gray;
+    border-radius: $global-radius;
+    
+    background-color: $white-gray;
+    
+    color: $black;
+    text-decoration: none;
+    
+    transition: border-color map-get($transitions, fast), background-color map-get($transitions, fast);
+
+    &:hover {
+      background-color: $light-gray;
+      border-color: $gray;
+    }
+  }
+}
+
+.tag {
+  &__icon {
+    margin-right: .75rem;
+  }
+}

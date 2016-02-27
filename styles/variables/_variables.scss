@@ -1,0 +1,40 @@
+$white: #fff;
+$white-gray: #f0f0f0;
+$light-gray: darken($white-gray, 5%);
+$gray: darken($light-gray, 10%);
+$dark-gray: #888;
+$black: #222;
+$primary-color: #e74c3c;
+$purple-color: #8e44ad;
+$blue-color: #3498db;
+$green-color: #29b362;
+$global-radius: .4rem;
+$breakpoints: (
+  small: 768px,
+  medium: 992px,
+  large: 1200px
+);
+$article-types: (
+  article: $primary-color,
+  digest: $purple-color,
+  exercise: $green-color,
+  advice: $blue-color
+);
+
+$transitions: (
+  fast: 200ms,
+  medium: 350ms,
+  slow: 500ms
+);
+
+$font-family-base: 'Arimo', 'Tahoma', 'Helvetica', sans-serif;
+$font-family-headings: 'Open Sans', sans-serif;
+$font-family-code: 'Roboto Mono', monospace;
+
+
+
+$spacing: (
+  small:  ( vertical: 2.5rem, horizontal: 2rem   ),
+  medium: ( vertical: 3.5rem, horizontal: 4rem   ),
+  large:  ( vertical: 5rem,   horizontal: 5.5rem )
+);

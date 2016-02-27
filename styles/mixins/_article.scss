@@ -1,0 +1,9 @@
+@mixin article-type($type, $color) {
+  .title__link--#{$type} {
+    color: $color;
+
+    &:hover {
+      color: darken($color, 5%);
+    }
+  }
+}
