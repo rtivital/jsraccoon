@@ -1,8 +1,0 @@
- .float-left {
-	display: block; /* ненужное свойство */
-	float: left;
-} 
-
-.float-left {
-	float: left;
-}

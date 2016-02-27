@@ -1,7 +1,0 @@
-// Кросбраузерный миксин для ::selection
-@mixin selection {
-	&::selection { @content; }
-	&::-moz-selection { @content; }
-}
-
-// Лучше использовать autoprefixer
