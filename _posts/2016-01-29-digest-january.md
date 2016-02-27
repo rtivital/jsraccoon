@@ -33,8 +33,8 @@ Microsoft открыла свои [чакры](https://blogs.windows.com/msedged
 * <i class="fa fa-youtube"></i> [CSS эксперименты](https://www.youtube.com/playlist?list=PLLnpHn493BHGrSO0lNO-3SNuuoPuJrA1o) — подборка различных эффектов, реализованных с помощью CSS: эффект переворачивающейся карточки, аккордеон, пульсирующая кнопка, выпадающие и выдвигающиеся меню и некоторые другие
 * [13 полезных советов по CSS](https://habrahabr.ru/post/273403/)
 * [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/) — сайт, на котором собраны примеры часто возникающих проблем при вёрстке, а также подробный разбор того, как решить их без лишних велосипедов и костылей с помощью Flexbox.
-* [Эволюция вёрстки](https://www.youtube.com/watch?v=9js_5MjiGFo), проблемы флексбокса и их решение с помощью Grid Layout
-* [Создание очень крутого эффекта для текста при наведении](https://www.youtube.com/watch?v=qii-5ZpLLYY)
+* <i class="fa fa-youtube"></i> [Эволюция вёрстки](https://www.youtube.com/watch?v=9js_5MjiGFo), проблемы флексбокса и их решение с помощью Grid Layout
+* <i class="fa fa-youtube"></i> [Создание очень крутого эффекта для текста при наведении](https://www.youtube.com/watch?v=qii-5ZpLLYY)
 * [Практическое руководство по вёрстке с flexbox](https://css-tricks.com/designing-a-product-page-layout-with-flexbox/) на примере станицы товаров интернет магазина
 * [Полное руководство по Flexbox](http://frontender.info/a-guide-to-flexbox/) на русском от css-tricks в переводе frontender.info
 * [Цикл статей по Web Animation API от css-live.ru](http://vk.com/wall-97408246_2132)
@@ -57,7 +57,7 @@ Microsoft открыла свои [чакры](https://blogs.windows.com/msedged
 * [Почему все постоянно говорят про изоморфный JavaSript и почему это важно](http://www.capitalone.io/blog/why-is-everyone-talking-about-isomorphic-javascript/)
 * <i class="fa fa-youtube"></i> Видео курс по [функциональному программированию](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84) в JavaScript
 * [Аналоговые часы на HTML5 c логикой на JavaScript](http://habrahabr.ru/post/275353/)
-* [JavaScript — странный... и прекрасный](https://www.youtube.com/playlist?list=PLoYCgNOIyGABI011EYc-avPOsk1YsMUe_) 5 видео о том, почему вы полюбите JavaScript
+* <i class="fa fa-youtube"></i> [JavaScript — странный... и прекрасный](https://www.youtube.com/playlist?list=PLoYCgNOIyGABI011EYc-avPOsk1YsMUe_) 5 видео о том, почему вы полюбите JavaScript
 * [5 малоизвестных фич для работы с объектами](http://www.2ality.com/2015/08/object-literals-es5.html)
 * <i class="fa fa-youtube"></i> [Хорошие JavaScript привычки](https://www.youtube.com/watch?v=rBiaUnU1BVc) В видео рассмотрены распространённые ошибки, которые допускаются при использовании языковых конструкций JavaScript. В примерах показаны best practices, использующиеся при программировании на JavaScript
 * [Структуры данных в JavaScript](http://vk.com/wall-97408246_1709) — цикл статей, посвященный организации данных. В большей степень статьи рассказывают не о самих структурах, а о способах их организации для правильного и удобного использования.
@@ -100,7 +100,7 @@ Microsoft открыла свои [чакры](https://blogs.windows.com/msedged
 * [5 практических примеров использования React](http://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework/): таймер, навигация, подгрузка изображений с помощью AJAX, мгновенный поиск и форма заказа. Отлично подойдет для изучения React на примерах
 * [Создание галереи изображений с помощью React](http://www.eloquentwebapp.com/building-a-gallery-using-reactjs-webpack-bootstrap-and-sass/)
 * [OverReact](http://www.overreact.io/) — инструмент для создания wireframe'ов компонента для React. Компонент экспортируется и у вас есть готовые файлы для самого компонента, сервера, Webpack/Gulp/Grunt. Поддерживается ES6 формат.
-* [Awesome React](https://github.com/enaqx/awesome-react) — гигантский, постоянно пополняющийся список статей, туториалов, интсрументов, компонентов и вообще всего, что связано с React. 
+* <i class="fa fa-github"></i> [Awesome React](https://github.com/enaqx/awesome-react) — гигантский, постоянно пополняющийся список статей, туториалов, интсрументов, компонентов и вообще всего, что связано с React. 
 
 
 
@@ -116,7 +116,7 @@ Microsoft открыла свои [чакры](https://blogs.windows.com/msedged
 * <i class="fa fa-youtube"></i> [Основы Gulp.js](https://www.youtube.com/playlist?list=PLLnpHn493BHE2RsdyUNpbiVn-cfuV7Fos). Рассматриваются все базовые вещи, которые должен уметь делать любой фронтенд разработчик: конкатенация и минифицирование css и js файлов, компилирование sass, использование BrowserSync, Live Reload и многое другое
 * <i class="fa fa-github"></i> [WPGulp](https://github.com/ahmadawais/WPGulp) — стартовый проект для тем на Wordpress. Содержит всё, что вы только захотите получить от Gulp — компилирование Sass, конкатенация и сжатие CSS и JavaScript файлов и библиотек, source maps, autoprefixer, BrowserSync и оптимизация изображений
 * [CMS.js](https://cdmedia.github.io/cms.js/) — генератор статических сайтов написанный на JavaScript. 
-* [Nativefier](https://github.com/jiahaog/nativefier) — утилита для конвертирования любого сайта в десктопное приложение.
+* <i class="fa fa-github"></i> [Nativefier](https://github.com/jiahaog/nativefier) — утилита для конвертирования любого сайта в десктопное приложение.
 * [19 советов по повседневной работе с Git](http://habrahabr.ru/company/mailru/blog/267595/)
 * <i class="fa fa-github"></i> [Kickup](https://github.com/kreativgebiet/kickup) — стартовый набор для современного веб-приложения. Gulp, BrowserSync, Autoprefixer, Sass, Browserify, Babel, ESLint — всё уже настроено за вас.
 * <i class="fa fa-youtube"></i> [Введение в Browserify](https://www.youtube.com/watch?v=CTAa8IcQh1U) — инструмент, позволяющий использовать require('ваш-модуль') в клиентском JavaScript. 
