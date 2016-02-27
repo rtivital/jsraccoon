@@ -21,4 +21,4 @@
 
 Посмотреть пример можно у нас на [сайте](http://jsraccoon.ru). 
 
-![Chrome Theme](./chrome_themes.png)
+![Chrome Theme](/images/chrome_themes.png)
