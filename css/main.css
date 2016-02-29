@@ -194,13 +194,13 @@ th {
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, .highlight {
   margin-bottom: 2rem; }
 
-.post-wrapper, .comments, .tag-search, .article, .site__footer, .author, .pagination {
+.tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
   padding: 2.5rem 2rem; }
   @media (min-width: 768px) {
-    .post-wrapper, .comments, .tag-search, .article, .site__footer, .author, .pagination {
+    .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
       padding: 3.5rem 4rem; } }
   @media (min-width: 992px) {
-    .post-wrapper, .comments, .tag-search, .article, .site__footer, .author, .pagination {
+    .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
       padding: 5rem 5.5rem; } }
 
 .article__footer, .post__pagination {
@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, .highlight {
       padding-left: 5.5rem;
       padding-right: 5.5rem; } }
 
-.post-wrapper, .comments, .site__navbar, .tag-search, .article, .site__footer, .author, .pagination {
+.tag-search, .site__navbar, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
   display: block;
   margin-top: 3rem;
   background-color: #fff;
@@ -412,7 +412,7 @@ pre {
   .highlight .err {
     background-color: #e32f1c; }
 
-.post-wrapper, .comments, .page-content, .site__navbar, .site__footer {
+.site__navbar, .page-content, .post-wrapper, .comments, .site__footer {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto; }
@@ -553,7 +553,9 @@ pre {
       display: block;
       width: 50%;
       padding-top: 1rem;
-      padding-bottom: 1rem; } }
+      padding-bottom: 1rem;
+      padding-left: 0;
+      padding-right: 0; } }
   .meta__item:last-of-type {
     border-right: 0; }
   .meta__item:hover {
@@ -632,13 +634,13 @@ a.post__meta_item {
 
 .pagination__btn {
   display: inline-block;
-  text-align: center;
-  background-color: #f0f0f0;
-  color: #222;
+  width: 100%;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 0.2rem solid #e3e3e3;
-  width: 100%;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #222;
   transition: background-color 200ms; }
   .pagination__btn:hover {
     color: #222;
@@ -692,10 +694,10 @@ a.post__meta_item {
 .author__avatar {
   display: inline-block;
   max-width: 150px;
-  border-radius: 50%;
   padding: 1.5rem;
-  background-color: #fff;
-  border: 0.1rem solid #e3e3e3; }
+  border: 0.1rem solid #e3e3e3;
+  border-radius: 50%;
+  background-color: #fff; }
   @media (min-width: 768px) {
     .author__avatar {
       max-width: 100%; } }
