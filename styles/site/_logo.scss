@@ -1,0 +1,10 @@
+.logo {
+  > img {
+    max-width: 200px;
+    transition: transform 200ms;
+    
+    &:hover {
+      transform: scale(1.1, 1.1);
+    }
+  }
+}

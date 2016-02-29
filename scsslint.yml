@@ -110,7 +110,7 @@ linters:
 
   NestingDepth:
     enabled: true
-    max_depth: 3
+    max_depth: 4
     ignore_parent_selectors: false
 
   PlaceholderInExtend:
@@ -153,7 +153,7 @@ linters:
     enabled: true
 
   QualifyingElement:
-    enabled: true
+    enabled: false
     allow_element_with_attribute: false
     allow_element_with_class: false
     allow_element_with_id: false
@@ -163,7 +163,7 @@ linters:
     max_depth: 3
 
   SelectorFormat:
-    enabled: true
+    enabled: false
     convention: hyphenated_lowercase # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:
@@ -175,7 +175,7 @@ linters:
     allow_single_line_rule_sets: true
 
   SingleLinePerSelector:
-    enabled: true
+    enabled: false
 
   SpaceAfterComma:
     enabled: true

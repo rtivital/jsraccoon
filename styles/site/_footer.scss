@@ -1,0 +1,29 @@
+.site__footer {
+  @extend %container;
+  @extend %block-base;
+  @extend %block-padding;
+  
+  @include larger-than-small {
+    display: flex;
+  }
+}
+
+.site__footer_col {
+  width: 100%;
+  text-align: center;
+
+  @include larger-than-small {
+    text-align: left;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 39%;
+
+    &--small {
+      width: 22%;
+    }
+  }
+}
+
+.site__footer_title {
+  font-size: 2rem;
+}

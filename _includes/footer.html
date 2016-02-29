@@ -1,28 +1,61 @@
-<footer class="site-footer container">
-  <div class="container">
-  	<div class="row">
-  		<div class="columns medium-2 small-12 center"><a class="footer-logo" href="{{ site.url }}/">
-        <img src="{{site.url}}/images/logo-raccoon.svg" alt="logo">
-        <h2 class="footer-brand">Frontend <br> <span class="brand-highlight">Raccoon</span></h2>
-      </a></div>
-  		<div class="columns medium-5 small-12">
-        <nav class="footer-navbar">
-    			<h3 class="footer-title">Теги для быстрого поиска</h3>
-          <ul class="footer-nav">
-            <li><a href="/tag/javascript" class="footer-nav_item tag"><i class="fa fa-tag"></i> JavaScript</a></li>
-            <li><a href="/tag/es6" class="footer-nav_item tag"><i class="fa fa-tag"></i> ES6</a></li>
-            <li><a href="/tag/css" class="footer-nav_item tag"><i class="fa fa-tag"></i> CSS</a></li>
-            <li><a href="/type/exercise" class="footer-nav_item tag"><i class="fa fa-tag"></i> Задачи</a></li>
-            <li><a href="/type/article" class="footer-nav_item tag"><i class="fa fa-tag"></i> Статьи</a></li>
-            <li><a href="/type/advice" class="footer-nav_item tag"><i class="fa fa-tag"></i> Советы</a></li>
-          </ul>
-        </nav>
-  		</div>
-  		<div class="columns">
-        <h3 class="footer-title">О проекте</h3>
-  			<p>Сайт создан с помощью генератора статических сайтов <a href="https://jekyllrb.com/">Jekyll</a>. Весь код размешён на <a href="https://github.com/rtivital/jsraccoon/tree/gh-pages">Github</a>. </p>
-  		</div>
-  	</div>
+<footer class="site__footer">
+  
+  <div class="site__footer_col site__footer_col--small">
+    <a class="logo" href="/">
+      <img src="{{site.url}}/images/logo-raccoon.svg" alt="logo">
+    </a>
+  </div>
+
+  <div class="site__footer_col">
+    <h3 class="site__footer_title">Теги для быстрого поиска</h3>
+    <div class="tags-cloud">
+      <a href="/tag/javascript" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-tag"></i></span>
+        <span class="tag__text">javascript</span>
+      </a>
+
+      <a href="/tag/oop" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-tag"></i></span>
+        <span class="tag__text">oop</span>
+      </a> 
+
+      <a href="/tag/es6" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-tag"></i></span>
+        <span class="tag__text">es6</span>
+      </a> 
+
+      <a href="/tag/css" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-tag"></i></span>
+        <span class="tag__text">css</span>
+      </a> 
+
+      <a href="/type/article" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-bookmark"></i></span>
+        <span class="tag__text">article</span>
+      </a> 
+
+      <a href="/type/exercise" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-bookmark"></i></span>
+        <span class="tag__text">exercise</span>
+      </a> 
+
+      <a href="/type/advice" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-bookmark"></i></span>
+        <span class="tag__text">advice</span>
+      </a> 
+
+      <a href="/type/digest" class="tags-cloud__tag tags-cloud__tag--margined">
+        <span class="tag__icon"><i class="fa fa-bookmark"></i></span>
+        <span class="tag__text">digest</span>
+      </a> 
+
+    </div>
+  </div>
+
+  <div class="site__footer_col">
+    <h3 class="site__footer_title">О проекте</h3>
+    <p>Сайт создан с помощью генератора статических сайтов <a href="https://jekyllrb.com/">Jekyll</a>. Весь код размешён на <a href="https://github.com/rtivital/jsraccoon/tree/gh-pages">Github</a>.</p>
+    {% include social-links.html %}
   </div>
 </footer>
 <!-- Google Analitics -->
@@ -36,8 +69,3 @@
   ga('send', 'pageview');
 
 </script>
-
-
-<script src="/js/jquery.min.js"></script>
-<script src="/js/velocity.min.js"></script>
-<script src="/js/main.js"></script>

@@ -1,5 +1,11 @@
+.tag-search {
+  @extend %block-base;
+  @extend %block-padding;
+}
+
 .tags-cloud {
   &__tag {
+    display: inline-block;
     padding: .5rem 1.5rem;
     margin-right: 1rem;
     border: .1rem solid $light-gray;
@@ -15,6 +21,10 @@
     &:hover {
       background-color: $light-gray;
       border-color: $gray;
+    }
+
+    &--margined {
+      margin-top: .75rem;
     }
   }
 }

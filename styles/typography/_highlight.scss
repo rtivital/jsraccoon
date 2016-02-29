@@ -1,0 +1,40 @@
+.highlight {
+  @extend %vertical-rhythm;
+  
+  background: $white;
+
+  @include highlight-specials {
+    font-weight: bold; 
+    color: highlight(blue-color);
+  }
+
+  @include highlight-comments {
+    color: highlight(gray-color);
+    font-style: italic;
+  }
+  
+  @include highlight-keywords {
+    font-weight: bold; 
+    color: highlight(purple-color);
+  }
+  
+  @include highlight-atributes {
+    color: highlight(dark-blue-color);
+  }
+  
+  @include highlight-numbers { // Literal.Number
+    color: highlight(cyan-color);
+  }
+  
+  @include highlight-strings { // Literal.String
+    color: highlight(red-color);
+  }
+
+  .highlighter-rouge & {
+    background: $white-gray;
+  }
+  
+  .err { 
+    background-color: highlight(red-color);
+  }
+}

@@ -1,0 +1,13 @@
+.social-links {
+  &__icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    padding: .75rem 1.5rem;
+    color: $black;
+    
+    &:hover {
+      color: $primary-color;
+      background-color: $white-gray;
+    }
+  }
+}

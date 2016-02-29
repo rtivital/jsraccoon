@@ -1,0 +1,54 @@
+.pagination {
+  @extend %block-base;
+  @extend %block-padding;
+
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+
+  list-style: none;
+  text-align: center;
+  user-select: none;
+
+  &__item,
+  &__previous,
+  &__next {
+    a {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      
+      &:hover {
+        background-color: $white-gray;
+      }
+    }
+  }
+
+  &__item {
+    // Hide for small sreen sizes
+    @include small-only {
+      display: none;
+    }
+  }
+
+  &__previous,
+  &__next {
+    &--disabled {
+      padding: .75rem 1.5rem;
+
+      color: $dark-gray;
+    }
+  }
+
+  &__current {
+    padding: .75rem 1.5rem;
+
+    color: $white;
+    background-color: $primary-color;
+    transition: background-color map-get($transitions, fast), color map-get($transitions, fast);
+    
+    &:hover {
+      color: $white;
+      background-color: $primary-color; 
+    }
+  }
+}

@@ -7,19 +7,21 @@
 	
 	{% include header.html %}
 
+<main class="page-content">
 
-<div class="container">
-	<div class="search-wrapper">
-		 <a href="/tag/{{ page.type }}" class="tag tag-active"><i class="fa fa-tag"></i>{{ page.tag }}</a>
-		 <a href="/type/article" class="tag"><i class="fa fa-tag"></i> Статьи</a>
-		 <a href="/type/exercise" class="tag"><i class="fa fa-tag"></i> Задачи</a>
-		 <a href="/type/advice" class="tag"><i class="fa fa-tag"></i> Советы</a>
-		 <a href="/type/digest" class="tag"><i class="fa fa-tag"></i> Дайджесты</a>
+	<div class="tag-search">
+		 Материалы по тегу: 
+     <a href="/tag/{{ page.tag }}" class="tags-cloud__tag">
+      <span class="tag__icon"><i class="fa fa-tag"></i></span>
+      <span class="tag__text">{{ page.tag }}</span>
+    </a> 
 	</div>
+
 	{% for post in site.tags[page.tag] %}
 		{% include article.html %}
 	{% endfor %}
-</div>
+
+</main>
 
 {% include footer.html %}
 </body>

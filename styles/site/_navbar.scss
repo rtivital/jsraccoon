@@ -1,0 +1,48 @@
+.site__navbar {
+  @extend %container;
+  @extend %block-base;
+
+  text-align: center;
+
+  @include larger-than-medium {
+    display: flex;
+    text-align: left;
+
+    .navbar__menu {
+      padding-left: 3rem;
+      
+      &--right {
+        margin-left: auto;
+        padding-right: 3rem;
+      }
+    }
+  }
+}
+
+.navbar__menu_item {
+  display: block;
+  padding-top: 2.2rem;
+  padding-bottom: 2.2rem;
+
+  color: $black;
+
+  transition: color map-get($transitions, fast), background-color map-get($transitions, fast);
+
+  @include larger-than-small {
+    display: inline-block;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  &:hover {
+    color: $primary-color;
+    background-color: $white-gray;
+  }
+}
+
+.navbar__menu {
+  .social-links__icon {
+    padding-top: 1.4rem;
+    padding-bottom: 1.45rem;
+  }
+}

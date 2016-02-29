@@ -1,0 +1,36 @@
+{% if page.nextLink or page.prevLink %}
+
+  <div class="post__pagination">
+    {% if page.nextLink and page.prevLink %}
+
+      <a href="{{ page.prevLink }}" class="pagination__btn pagination__btn--w50">
+        <span class="btn__icon"><i class="fa fa-arrow-left"></i></span>
+        <span class="btn__text">Предыдущая статья: <b>{{ page.prevTitle }}</b></span>
+      </a>
+
+      <a href="{{ page.nextLink }}" class="pagination__btn pagination__btn--w50">
+        <span class="btn__text">Следующая статья: <b>{{ page.nextTitle }}</b></span>
+        <span class="btn__icon"><i class="fa fa-arrow-right"></i></span>
+      </a>
+      
+  {% else %}
+    
+    {% if page.nextLink %}
+      <a href="{{ page.nextLink }}" class="pagination__btn">
+        <span class="btn__text">Следующая статья: <b>{{ page.nextTitle }}</b></span>
+        <span class="btn__icon"><i class="fa fa-arrow-right"></i></span>
+      </a>
+    {% endif %}
+
+    {% if page.prevLink %}
+      <a href="{{ page.prevLink }}" class="pagination__btn">
+        <span class="btn__icon"><i class="fa fa-arrow-left"></i></span>
+        <span class="btn__text">Предыдущая статья: <b>{{ page.prevTitle }}</b></span>
+      </a>
+    {% endif %}
+
+  {% endif %}
+
+  </div>
+  
+{% endif %}

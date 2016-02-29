@@ -1,0 +1,20 @@
+{% if page.comments %}
+  <!-- Disqus Comments -->
+  <div id="disqus_thread" class="comments">
+    <h2 class="comments-title">Комментарии</h2>
+  </div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "{{ site.url }}{{ page.url }}";
+      this.page.identifier = '{{ page.identifier }}';
+    };
+      
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//jsraccoon.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Включи уже JavaScript, чтобы посмотреть <a href="https://disqus.com/?ref_noscript" rel="nofollow">комментарии с Disqus.</a></noscript>
+{% endif %}

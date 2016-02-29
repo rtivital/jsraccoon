@@ -30,6 +30,8 @@ exclude:
   - gulpfile.js
   - bower.json
   - styles
+  - scsslint.yml
+  - package.json
 
 gems:
   - jekyll-paginate

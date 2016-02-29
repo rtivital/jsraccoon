@@ -1,0 +1,8 @@
+<div class="tags-cloud">
+  {% for tag in post.tags %}
+    <a href="/tag/{{ tag }}" class="tags-cloud__tag">
+      <span class="tag__icon"><i class="fa fa-tag"></i></span>
+      <span class="tag__text">{{tag}}</span>
+    </a>     
+  {% endfor %}
+</div>

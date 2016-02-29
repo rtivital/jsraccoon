@@ -1,0 +1,41 @@
+@function highlight($color) {
+  @return map-get($highlight-colors, $color);
+}
+
+@mixin highlight-comments {
+  .c, .w, .cm, .cp, .c1, .cs, .bp {
+    @content;
+  }
+}
+
+@mixin highlight-keywords {
+  .kd, .kc, .kp, .kr, .ni, .ss {
+    @content;
+  }
+}
+
+@mixin highlight-specials {
+  .k, .nb {
+    @content;
+  }
+}
+
+@mixin highlight-numbers {
+  .m, .no, .nv, .mf, .mh, .mi, 
+  .mo, .vc, .vg, .vi, .il { 
+    @content;
+  }
+}
+
+@mixin highlight-strings {
+  .s, .sb, .sc, .sd, .s2, .nf, 
+  .se, .sh, .si, .sx, .s1, .ne {
+    @content;
+  }
+}
+
+@mixin highlight-atributes {
+  .nc, .nx, .nc {
+    @content;
+  }
+}

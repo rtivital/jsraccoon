@@ -2,25 +2,25 @@
 {% if paginator.total_pages > 1 %}
   <ul class="pagination">
     {% if paginator.previous_page %}
-      <li class="pagination-previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Раньше</a>
+      <li class="pagination__previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Раньше</a>
     {% else %}
-      <li class="pagination-previous disabled">Раньше</li>
+      <li class="pagination__previous pagination__previous--disabled">Раньше</li>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
-        <li class="current">{{ page }}</li>
+        <li class="pagination__item pagination__current">{{ page }}</li>
       {% elsif page == 1 %}
-        <li><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Страница {{ page }}">{{ page }}</a></li>
+        <li class="pagination__item"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
       {% else %}
-        <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+        <li class="pagination__item"><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
 
     {% if paginator.next_page %}
-      <li class="pagination-next text-center"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Позже</a></li>
+      <li class="pagination__next"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Позже</a></li>
     {% else %}
-      <li class="pagination-next disabled">Позже</li>
+      <li class="pagination__next pagination__next--disabled">Позже</li>
     {% endif %}
   </ul>
 {% endif %}

@@ -1,64 +1,31 @@
-// @charset 'utf-8';
+@charset 'utf-8';
 
-// @import 'modules/foundation/foundation';
-// // Import partials from '_sass' directory
-// // Third-party plugins and modules
 @import 'modules/breakpoint/breakpoint';
-// // @import 'modules/normalize/normalize';
-// // @import 'modules/gridlex/gridlex';
-
-// // Variables, mixins and extends
-// @import 'vendor/variables/variables';
-// @import 'vendor/variables/extends';
-// @import 'vendor/variables/mixins';
-
-// // Base elements that are used on every page
-// @import 'vendor/base/typography';
-// @import 'vendor/base/links';
-// @import 'vendor/base/images';
-// @import 'vendor/base/lists';
-// @import 'vendor/base/quotes';
-// @import 'vendor/base/code';
-// @import 'vendor/base/syntax-highlighting';
-// @import 'vendor/base/containers';
-// @import 'vendor/base/buttons';
-
-// // Styles for different pages
-// @import 'vendor/site/header';
-// @import 'vendor/site/socials';
-// @import 'vendor/site/main'; 
-// @import 'vendor/site/post';
-// @import 'vendor/site/404';
-// @import 'vendor/foundation-variables';
-$menu-item-padding: 1.5rem 2rem;
 @import 'modules/normalize/normalize';
-// @import 'modules/foundation/foundation';
-@import 'modules/burger';
-@import 'vendor/foundation-variables';
-
-// @include foundation-flex-grid;
-// @include foundation-typography;
-// @include foundation-menu;
-// @include foundation-pagination;
-
-
-@import 'vendor/header';
-@import 'vendor/footer';
-@import 'vendor/home-page'; 
-@import 'vendor/author-page'; 
-@import 'vendor/post'; 
-@import 'vendor/highlight'; 
-@import 'vendor/code'; 
-@import 'vendor/quotes'; 
 
 @import 'variables/variables';
 
 @import 'mixins/breakpoints';
 @import 'mixins/spacing';
 @import 'mixins/blocks';
+@import 'mixins/highlight';
 @import 'mixins/article';
 
 @import 'typography/typography';
+@import 'typography/blockquotes';
+@import 'typography/links';
+@import 'typography/lists';
+@import 'typography/code';
+@import 'typography/highlight';
 
+@import 'site/containers'; 
 @import 'site/tags'; 
+@import 'site/logo'; 
+@import 'site/header'; 
+@import 'site/navbar'; 
 @import 'site/article'; 
+@import 'site/post'; 
+@import 'site/social-links';  
+@import 'site/footer'; 
+@import 'site/author'; 
+@import 'site/pagination';

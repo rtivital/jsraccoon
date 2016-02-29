@@ -1,0 +1,57 @@
+.author {
+  @extend %block-base;
+  @extend %block-padding;
+  
+  @include larger-than-small {
+    display: flex;
+  }
+}
+
+.author__image {
+  text-align: center;
+
+  @include larger-than-small {
+    width: 20%;
+  }
+}
+
+.author__avatar {
+  display: inline-block;
+  max-width: 150px;
+  padding: 1.5rem;
+  border: .1rem solid $light-gray;
+  border-radius: 50%;
+  
+  background-color: $white;
+  
+  @include larger-than-small {
+    max-width: 100%;
+  }
+}
+
+.author__description {
+  text-align: center;
+  
+  @include larger-than-small {
+    padding-left: 3rem;
+    text-align: left;
+  }
+}
+
+.author__title {
+  margin-top: 0;
+}
+
+.author__links_icon {
+  padding: 1rem 1.5rem;
+  
+  font-size: 2rem;
+  color: $black;
+  
+  transition: background-color map-get($transitions, fast), color map-get($transitions, fast);
+
+  &:hover {
+    color: $primary-color;
+    background-color: $white-gray;
+  }
+}

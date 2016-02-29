@@ -1,0 +1,51 @@
+pre,
+code {
+  font-size: 1.2rem;
+  font-family: 'Roboto Mono', monospace;
+  
+  @include larger-than-small {
+    font-size: 1.4rem;
+  }
+}
+ 
+// Inline code styles
+code, .highlighter-rouge {
+  border-radius: $global-radius;
+  background-color: $white-gray;
+  border: 1px solid darken($white-gray, 7%);
+}
+
+// Block code styles
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.highlight {
+  margin-bottom: 1rem;
+
+  > pre, code {
+    background-color: lighten($white-gray, 3%);
+  }
+
+  > pre {
+    @extend %block-unbound-with-padding;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+code {
+  padding: 0 .5rem;
+}
+
+pre {
+  padding: 1.5rem 1.2rem;
+  overflow-x: auto;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

@@ -1,3 +1,7 @@
+.page-content {
+  @extend %container;
+}
+
 .article {
   @extend %block-base;
   @extend %block-padding;
@@ -24,7 +28,7 @@
     font-size: 2.5rem;
   }
   
-  & > .title__link {
+  > .title__link {
     text-decoration: none;
     transition: color map-get($transitions, fast);
   }
@@ -35,21 +39,22 @@
   color: $dark-gray;
 
   &__icon {
-    margin-right: 0.75rem;
+    margin-right: .75rem;
   }
 }
 
 .article__footer {
   @extend %block-unbound;
   @include spacing-side(left);
+
+  margin-top: 2rem;
+
   @include larger-than-small {
     display: flex;
     margin-top: 5rem;
   }
   
-  margin-top: 2rem;
-  
-  & > .meta {
+  > .meta {
     display: flex;
 
     margin-top: 2rem;
@@ -76,14 +81,6 @@
 
   transition: background-color map-get($transitions, fast);
 
-  &:last-of-type {
-    border-right: 0;
-  }
-
-  &:hover {
-    background-color: $light-gray;
-  }
-
   @include small-only {
     display: block;
     width: 50%;
@@ -91,8 +88,15 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-}
 
+  &:last-of-type {
+    border-right: 0;
+  }
+
+  &:hover {
+    background-color: $light-gray;
+  }
+}
 
 @each $type, $color in $article-types {
   @include article-type($type, $color);

@@ -7,15 +7,13 @@
   
   {% include header.html %}
 
-  <div class="page-content">
-    <div class="container">
-      {% for post in paginator.posts %}
-        {% include article.html %}
-      {% endfor %}
+  <main class="page-content">
+    {% for post in paginator.posts %}
+      {% include article.html %}
+    {% endfor %}
 
-      {% include paginator.html %}
-    </div>
-  </div>
+    {% include paginator.html %}
+  </main>
 
   {% include footer.html %}
 

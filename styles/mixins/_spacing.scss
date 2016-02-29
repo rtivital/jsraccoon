@@ -24,3 +24,22 @@
   margin-left: -1 * spacing($size, horizontal);
   margin-right: -1 * spacing($size, horizontal);
 }
+
+@mixin block-unbound-vertical($side) {
+  // For small screen width only
+  margin-#{$side}: -1 * spacing(small, vertical);
+
+  // For medium screen width only
+  @include larger-than-small {
+    margin-#{$side}: -1 * spacing(medium, vertical);
+  }
+
+  // For lage screen width only
+  @include larger-than-medium {
+    margin-#{$side}: -1 * spacing(large, vertical);
+  }
+}
+
+%vertical-rhythm {
+  margin-bottom: 2rem;
+}

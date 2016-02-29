@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   {% include head.html %}
 <body>
 {% include header.html %}
 
-<div class="container">
-  <div class="author-wrapper">
-    <div class="author-header">
-      <div class="author-image">
-        <img src="{{ page.pic }}" alt="author-avatar" class="author-avatar">
-      </div>
-      <div class="author-description">
-        <h2 class="author-title">{{ page.author_name }}</h2>
-        <p>{{ page.description }}</p>
+<main class="page-content">
+
+  <div class="author">
+    <div class="author__image">
+      <img src="{{ page.pic }}" alt="author__avatar" class="author__avatar">
+    </div>
+
+    <div class="author__description">
+      <h2 class="author__title">{{ page.author_name }}</h2>
+      <p>{{ page.description }}</p>
         
-        <div class="author-links">
-          {% if page.github %}
-            <a href="{{ page.github }}" class="author-link"><i class="fa fa-github"></i></a>
-          {% endif %}
+      <div class="author__links">
+        {% if page.github %}
+          <a class="author__links_icon" href="{{ page.github }}"><i class="fa fa-github"></i></a>
+        {% endif %}
 
-          {% if page.vk %}
-            <a href="{{ page.vk }}" class="author-link"><i class="fa fa-vk"></i></a>
-          {% endif %}
+        {% if page.vk %}
+          <a class="author__links_icon" href="{{ page.vk }}"><i class="fa fa-vk"></i></a>
+        {% endif %}
 
-          {% if page.email %}
-            <a href="mailto:{{ page.email }}" class="author-link"><i class="fa fa-envelope"></i></a>
-          {% endif %}
-        </div>
+        {% if page.email %}
+          <a class="author__links_icon" href="mailto:{{ page.email }}"><i class="fa fa-envelope"></i></a>
+        {% endif %}
       </div>
     </div>
-    {% for post in site.posts %}
-      {% if page.author == post.author %}
-        {% include article.html %}
-      {% endif %}
-    {% endfor %}
   </div>
-</div>  
+        
+  {% for post in site.posts %}
+    {% if page.author == post.author %}
+      {% include article.html %}
+    {% endif %}
+  {% endfor %}
+</main>  
 
 
 {% include footer.html %}

@@ -1,0 +1,11 @@
+blockquote {
+  padding-left: 2rem;
+  border-left: .3rem solid $primary-color;
+  font-style: italic;
+  color: $dark-gray;
+  margin-left: 0;
+
+  @include larger-than-small {
+    margin-left: 2rem;
+  }
+}

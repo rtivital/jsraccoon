@@ -1,3 +1,4 @@
+// Colors
 $white: #fff;
 $white-gray: #f0f0f0;
 $light-gray: darken($white-gray, 5%);
@@ -8,12 +9,38 @@ $primary-color: #e74c3c;
 $purple-color: #8e44ad;
 $blue-color: #3498db;
 $green-color: #29b362;
-$global-radius: .4rem;
+
+// Highlight Colors
+$highlight-colors: (
+  gray-color: $gray,
+  purple-color: $purple-color,
+  cyan-color: #099,
+  blue-color: darken($blue-color, 5%),
+  dark-blue-color: #458,
+  red-color: darken($primary-color, 7%),
+  green-color: darkem($green-color, 12%)
+);
+
+// Fonts
+$font-family-base: 'Arimo', 'Tahoma', 'Helvetica', sans-serif;
+$font-family-headings: 'Open Sans', sans-serif;
+$font-family-code: 'Roboto Mono', monospace;
+
+// Breakpoints
 $breakpoints: (
   small: 768px,
   medium: 992px,
   large: 1200px
 );
+
+// Spacing
+$spacing: (
+  small: (vertical: 2.5rem, horizontal: 2rem),
+  medium: (vertical: 3.5rem, horizontal: 4rem),
+  large: (vertical: 5rem, horizontal: 5.5rem)
+);
+
+// Article Types
 $article-types: (
   article: $primary-color,
   digest: $purple-color,
@@ -21,20 +48,11 @@ $article-types: (
   advice: $blue-color
 );
 
+// Globals
+$site-width: 1400px;
+$global-radius: .4rem;
 $transitions: (
   fast: 200ms,
   medium: 350ms,
   slow: 500ms
-);
-
-$font-family-base: 'Arimo', 'Tahoma', 'Helvetica', sans-serif;
-$font-family-headings: 'Open Sans', sans-serif;
-$font-family-code: 'Roboto Mono', monospace;
-
-
-
-$spacing: (
-  small:  ( vertical: 2.5rem, horizontal: 2rem   ),
-  medium: ( vertical: 3.5rem, horizontal: 4rem   ),
-  large:  ( vertical: 5rem,   horizontal: 5.5rem )
 );
