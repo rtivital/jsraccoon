@@ -194,44 +194,26 @@ th {
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, .highlight {
   margin-bottom: 2rem; }
 
-.tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
+.highlight > pre, .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
   padding: 2.5rem 2rem; }
   @media (min-width: 768px) {
-    .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
+    .highlight > pre, .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
       padding: 3.5rem 4rem; } }
   @media (min-width: 992px) {
-    .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
+    .highlight > pre, .tag-search, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
       padding: 5rem 5.5rem; } }
 
-.article__footer, .post__pagination {
+.highlight, .article__footer, .post__pagination {
   margin-left: -2rem;
   margin-right: -2rem; }
   @media (min-width: 768px) {
-    .article__footer, .post__pagination {
+    .highlight, .article__footer, .post__pagination {
       margin-left: -4rem;
       margin-right: -4rem; } }
   @media (min-width: 992px) {
-    .article__footer, .post__pagination {
+    .highlight, .article__footer, .post__pagination {
       margin-left: -5.5rem;
       margin-right: -5.5rem; } }
-
-.highlight > pre {
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding-left: 2rem;
-  padding-right: 2rem; }
-  @media (min-width: 768px) {
-    .highlight > pre {
-      margin-left: -4rem;
-      margin-right: -4rem;
-      padding-left: 4rem;
-      padding-right: 4rem; } }
-  @media (min-width: 992px) {
-    .highlight > pre {
-      margin-left: -5.5rem;
-      margin-right: -5.5rem;
-      padding-left: 5.5rem;
-      padding-right: 5.5rem; } }
 
 .tag-search, .site__navbar, .article, .post-wrapper, .comments, .site__footer, .author, .pagination {
   display: block;
@@ -596,6 +578,7 @@ pre {
   margin-bottom: 2rem; }
 
 .post__meta_item {
+  display: inline-block;
   padding: .75rem 1rem;
   margin-left: 2rem;
   -webkit-user-select: none;
@@ -603,6 +586,9 @@ pre {
   -ms-user-select: none;
   user-select: none;
   color: #888; }
+  @media (max-width: 768px) {
+    .post__meta_item {
+      margin-left: 0; } }
   .post__meta_item .fa {
     margin-right: .75rem; }
 

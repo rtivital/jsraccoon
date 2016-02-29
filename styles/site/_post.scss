@@ -23,11 +23,16 @@
 }
 
 .post__meta_item {
+  display: inline-block;
   padding: .75rem 1rem;
   margin-left: 2rem;
 
   user-select: none;
   color: $dark-gray;
+
+  @include small-only {
+    margin-left: 0;
+  }
 
   .fa {
     margin-right: .75rem;

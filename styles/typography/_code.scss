@@ -22,6 +22,7 @@ figure {
 }
 
 .highlight {
+  @extend %block-unbound;
   margin-bottom: 1rem;
 
   > pre, code {
@@ -29,7 +30,7 @@ figure {
   }
 
   > pre {
-    @extend %block-unbound-with-padding;
+    @extend %block-padding; 
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
@@ -48,4 +49,4 @@ pre {
     padding-right: 0;
     padding-left: 0;
   }
-}
+} 
