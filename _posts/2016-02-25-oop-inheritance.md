@@ -117,7 +117,7 @@ var human = new Human({
   strength: 25
 });
 
-console.log(human); // {"name":"John", "health":100, "exp":10, "strength":15}
+console.log(human); // {"name":"Snow", "health":100, "exp":10, "strength":15}
 {% endhighlight %}
 
 Разумеется, мы можем использовать и созданный нами ранее метод `build`:
