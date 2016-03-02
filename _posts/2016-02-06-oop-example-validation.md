@@ -5,7 +5,10 @@ identifier: oop-example-validation
 categories: JavaScript
 
 prevTitle: "Прототипы"
-prevLink: "http://jsraccoon.ru/oop-prototypes"
+prevLink: "/oop-prototypes"
+
+nextTitle: "Наследование"
+nextLink: "/oop-inheritance"
 
 description: "Настало время применить все ваши навыки объектно-ориентированного JavaScript и создать небольшую библиотеку. Библиотека предназначена для валидации данных из одного поля ввода, содержит несколько простых встроенных методов для простых манипуляций с данными и небольшой строковый шаблонизатор для вывода понятных сообщений."
 
