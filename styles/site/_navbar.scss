@@ -21,8 +21,8 @@
 
 .navbar__menu_item {
   display: block;
-  padding-top: 2.2rem;
-  padding-bottom: 2.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 
   color: $black;
 
@@ -30,6 +30,7 @@
 
   @include larger-than-small {
     display: inline-block;
+    padding: 2.2rem 2.5rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }

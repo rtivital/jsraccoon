@@ -395,7 +395,7 @@ pre {
     background-color: #e32f1c; }
 
 .site__navbar, .page-content, .post-wrapper, .comments, .site__footer {
-  max-width: 1400px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto; }
 
@@ -448,13 +448,14 @@ pre {
 
 .navbar__menu_item {
   display: block;
-  padding-top: 2.2rem;
-  padding-bottom: 2.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
   color: #222;
   transition: color 200ms, background-color 200ms; }
   @media (min-width: 768px) {
     .navbar__menu_item {
       display: inline-block;
+      padding: 2.2rem 2.5rem;
       padding-left: 2.5rem;
       padding-right: 2.5rem; } }
   .navbar__menu_item:hover {
