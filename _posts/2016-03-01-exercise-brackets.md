@@ -33,35 +33,35 @@ correctBrackets("{((])]"); // "{(())}"
 
 {% endhighlight %}
 
-# Решение
+#### Решение
 
 Попробуем сделать так - сначала определить, можем ли мы вообще получить корректную последовательность, и если да, то уже составить ее. Как это определить? Попробуем просто посчитать количество открывающих и закрывающих скобок, и если они равны - значит последовательность составить можно.
 
 {% highlight javascript %}
 function correctBrackets(brs){
-    let opening = {
-        '[': ']',
-        '{': '}',
-        '(': ')',
-        '<': '>',
-    };
+  let opening = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+    '<': '>',
+  };
 
-	let open = 0, close = 0;
+  let open = 0, close = 0;
 
-	for(let i = 0; i < brs.length; i++){
-		let c = brs[i];
-		if(opening[c]){
-			open++;
-		} else {
-			close++;
-		}
-	}
+  for(let i = 0; i < brs.length; i++){
+    let c = brs[i];
+    if(opening[c]){
+      open++;
+    } else {
+      close++;
+    }
+  }
 
-	if(open != close){
-		return null;
-	}
+  if(open != close){
+    return null;
+  }
 
-	// Составляем последовательность
+  // Составляем последовательность
 }
 
 {% endhighlight %}
@@ -70,33 +70,33 @@ function correctBrackets(brs){
 
 {% highlight javascript %}
 function correctBrackets(brs){
-    let opening = {
-        '[': ']',
-        '{': '}',
-        '(': ')',
-        '<': '>',
-    };
+  let opening = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+    '<': '>',
+  };
 
-	let open = 0, close = 0;
+  let open = 0, close = 0;
 
-	for(let i = 0; i < brs.length; i++){
-		let c = brs[i];
-		if(opening[c]){
-			open++;
-		} else {
-			close++;
-		}
+  for(let i = 0; i < brs.length; i++){
+    let c = brs[i];
+    if(opening[c]){
+      open++;
+    } else {
+      close++;
+    }
 
-		if(open < close){
-			return null;
-		}
-	}
+    if(open < close){
+      return null;
+    }
+  }
 
-	if(open != close){
-		return null;
-	}
+  if(open != close){
+    return null;
+  }
 
-	// Составляем последовательность
+  // Составляем последовательность
 }
 
 {% endhighlight %}
@@ -104,22 +104,22 @@ function correctBrackets(brs){
 Теперь напишем код для составления самой последовательности. Воспользуемся структурой данных [стек](https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B5%D0%BA) - одну из самых важных структур в работе со строками и [теории формальных языков](https://ru.wikipedia.org/wiki/%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA) в общем. Будем формировать правильную строку с нуля. Если встретим открывающую скобку - положим ее наверх стека и добавим к возвращаемой строке. Если закрывающую - посмотрим, какая была последняя "неудовлетворенная" открывающая скобка, и поставим нужную скобку. Например, в строке "([]." на месте точки последняя "неудовлетворенная" скобка это "(".
 
 {% highlight javascript %}
-	...
+  ...
     let stack = [];
     let ret = '';
 
     for(let i = 0; i < brs.length; i++){
-        let c = brs[i];
+      let c = brs[i];
 
-        if(opening[c]){
-            stack.push(c);
-        } else {
-            let br = stack.pop();
+      if(opening[c]){
+          stack.push(c);
+      } else {
+          let br = stack.pop();
 
-            c = opening[br];
-        }
+          c = opening[br];
+      }
 
-        ret += c;
+      ret += c;
     }
 
     return ret;
@@ -131,36 +131,36 @@ function correctBrackets(brs){
 {% highlight javascript %}
 function correctBrackets(brs){
     let opening = {
-        '[': ']',
-        '{': '}',
-        '(': ')',
-        '<': '>',
+      '[': ']',
+      '{': '}',
+      '(': ')',
+      '<': '>',
     };
 
     let stack = [];
     let ret = '';
 
     for(let i = 0; i < brs.length; i++){
-        let c = brs[i];
+      let c = brs[i];
 
-        if(opening[c]){
-            stack.push(c);
-        } else {
-            if(stack.length === 0){
-                return null;
-            }
-
-            let br = stack.pop();
-
-            c = opening[br];
+      if(opening[c]){
+        stack.push(c);
+      } else {
+        if(stack.length === 0){
+            return null;
         }
 
-        ret += c;
+        let br = stack.pop();
+
+        c = opening[br];
+      }
+
+      ret += c;
     }
-    if(stack.length > 0){
-        return null;
+    if (stack.length > 0){
+      return null;
     }
 }
 {% endhighlight %}
 
-Из хороших решений стоит отметить решение [Евгения Зайева](https://gist.github.com/z4o4z/119f3b0dc8c3a9ac4c56).
+Из хороших решений стоит отметить решение [Евгения Зайцева](https://gist.github.com/z4o4z/119f3b0dc8c3a9ac4c56).
