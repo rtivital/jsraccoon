@@ -163,4 +163,4 @@ function correctBrackets(brs){
 }
 {% endhighlight %}
 
-Из хороших решений стоит отметить решение [Евгения Зайцева](https://gist.github.com/z4o4z/119f3b0dc8c3a9ac4c56).
+Из хороших решений стоит отметить решение [Евгения Зайцева](https://gist.github.com/z4o4z/119f3b0dc8c3a9ac4c56). 
