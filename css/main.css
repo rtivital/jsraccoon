@@ -376,7 +376,7 @@ pre {
     font-weight: bold;
     color: #258cd1; }
   .highlight .c, .highlight .w, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs, .highlight .bp {
-    color: #cacaca;
+    color: #979797;
     font-style: italic; }
   .highlight .kd, .highlight .kc, .highlight .kp, .highlight .kr, .highlight .ni, .highlight .ss {
     font-weight: bold;
@@ -391,8 +391,6 @@ pre {
     color: #e32f1c; }
   .highlighter-rouge .highlight {
     background: #f0f0f0; }
-  .highlight .err {
-    background-color: #e32f1c; }
 
 .site__navbar, .page-content, .post-wrapper, .comments, .site__footer {
   max-width: 1200px;

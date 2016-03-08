@@ -12,7 +12,7 @@ $green-color: #29b362;
 
 // Highlight Colors
 $highlight-colors: (
-  gray-color: $gray,
+  gray-color: darken($gray, 20%),
   purple-color: $purple-color,
   cyan-color: #099,
   blue-color: darken($blue-color, 5%),
