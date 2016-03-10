@@ -5,6 +5,7 @@
 
 ### Статьи
 * [Перебирающие методы массивов изнутри](/articles/fn-1-array-methods.md)
+* [Продвинутое использование метода reduce](/articles/fn-2-advanced-reduce.md)
 * [Стилизация плэйсхолдеров с препроцессором Sass](/articles/css-1-placeholders.md)
 
 #### Объектно-ориентированный JavaScript
