@@ -47,6 +47,7 @@
 	* [Передача аргументов в колбэки](/advices/callback-args.md)
 	* [Простой chaining](/advices/chaining.md)
 	* [Измерение производительности блоков кода](/advices/console-time.md)
+	* [Проверка загрузки страницы](/advices/ready-state.md)
 
 ### Задачи
 1. [Удаление всех гласных букв из строки](/exercises/remove-letters.md)
