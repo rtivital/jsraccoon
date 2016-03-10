@@ -15,6 +15,7 @@
 * [Объектно-ориентированный JavaScript: прототипы](/articles/oop-4-prototypes.md)
 * [Объектно-ориентированный JavaScript: немного практики](/articles/oop-5-example-validation.md)
 * [Объектно-ориентированный JavaScript: наследование](/articles/oop-6-inheritance.md)
+* [Объектно-ориентированный JavaScript: наследование на практике](/articles/oop-7-inheritance-practice.md)
 
 #### ES6
 * [Перед тем, как вы начнете](/articles/es6-1-before-you-start.md)
