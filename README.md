@@ -63,6 +63,7 @@
 10. [Строковая шаблонизация](/exercises/template.md)
 11. [Пара двойников](/exercises/doubles.md)
 11. [Что за треугольник?](/exercises/triangles.md)
+12. [Последовательность скобок](/exercises/brackets.md)
 
 ### Заметки
 1. [Числа с плавающей точкой](/tests/numbers/dot.md)
