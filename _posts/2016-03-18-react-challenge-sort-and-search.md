@@ -3,7 +3,6 @@ title:  "React Challenge #1: сортировка и поиск"
 categories: JavaScript
 date:   2016-03-18 12:50:58 +0300
 identifier: react-sort-and-search
-comments: false
 
 description: "В первом выпуске React Challenge я предлагаю вам прощупать React и, в целом, составить для себя какое-то представление о том, что это вообще такое. В этом челендже будем разрабатывать достаточно простое приложение для поиска и сортировки данных."
 
