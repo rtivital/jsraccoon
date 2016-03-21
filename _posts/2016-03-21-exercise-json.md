@@ -37,7 +37,7 @@ let jsony = new JSONY();
 jsony.parse('{ hello: \"world\" }'); // { hello: "world" } - возвращаемый объект
 jsony.parse('{ age: 10, height: 120 }'); // { age: 10, height: 120 }
 jsony.parse('{ people: [\"Ann\", \"Alice\", \"Bob\"] }'); // { people: ["Ann", "Alice", "Bob"] }
-jsony.parse('{ config: { servers: [10, 15, 13], ngnix: { gate: 0, ip: "127.0.0.1" } } }');
+jsony.parse('{ config: { servers: [10, 15, 13], ngnix: { gate: 0, ip: \"127.0.0.1\" } } }');
        /* 
         { 
             config: { 
