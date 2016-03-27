@@ -14,15 +14,15 @@ description: 'Найти область пересечения двух мног
 
 ```javascript
 //Например
+function intersection(poly1, poly2) {
+  // Ваше решение
+}
+
 var a = [{ x: 10,  y: 100  }, { x: 40,  y: 100  }, { x: 80,  y: 60  }, { x: 20,  y: 20  }];
 var b = [{ x: 30,  y: 70  }, { x: 90,  y: 90  }, { x: 110,  y: 50  }, { x: 70,  y: 10  }];
 
 var c = [{ x: 10,  y: 60  }, { x: 40,  y: 90  }, { x: 70,  y: 30  }];
 var d = [{ x: 70,  y: 50  }, { x: 90,  y: 80  }, { x: 120,  y: 30  }];
-
-function intersection(poly1, poly2) {
-  // Ваше решение
-}
 
 console.log(intersection(a, b)); //[{ x: 30,  y: 70  }, { x: 60,  y: 80  }, { x: 80,  y: 60  }, { x: 50,  y: 40  }]
 console.log(intersection(c, d)); //[]
