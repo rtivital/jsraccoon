@@ -34,14 +34,14 @@ var Character = (function() {
 Теперь мы можем создавать базовую заготовку для любого персонажа, используя модуль `Character` и конструктор `Character`:
 
 ```javascript
-var Character = new Character({
+var character = new Character({
   name: 'John',
   strength: 15,
   exp: 10
 });
-console.log(Character); // {"name":"John", "health":100, "exp":10, "strength":15}
-Character.walk(10);     // John walked 10 steps
-Character.run(40);      // John ran 80 steps
+console.log(character); // {"name":"John", "health":100, "exp":10, "strength":15}
+character.walk(10);     // John walked 10 steps
+character.run(40);      // John ran 80 steps
 ```
 
 Заготовка для всех персонажей создана, и мы можем приступать к созданию отдельных классов. Начнём с людей и модуля `Human`. Мы знаем, что любой персонаж, принадлежащий к классу людей, умеет строить сооружения для защиты. Для этого отлично подойдёт метод `build`: 
