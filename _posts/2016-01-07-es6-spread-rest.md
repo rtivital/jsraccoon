@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title:  "ES6: Операторы Spread и Reset"
+title:  "ES6: Операторы Spread и Rest"
 categories: JavaScript
 author: "Виталий Ртищев"
 date:   2016-01-07 20:50:58 +0300
