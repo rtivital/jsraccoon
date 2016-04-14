@@ -104,16 +104,16 @@ console.log(num); // ReferenceError: num is not defined
 При использовании ключевого слова `let` происходит поднятие переменных (hoisting). Но сам процесс поднятия реализуется совершенно другим образом (вы не получите подобную ошибку, используя [Babel](https://babeljs.io/) или другой "переводчик" кода, так как все `let` будут заменены на `var`):
 ```javascript
 if (true) {
-	console.log(b);
-	let b = 10; // ReferenceError: b is not defined
+	console.log(b); // ReferenceError: b is not defined
+	let b = 10; 
 }
 ``` 
 Запустив подобный пример вы скорее всего можете прийти к выводу, что поднятия не происходит. Это не так. Для того, чтобы убедиться в наличии поднятия достаточно объявить еще одну переменную вне блока:
 ```javascript
 let b = 20;
 if (true) {
-	console.log(b);
-	let b = 10; // ReferenceError: b is not defined
+	console.log(b); // ReferenceError: b is not defined
+	let b = 10;
 }
 ```
 Несмотря на то, что переменная `b` была объявлена вне блока и, таким образом, должна быть доступна, результатом выполнения кода все равно является `ReferenceError`. Подобное поведение называется ["временной мёртвой зоной"](http://css-live.ru/articles/es6-let-const-i-vremennaya-myortvaya-zona-vmz-iznutri.html). 
