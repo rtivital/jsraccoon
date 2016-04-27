@@ -1,7 +1,7 @@
 ---
-title:  "Плохой код 1"
+title:  "Плохой код #1"
 categories: JavaScript
-date:   2016-03-21 15:00:00 +0300
+date:   2016-04-24 15:00:00 +0300
 author_name: "Евгений Бовыкин"
 author: missingdays
 type: exercise
