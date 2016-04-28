@@ -58,7 +58,7 @@ class Character {
 
 
 // Запишем только нужные нам коды
-let KEY_CODE = {
+const KEY_CODE = {
     A: 65,
     D: 68,
     S: 83
@@ -89,7 +89,7 @@ class Character {
 
 {% highlight javascript %}
 
-let KEY_CODE = {
+const KEY_CODE = {
     A: 37,
     D: 39,
     S: 40,
@@ -105,7 +105,7 @@ let KEY_CODE = {
 {% highlight javascript %}
 
 
-let INPUT_KEY = {
+const INPUT_KEY = {
     LEFT: 65
     RIGHT: 68,
     DOWN: 83
@@ -193,7 +193,7 @@ class Character {
 
 // Модуль InputConroller
 
-let INPUT_KEYS = {
+const INPUT_KEYS = {
     LEFT: 65
     RIGHT: 68,
     DOWN: 83
@@ -205,6 +205,7 @@ class InputConroller {
     onInput(input, callback){
         ...
     }
+    ...
 
 // Модуль Character
 
