@@ -8,7 +8,7 @@ prevTitle: "Интерполяция"
 prevLink: "http://jsraccoon.ru/es6-arrow-functions"
 
 nextTitle: "Расширение литерала объектов"
-nextLink: "http://jsraccoon.ru/es6-object-literals"
+nextLink: "http://jsraccoon.ru/es6-object-literal"
 
 description: "Цикл <code>for .. of</code> во многом похож на метод массивов <code>forEach</code>, но имеет ряд преимуществ над ним. С появлением нового вида циклов отпадает необходимость использовать конструкцию <code>[].forEach.call(elements, function(){})</code> для итераций по коллекции DOM элементов."
 ---
