@@ -161,9 +161,9 @@ export default class App extends Component {
 {% highlight javascript %}
 import React from 'react';
 
-export default ({ user, update, key }) => {
+export default ({ user, update, index }) => {
   return (
-    <tr onClick={() => update({ active: key })}>
+    <tr onClick={() => update({ active: index })}>
       <td><img src={`images/${user.image}.svg`} className="user-image" /></td>
       <td>{user.name}</td>
       <td>{user.age}</td>
@@ -251,7 +251,7 @@ export default ({ data, update }) => {
   if (!data) { return (<p>Loading...</p>); }
 
   const users = data.map((user, index) => {
-    return (<UserData user={user} key={index} update={update} />);
+    return (<UserData user={user} index={index} key={`user-${index}`} update={update} />);
   });
 
   return (
