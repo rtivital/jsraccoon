@@ -84,7 +84,7 @@ console.log(math.factorial(5)); // 120
 document.links[0].addEventListener('click', math.factorial, false); // :(
 {% endhighlight %}
 
-Естественно решить подобную проблему можно с помощью метода функций `bind` или замыкания (подробнее о способах передачи аргументов в callback функции можно узнать в [этой статье](http://jsraccoon.ru/tip-callback-args/)):
+Естественно решить подобную проблему можно с помощью метода функций `bind` или замыкания (подробнее о способах передачи аргументов в callback функции можно узнать в [этой статье](/tip-callback-args)):
 {% highlight javascript %}
 document.links[0].addEventListener('click', math.factorial.bind(math, 10), false); // :)
 {% endhighlight %}
