@@ -92,7 +92,7 @@ function getExpForLevel(level){
     // Сумма чисел от 1 до n умножить на "дополнительный коэффициент"
     // и деленное на два
 
-    return n*(n+1) * ((n+10) // 10) / 2;
+    return n*(n+1) * ((n+10) / 10) / 2;
 }
 
 {% endhighlight %}
