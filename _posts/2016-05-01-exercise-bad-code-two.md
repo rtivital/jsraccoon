@@ -1,5 +1,5 @@
 ---
-title:  "Плохой код #1"
+title:  "Плохой код #2"
 categories: JavaScript
 date:   2016-05-01 11:00:00 +0300
 author_name: "Евгений Бовыкин"
