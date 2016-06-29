@@ -101,7 +101,7 @@ describe("DataBase", ()=>{
 
 describe("random", ()=>{
   it("should generate numbers close to normal distribution", ()=>{
-    let n = 1e12;
+    let n = 1e10;
 
     let zeroes = 0, ones = 0;
 
