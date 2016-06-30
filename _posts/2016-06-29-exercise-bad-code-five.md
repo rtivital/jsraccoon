@@ -105,7 +105,7 @@ describe("random", ()=>{
 
     let zeroes = 0, ones = 0;
 
-    for(int i = 0; i < n; i++){
+    for(let i = 0; i < n; i++){
       let r = Math.random();
 
       if(r < 0.5){
