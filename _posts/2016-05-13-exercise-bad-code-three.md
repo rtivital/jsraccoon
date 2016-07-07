@@ -302,7 +302,7 @@ class HTTP {
 }
 {% endhighlight %}
 
-### Седьмой пример
+#### Седьмой пример
 
 {% highlight javascript %}
 class Time {
