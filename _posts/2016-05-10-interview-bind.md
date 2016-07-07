@@ -76,7 +76,7 @@ var bind = function(fn, context) {
     // здесь все аргументы будут необходимы
     var fnArgs = [].slice.call(arguments);
     // собираем все 
-    fn.apply(context, bindArgs.concat(fnArgs));
+    return fn.apply(context, bindArgs.concat(fnArgs));
   };
 };
 {% endhighlight %}
