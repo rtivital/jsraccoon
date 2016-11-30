@@ -61,11 +61,11 @@ removeLetters = (str, rm) => [].filter.call(str, (c) => !(rm.toLowerCase() || "a
 ## Решение 3 (регулярные выражения)
 Автор решения - [Даниил Колесниченко](https://github.com/KolesnichenkoDS)
 ```javascript
-var escapeRegExp function(str) {
+var escapeRegExp = function(str) {
   return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
 
-var removeLetters function(str, letters) {
+var removeLetters = function(str, letters) {
   return str.replace(new RegExp(escapeRegExp(letters), 'g'), '');
 }
 ```
