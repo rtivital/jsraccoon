@@ -43,6 +43,7 @@
 	* [Применение стилей ко всем элементам, кроме последнего](/advices/not-last.md)
 	* [Псевдоклассы :required и :optional](/advices/required-and-optional.md)
 	* [Стилизация выделенного текста](/advices/selection.md)
+	* [Конвертирование нативных CSS переменных с помощью функции calc](/advices/css-variables-calc.md)
 
 * JavaScript
 	* [Клонирование объекта](/advices/clone.md)
