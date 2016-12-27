@@ -52,6 +52,7 @@
 	* [Простой chaining](/advices/chaining.md)
 	* [Измерение производительности блоков кода](/advices/console-time.md)
 	* [Проверка загрузки страницы](/advices/ready-state.md)
+	* [Нативное копирование в буфер обмена](/advices/copy-to-buffer.md)
 
 ### Задачи
 1. [Удаление всех гласных букв из строки](/exercises/remove-letters.md)
