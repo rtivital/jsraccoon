@@ -143,7 +143,7 @@ each(links, function(link) {
 });
 ```
 
-Когда появится широкая поддежка **ES6** метод `forEach` можно будет использовать с DOM коллекциями более простым способом с помощью оператора [Spread](http://jsraccoon.ru/es6-spread-rest/):
+Когда появится широкая поддежка **ES6** метод `forEach` можно будет использовать с DOM коллекциями более простым способом с помощью оператора [Spread](http://jsraccoon.ru/es6-spread-rest):
 ```javascript
 [...links].forEach(function(link) {
   link.classList.add('link-active'); 
