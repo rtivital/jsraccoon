@@ -9,5 +9,5 @@ github: "https://github.com/rtivital"
 vk: "http://vk.com/rtivital"
 email: "rtivital@gmail.com"
 
-description: "Создатель проекта Frontend Raccoon, заканчиваю МГУ, работаю наставником в HTMLAcademy"
+description: "Работаю Frontend-разработчиком в Phobos, создаю приложения на React, усердно тружусь над проектом Frontend Raccoon"
 ---
