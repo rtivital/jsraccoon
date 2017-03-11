@@ -236,9 +236,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
-  -webkit-font-kerning: normal;
   font-kerning: normal;
   color: #222;
   background-color: #f0f0f0; }
