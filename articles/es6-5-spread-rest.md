@@ -122,7 +122,7 @@ var sum = function() {
 };
 
 // Теперь
-var sum = function(..args) {
+var sum = function(...args) {
   return args.reduce(function(s, num) {
     return s + num;
   }, 0);
