@@ -185,7 +185,7 @@ console.log(arr); // [1, 2, 3, 4]
 obj = [4, 3, 2, 1]; // TypeError: Ссылку менять нельзя
 ```
 
-Чтобы сделать константу, содержащую объект, настоящей *константой* слудует использовать `Object.freeze()`.
+Чтобы сделать константу, содержащую объект, настоящей *константой* следует использовать `Object.freeze()`.
 
 ## Ссылки по теме
 * [Перевод](http://css-live.ru/articles/es6-let-const-i-vremennaya-myortvaya-zona-vmz-iznutri.html) статьи [ES6 Let, Const and the “Temporal Dead Zone” (TDZ) in Depth](https://ponyfoo.com/articles/es6-let-const-and-temporal-dead-zone-in-depth) (ES6: Let, Const и «Временная мёртвая зона» (ВМЗ) изнутри) от css-live.ru
